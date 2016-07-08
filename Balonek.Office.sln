@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balonek.Office", "Balonek.Office\Balonek.Office.csproj", "{292EB7F9-B82E-4D44-85DD-E2DEE6BF7FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balonek.Logging", "Balonek.Logging\Balonek.Logging.csproj", "{A53473FD-C628-4122-A6F3-AC6A8852B61D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balonek.Utils", "Balonek.Utils\Balonek.Utils.csproj", "{1BA036CF-138E-4F5C-B54A-394E2569D867}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{292EB7F9-B82E-4D44-85DD-E2DEE6BF7FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292EB7F9-B82E-4D44-85DD-E2DEE6BF7FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292EB7F9-B82E-4D44-85DD-E2DEE6BF7FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292EB7F9-B82E-4D44-85DD-E2DEE6BF7FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A53473FD-C628-4122-A6F3-AC6A8852B61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A53473FD-C628-4122-A6F3-AC6A8852B61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A53473FD-C628-4122-A6F3-AC6A8852B61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A53473FD-C628-4122-A6F3-AC6A8852B61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA036CF-138E-4F5C-B54A-394E2569D867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA036CF-138E-4F5C-B54A-394E2569D867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA036CF-138E-4F5C-B54A-394E2569D867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA036CF-138E-4F5C-B54A-394E2569D867}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
