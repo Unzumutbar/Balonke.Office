@@ -10,5 +10,6 @@ namespace Balonek.Office.Objects
     {
         public static string NODENAME = "Settings";
         public int DataBaseVersion { get; set; }
+        public int TemplateBillPath { get; set; }
     }
 }

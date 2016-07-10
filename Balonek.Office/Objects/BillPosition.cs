@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Balonek.Office.Objects
 {
@@ -26,6 +27,17 @@ namespace Balonek.Office.Objects
         public override string ToString()
         {
             return string.Format("{0} {1}", Date.ToString("yyyy-MM-dd"), Client.Name);
+        }
+
+        public Dictionary<string, string> StringReplacementDictionary()
+        {
+            var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%posdescription%", Description);
+            dictionary.Add("%posdate%", Total.ToString());
+            dictionary.Add("%postime%", Time.ToString());
+            dictionary.Add("%posrate%", Rate.ToString());
+            dictionary.Add("%postotal%", Total.ToString());
+            return dictionary;
         }
     }
 }

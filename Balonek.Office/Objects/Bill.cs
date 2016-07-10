@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Balonek.Office.Objects
 {
@@ -18,9 +19,32 @@ namespace Balonek.Office.Objects
         public DateTime DateTo { get; set; }
         public decimal Total { get; set; }
         public Client Client { get; set; }
+        public List<BillPosition> Positions { get; set; }
         public override string ToString()
         {
             return string.Format("{0} {1}", Client.Name, DateFrom.ToString("MMMM, yyyy"));
         }
+
+        public Dictionary<string, string> StringReplacementDictionary()
+        {
+            var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%monthfrom%", DateFrom.ToString("MMMM"));
+            dictionary.Add("%monthto%", DateTo.ToString("MMMM"));
+            dictionary.Add("%totalsum%", Total.ToString());
+            foreach (var tuple in Client.StringReplacementDictionary())
+                dictionary.Add(tuple.Key, tuple.Value);
+
+            int posnr = 1;
+            foreach(var position in Positions)
+            {             
+                foreach(var tuple in position.StringReplacementDictionary())
+                {
+                    dictionary.Add(tuple.Key.Replace("pos", "pos" + posnr), tuple.Value);
+                }
+                posnr++;
+            }
+            return dictionary;
+        }
+        
     }
 }

@@ -1,0 +1,10 @@
+﻿################################################################################
+# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
+################################################################################
+
+/Balonek.Office/bin/Debug
+/Balonek.Office/obj/Debug
+/Balonek.Utils/bin/Debug
+/Balonek.Utils/obj/Debug
+/Balonek.Logging/obj/Debug
+/Balonek.Logging/bin/Debug

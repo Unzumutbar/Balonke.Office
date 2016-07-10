@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Balonek.Office.Objects;
+using Balonek.Office.Utils;
+using System.IO;
 
 namespace Balonek.Office.Controls
 {
@@ -17,7 +19,6 @@ namespace Balonek.Office.Controls
         private List<Bill> _billList;
         private List<Bill> _billSearchList;
 
-        private Client _currentClient;
         private List<Client> _clientList;
         private List<BillPosition> _positionList;
 
@@ -92,12 +93,11 @@ namespace Balonek.Office.Controls
             if (index < 0)
                 return;
 
-            _currentClient = _clientList[index];
-            if (_currentClient == null)
+            if (_clientList[index] == null)
                 return;
 
-            _currentBill.ClientId = _currentClient.Id;
-            _currentBill.Client = _currentClient;
+            _currentBill.Client = _clientList[index];
+            _currentBill.ClientId = _clientList[index].Id;
             textBoxClientName.Text = _currentBill.Client.Name;
 
             LoadAssociatedBillPositions();
@@ -185,6 +185,7 @@ namespace Balonek.Office.Controls
         private void LoadAssociatedBillPositions()
         {
             var results = _positionList.Where(pb => pb.Date >= _currentBill.DateFrom && pb.Date <= _currentBill.DateTo && pb.ClientId == _currentBill.ClientId).ToList();
+            _currentBill.Positions = results;
             AssociatedBillPositions = new BindingList<BillPosition>(results);
             var source = new BindingSource(AssociatedBillPositions, null);
             dataGridPositions.DataSource = source;
@@ -203,7 +204,6 @@ namespace Balonek.Office.Controls
         private void EnableEditMode(bool enabled)
         {
             //textBoxClientName.ReadOnly = !enabled;
-
             buttonAdd.Enabled = !enabled;
             buttonEdit.Enabled = !enabled;
             buttonDelete.Enabled = !enabled;
@@ -213,6 +213,7 @@ namespace Balonek.Office.Controls
             pickerDateFrom.Enabled = enabled;
             pickerDateTo.Enabled = enabled;
             comboBoxClient.Enabled = enabled;
+            listBoxPositions.Enabled = !enabled;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
@@ -252,6 +253,42 @@ namespace Balonek.Office.Controls
 
                 return String.IsNullOrEmpty(_message);
             } 
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "Open Document Text(*.odt)|*.odt|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 2;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToString("MMMM"));
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                CreateBillFromTemplate(saveFileDialog.FileName);
+                MessageBox.Show(_message);
+            }
+        }
+
+        private void CreateBillFromTemplate(string billDocument)
+        {
+            _message = string.Empty;
+            var templateFile = Program.Database.GetBillTemplate();
+            if (!File.Exists(templateFile))
+            {
+                _message = string.Format("Template '{0}' exisitert nicht!", Path.GetFullPath(templateFile));
+                return;
+            }
+
+            if (File.Exists(billDocument))
+                File.Delete(billDocument);
+
+            var editor = new OpenDocumentEditor();
+            editor.CreateFromTemplate(templateFile);
+            editor.ReplaceStringWithDictonary(_currentBill.StringReplacementDictionary());
+            editor.SaveDocument(billDocument);
+            editor.Close();
         }
     }
 }

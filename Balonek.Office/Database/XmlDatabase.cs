@@ -16,6 +16,7 @@ namespace Balonek.Office.Database
         private const int DATABASEVERSION = 1;
         private const string ROOTNAME = "BalonekOfficeDatabase";
         private const string DATEFORMAT = "yyyy-MM-dd";
+        private const string DEFAULTBILLTEMPLATE = @"templates\_billTemplate.odt";
 
 
         private string _databaseFile;
@@ -54,6 +55,18 @@ namespace Balonek.Office.Database
         }
 
         #region Updatespezifische Funktionen
+
+        public void UpdateDatabase()
+        {
+            var currentDataBaseVersion = this.GetDatabaseVersion();
+            if (currentDataBaseVersion >= DATABASEVERSION)
+                return;
+        }
+
+        #endregion
+
+        #region Settings
+
         public int GetDatabaseVersion()
         {
             var doc = XDocument.Load(_databaseFile);
@@ -75,13 +88,27 @@ namespace Balonek.Office.Database
             }
         }
 
-        public void UpdateDatabase()
+        public string GetBillTemplate()
         {
-            var currentDataBaseVersion = this.GetDatabaseVersion();
-            if (currentDataBaseVersion >= DATABASEVERSION)
-                return;
+            var doc = XDocument.Load(_databaseFile);
+            try
+            {
+                return (from _settings in doc.Root.Elements(Settings.NODENAME)
+                        select _settings.Element("BillTemplateFile").Value).FirstOrDefault();
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(string.Format("GetBillTemplateFile - {0}", e.Message));
+                doc.Root.Element(Settings.NODENAME).Add(
+                    new XElement("BillTemplateFile", DEFAULTBILLTEMPLATE)
+                );
+                doc.Save(_databaseFile);
+                return DEFAULTBILLTEMPLATE;
+            }
         }
-        #endregion
+
+        #endregion 
 
         #region Clients
 

@@ -23,5 +23,18 @@ namespace Balonek.Office.Objects
         {
             return string.Format("{0} {1}", Id, Name);
         }
+
+        public Dictionary<string, string> StringReplacementDictionary()
+        {
+            var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%name%", Name);
+            dictionary.Add("%street%", Street);
+            dictionary.Add("%zip%", Zip);
+            dictionary.Add("%city%", City);
+            dictionary.Add("%telephone%", Telephone);
+            dictionary.Add("%fax%", Fax);
+            dictionary.Add("%email%", Email);
+            return dictionary;
+        }
     }
 }

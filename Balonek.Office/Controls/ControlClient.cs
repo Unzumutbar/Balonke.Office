@@ -152,6 +152,7 @@ namespace Balonek.Office.Controls
             buttonDelete.Enabled = !enabled;
             buttonSave.Enabled = enabled;
             buttonCancel.Enabled = enabled;
+            listBoxClients.Enabled = !enabled;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)

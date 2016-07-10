@@ -187,6 +187,7 @@ namespace Balonek.Office.Controls
             buttonCancel.Enabled = enabled;
             dateTimePickerDate.Enabled = enabled;
             comboBoxClient.Enabled = enabled;
+            listBoxPositions.Enabled = !enabled;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
