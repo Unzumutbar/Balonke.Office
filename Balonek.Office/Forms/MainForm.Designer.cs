@@ -130,6 +130,10 @@
             this.splitContainer1.Location = new System.Drawing.Point(172, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Panel1Collapsed = true;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.splitContainer1.Size = new System.Drawing.Size(1090, 977);
             this.splitContainer1.SplitterDistance = 177;
             this.splitContainer1.TabIndex = 1;

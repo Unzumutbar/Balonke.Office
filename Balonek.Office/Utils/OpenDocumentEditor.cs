@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using System.IO;
+﻿using AODL.Document.Content.Text;
 using AODL.Document.TextDocuments;
-using AODL.Document.Content.Text;
-using AODL.Document.Content;
+using System.Collections.Generic;
 
 namespace Balonek.Office.Utils
 {
@@ -42,6 +35,27 @@ namespace Balonek.Office.Utils
                         {
                             textContent.Text = textContent.Text.Replace(searchText, replaceText);
                         }
+                    }
+                }
+            }
+        }
+
+        private void DeleteParagraph(string paragraphContent)
+        {
+            var content = _document.Content;
+            foreach (var item in content)
+            {
+                if (item is Paragraph)
+                {
+                    var removeParagraph = false;
+                    foreach (IText textContent in ((Paragraph)item).TextContent)
+                    {
+                        removeParagraph = textContent.Text != null && textContent.Text.Contains(paragraphContent);
+                    }
+                    if (removeParagraph)
+                    {
+                        var para = item as Paragraph;
+                        para.Content.Clear();
                     }
                 }
             }

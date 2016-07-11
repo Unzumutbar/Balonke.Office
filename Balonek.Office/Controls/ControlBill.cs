@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Balonek.Office.Objects;
+using Balonek.Office.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Balonek.Office.Objects;
-using Balonek.Office.Utils;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Balonek.Office.Controls
 {
@@ -43,7 +40,7 @@ namespace Balonek.Office.Controls
 
             _billSearchList = _billList.OrderByDescending(p => p.ClientId).ToList();
             if (!String.IsNullOrWhiteSpace(_searchContent))
-                _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent)|| p.DateFrom.ToString("MMMM, yyyy").Contains(_searchContent)).ToList();
+                _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent)|| p.DateFrom.ToMonthAndYear().Contains(_searchContent)).ToList();
 
             this.listBoxPositions.Items.Clear();
             foreach (var bill in _billSearchList)
@@ -262,7 +259,7 @@ namespace Balonek.Office.Controls
             saveFileDialog.Filter = "Open Document Text(*.odt)|*.odt|All files (*.*)|*.*";
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
-            saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToString("MMMM"));
+            saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToMonth());
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
