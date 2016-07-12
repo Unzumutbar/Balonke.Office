@@ -106,6 +106,24 @@ namespace Balonek.Office.Database
             }
         }
 
+        public void UpdateSettings(Settings settingToUpdate)
+        {
+            try
+            {
+                XDocument doc = XDocument.Load(_databaseFile);
+
+                var target = doc.Root.Elements(Settings.NODENAME).Single();
+                target.Element("BillTemplateFile").Value = settingToUpdate.TemplateBillPath;
+
+                doc.Save(_databaseFile);
+                _logger.LogInfo(string.Format("Settings updated"));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(string.Format("UpdateClient - {0}", e));
+            }
+        }
+
         #endregion 
 
         #region Clients

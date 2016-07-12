@@ -37,5 +37,15 @@ namespace Balonek.Office.Forms
             UserControl.Dock = DockStyle.Fill;
             this.splitContainer1.Panel2.Controls.Add(UserControl);
         }
+
+        private void toolStripSettings_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new ControlSettings());
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new ControlStart());
+        }
     }
 }

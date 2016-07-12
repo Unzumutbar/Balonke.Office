@@ -38,6 +38,9 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSettings = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonStart = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
@@ -49,6 +52,8 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buttonStart,
+            this.toolStripSeparator4,
             this.buttonClients,
             this.toolStripSeparator1,
             this.buttonBillPositions,
@@ -123,6 +128,7 @@
             this.toolStripSettings.Size = new System.Drawing.Size(169, 32);
             this.toolStripSettings.Text = "Einstellungen";
             this.toolStripSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripSettings.Click += new System.EventHandler(this.toolStripSettings_Click);
             // 
             // splitContainer1
             // 
@@ -138,11 +144,38 @@
             this.splitContainer1.SplitterDistance = 177;
             this.splitContainer1.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Location = new System.Drawing.Point(24, 865);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(120, 100);
+            this.panel1.TabIndex = 2;
+            // 
+            // buttonStart
+            // 
+            this.buttonStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStart.Image = ((System.Drawing.Image)(resources.GetObject("buttonStart.Image")));
+            this.buttonStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(169, 32);
+            this.buttonStart.Text = "Start";
+            this.buttonStart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(169, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 977);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "MainForm";
@@ -167,5 +200,8 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripSettings;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripButton buttonStart;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
