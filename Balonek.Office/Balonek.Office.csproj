@@ -103,9 +103,10 @@
     <Compile Include="Objects\Settings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\BackgroundArchive.cs" />
+    <Compile Include="Utils\ImageArchive.cs" />
     <Compile Include="Utils\ButtonExtensions.cs" />
     <Compile Include="Utils\DateExtensions.cs" />
+    <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\OpenDocumentEditor.cs" />
     <EmbeddedResource Include="Controls\ControlBill.resx">
       <DependentUpon>ControlBill.cs</DependentUpon>
@@ -159,9 +160,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Background\bg_sosia00.png" />
-    <None Include="Background\bg_sosia01.png" />
     <Content Include="FodyWeavers.xml" />
+    <None Include="Images\im_sosia01.png" />
+    <None Include="Images\bg_sosia00.png" />
+    <None Include="Images\bg_sosia01.png" />
     <Content Include="Resources\checkmark_small.png" />
     <Content Include="Resources\close_small.png" />
     <Content Include="Resources\edit_small.png" />

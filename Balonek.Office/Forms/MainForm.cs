@@ -1,5 +1,7 @@
 ﻿using Balonek.Office.Controls;
+using Balonek.Office.Utils;
 using System;
+using System.Media;
 using System.Windows.Forms;
 
 namespace Balonek.Office.Forms
@@ -36,6 +38,7 @@ namespace Balonek.Office.Forms
             UserControl = userControl;
             UserControl.Dock = DockStyle.Fill;
             this.splitContainer1.Panel2.Controls.Add(UserControl);
+            this.secretPanel.BackgroundImage = ImageArchive.GetRandomSmallImage();        
         }
 
         private void toolStripSettings_Click(object sender, EventArgs e)
@@ -43,9 +46,10 @@ namespace Balonek.Office.Forms
             LoadUserControl(new ControlSettings());
         }
 
-        private void buttonStart_Click(object sender, EventArgs e)
+        private void secret_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new ControlStart());
+            SoundPlayer audio = new SoundPlayer(Balonek.Office.Properties.Resources.secret);
+            audio.Play();
         }
     }
 }
