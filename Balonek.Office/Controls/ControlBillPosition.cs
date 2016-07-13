@@ -12,6 +12,7 @@ namespace Balonek.Office.Controls
         private List<BillPosition> _positionList;
         private List<BillPosition> _positionSearchList;
         private List<Client> _clientList;
+        private List<BillPositionText> _positionTextList;
         private BillPosition _currentPosition;
         private Client _currentClient;
         private bool _isAdding;
@@ -23,6 +24,24 @@ namespace Balonek.Office.Controls
             InitializeComponent();
             UpdatePositionList();
             UpdateClientList();
+            UpdatePositionTextList();
+        }
+
+        private void UpdatePositionTextList(bool useCache = false)
+        {
+            if (!useCache)
+                _positionTextList = Program.Database.GetBillPositionTextList();
+
+            this.comboBoxDescription.Items.Clear();
+            if (_currentPosition != null)
+                this.comboBoxDescription.Items.Add(_currentPosition.Description);
+            else
+                this.comboBoxDescription.Items.Add(string.Empty);
+
+            foreach (var posText in _positionTextList)
+            {
+                this.comboBoxDescription.Items.Add(posText.Text);
+            }
         }
 
         private void UpdatePositionList(bool useCache = false)
@@ -149,7 +168,7 @@ namespace Balonek.Office.Controls
         {
             textBoxId.Text = _currentPosition.Id.ToString();
             textBoxClientName.Text = _currentPosition.Client.Name;
-            textBoxDescription.Text = _currentPosition.Description;
+            comboBoxDescription.Text = _currentPosition.Description;
             if (_currentPosition.Date == null || _currentPosition.Date <= DateTime.MinValue)
                 _currentPosition.Date = DateTime.Today;
 
@@ -163,7 +182,7 @@ namespace Balonek.Office.Controls
         {
             //_currentPosition.ClientId = textBoxName.Text;
             //_currentPosition.ClientName = textBoxClientName.Text;
-            _currentPosition.Description = textBoxDescription.Text;
+            _currentPosition.Description = comboBoxDescription.Text;
             _currentPosition.Date = dateTimePickerDate.Value;
             _currentPosition.Time = Decimal.Parse(textBoxTime.Text);
             _currentPosition.Rate = Decimal.Parse(textBoxRate.Text);
@@ -172,7 +191,7 @@ namespace Balonek.Office.Controls
         private void EnableEditMode(bool enabled)
         {
             //textBoxClientName.ReadOnly = !enabled;
-            textBoxDescription.ReadOnly = !enabled;
+            //textBoxDescription.ReadOnly = !enabled;
             textBoxTime.ReadOnly = !enabled;
             textBoxRate.ReadOnly = !enabled;
 
@@ -184,6 +203,7 @@ namespace Balonek.Office.Controls
             dateTimePickerDate.Enabled = enabled;
             comboBoxClient.Enabled = enabled;
             listBoxPositions.Enabled = !enabled;
+            comboBoxDescription.Enabled = enabled;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
@@ -251,7 +271,7 @@ namespace Balonek.Office.Controls
                 _message = string.Empty;
                 if (_currentPosition.ClientId == 0)
                     _message += "Es wurde kein Kunde ausgewählt!";
-                if (String.IsNullOrWhiteSpace(textBoxDescription.Text))
+                if (String.IsNullOrWhiteSpace(comboBoxDescription.Text))
                     _message += "Es wurde keine Tatigkeitsbeschreibung eingegeben!";
                 if (String.IsNullOrWhiteSpace(textBoxTime.Text))
                     _message += "Es wurde keine Zeit eingegeben!";

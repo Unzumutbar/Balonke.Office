@@ -162,6 +162,7 @@
             this.Controls.Add(this.secretPanel);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Sosias kleines Büro";
             this.toolStrip1.ResumeLayout(false);

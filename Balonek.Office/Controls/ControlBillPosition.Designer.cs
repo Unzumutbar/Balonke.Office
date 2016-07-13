@@ -44,7 +44,6 @@
             this.labelId = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxClientName = new System.Windows.Forms.TextBox();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelZipCity = new System.Windows.Forms.Label();
             this.textBoxTime = new System.Windows.Forms.TextBox();
@@ -57,6 +56,7 @@
             this.labelClient = new System.Windows.Forms.Label();
             this.comboBoxClient = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.comboBoxDescription = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -203,7 +203,6 @@
             this.tableLayoutPanel1.Controls.Add(this.labelId, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxId, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxClientName, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxDescription, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.labelDescription, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.labelZipCity, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.textBoxTime, 2, 10);
@@ -215,6 +214,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dateTimePickerDate, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.labelClient, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxClient, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxDescription, 2, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -270,23 +270,12 @@
             this.textBoxClientName.TabIndex = 3;
             this.textBoxClientName.TabStop = false;
             // 
-            // textBoxDescription
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.textBoxDescription, 3);
-            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDescription.Location = new System.Drawing.Point(143, 143);
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.Size = new System.Drawing.Size(366, 27);
-            this.textBoxDescription.TabIndex = 4;
-            // 
             // labelDescription
             // 
             this.labelDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelDescription.AutoSize = true;
             this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescription.Location = new System.Drawing.Point(23, 146);
+            this.labelDescription.Location = new System.Drawing.Point(23, 147);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(41, 20);
             this.labelDescription.TabIndex = 5;
@@ -297,7 +286,7 @@
             this.labelZipCity.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelZipCity.AutoSize = true;
             this.labelZipCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZipCity.Location = new System.Drawing.Point(23, 189);
+            this.labelZipCity.Location = new System.Drawing.Point(23, 190);
             this.labelZipCity.Name = "labelZipCity";
             this.labelZipCity.Size = new System.Drawing.Size(59, 20);
             this.labelZipCity.TabIndex = 7;
@@ -307,7 +296,7 @@
             // 
             this.textBoxTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTime.Location = new System.Drawing.Point(143, 249);
+            this.textBoxTime.Location = new System.Drawing.Point(143, 250);
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.ReadOnly = true;
             this.textBoxTime.Size = new System.Drawing.Size(130, 27);
@@ -321,7 +310,7 @@
             this.labelTime.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelTime.AutoSize = true;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTime.Location = new System.Drawing.Point(23, 252);
+            this.labelTime.Location = new System.Drawing.Point(23, 253);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(96, 20);
             this.labelTime.TabIndex = 12;
@@ -331,7 +320,7 @@
             // 
             this.textBoxRate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxRate.Location = new System.Drawing.Point(379, 249);
+            this.textBoxRate.Location = new System.Drawing.Point(379, 250);
             this.textBoxRate.Name = "textBoxRate";
             this.textBoxRate.ReadOnly = true;
             this.textBoxRate.Size = new System.Drawing.Size(130, 27);
@@ -345,7 +334,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(279, 252);
+            this.label1.Location = new System.Drawing.Point(279, 253);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
             this.label1.TabIndex = 13;
@@ -355,7 +344,7 @@
             // 
             this.textBoxTotal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotal.Location = new System.Drawing.Point(379, 292);
+            this.textBoxTotal.Location = new System.Drawing.Point(379, 293);
             this.textBoxTotal.Name = "textBoxTotal";
             this.textBoxTotal.ReadOnly = true;
             this.textBoxTotal.Size = new System.Drawing.Size(130, 27);
@@ -367,7 +356,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(279, 295);
+            this.label2.Location = new System.Drawing.Point(279, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 14;
@@ -379,7 +368,7 @@
             this.dateTimePickerDate.Enabled = false;
             this.dateTimePickerDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDate.Location = new System.Drawing.Point(143, 186);
+            this.dateTimePickerDate.Location = new System.Drawing.Point(143, 187);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerDate.Size = new System.Drawing.Size(130, 27);
@@ -416,7 +405,19 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // comboBoxDescription
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.comboBoxDescription, 3);
+            this.comboBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxDescription.Enabled = false;
+            this.comboBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDescription.FormattingEnabled = true;
+            this.comboBoxDescription.Location = new System.Drawing.Point(143, 143);
+            this.comboBoxDescription.Name = "comboBoxDescription";
+            this.comboBoxDescription.Size = new System.Drawing.Size(366, 28);
+            this.comboBoxDescription.TabIndex = 15;
             // 
             // ControlBillPosition
             // 
@@ -456,7 +457,6 @@
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.TextBox textBoxClientName;
         private System.Windows.Forms.Label labelClient;
-        private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Label labelZipCity;
         private System.Windows.Forms.TextBox textBoxTime;
@@ -469,5 +469,6 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.ComboBox comboBoxClient;
+        private System.Windows.Forms.ComboBox comboBoxDescription;
     }
 }

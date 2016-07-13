@@ -47,9 +47,22 @@ namespace Balonek.Office.Database
                 writer.WriteStartElement(Bill.NODENAME);
                 writer.WriteEndElement();
 
+                writer.WriteStartElement(BillPositionText.NODENAME);
+                writer.WriteEndElement();
+
                 writer.WriteEndElement();
                 writer.Flush();
             }
+
+            AddDefaultBillPositionText();
+        }
+
+        private void AddDefaultBillPositionText()
+        {
+            var newText = new BillPositionText();
+            newText.Id = 1;
+            newText.Text = "Haushaltshilfe";
+            AddBillPositionText(newText);
         }
 
         #region Updatespezifische Funktionen
@@ -400,6 +413,74 @@ namespace Balonek.Office.Database
         public void DeleteBill(Bill billToDelete)
         {
             this.DeleteElementById(Bill.NODENAME, Bill.ELEMENTNAME, billToDelete.Id);
+        }
+
+        #endregion
+
+        #region BillPositionTexts
+        public List<BillPositionText> GetBillPositionTextList()
+        {
+            try
+            {
+                var xdoc = XDocument.Load(_databaseFile);
+                return (from _text in xdoc.Root.Element(BillPositionText.NODENAME).Elements(BillPositionText.ELEMENTNAME)
+                        select new BillPositionText
+                        {
+                            Id = Int32.Parse(_text.Element("Id").Value),
+                            Text = _text.Element("Text").Value,
+
+                        }).ToList();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(string.Format("GetBillPositionTextList - {0}", e.Message));
+                return new List<BillPositionText>();
+            }
+        }
+
+        public void AddBillPositionText(BillPositionText textToAdd)
+        {
+            try
+            {
+                XDocument doc = XDocument.Load(_databaseFile);
+
+                doc.Root.Element(BillPositionText.NODENAME).Add(
+                     new XElement(BillPositionText.ELEMENTNAME,
+                            new XElement("Id", textToAdd.Id),
+                            new XElement("Text", textToAdd.Text)
+                            )
+                     );
+
+                doc.Save(_databaseFile);
+                _logger.LogInfo(string.Format("BillPositionText added - {0} {1}", textToAdd.Id, textToAdd.Text));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(string.Format("AddBillPositionText - {0}", e.Message));
+            }
+        }
+
+        public void UpdateBillPositionText(BillPositionText textToUpdate)
+        {
+            try
+            {
+                XDocument doc = XDocument.Load(_databaseFile);
+
+                var target = doc.Root.Element(BillPositionText.NODENAME).Elements(BillPositionText.ELEMENTNAME).Where(e => e.Element("Id").Value.Equals(textToUpdate.Id.ToString())).Single();
+                target.Element("Text").Value = textToUpdate.Text;
+
+                doc.Save(_databaseFile);
+                _logger.LogInfo(string.Format("BillPositionText updated - {0} {1}", textToUpdate.Id, textToUpdate.Text));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(string.Format("UpdateBillPositionText - {0}", e.Message));
+            }
+        }
+
+        public void DeleteBillPositionText(BillPositionText textToDelete)
+        {
+            this.DeleteElementById(BillPositionText.NODENAME, BillPositionText.ELEMENTNAME, textToDelete.Id);
         }
 
         #endregion

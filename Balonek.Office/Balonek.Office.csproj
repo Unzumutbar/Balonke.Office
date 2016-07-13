@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Balonek.Office</RootNamespace>
-    <AssemblyName>Balonek.Office</AssemblyName>
+    <AssemblyName>Sosias Office</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,6 +37,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Balonek.Office.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_sosia.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AODL, Version=1.2.0.1, Culture=neutral">
@@ -99,6 +102,7 @@
     </Compile>
     <Compile Include="Objects\Bill.cs" />
     <Compile Include="Objects\BillPosition.cs" />
+    <Compile Include="Objects\BillPositionText.cs" />
     <Compile Include="Objects\Client.cs" />
     <Compile Include="Objects\Settings.cs" />
     <Compile Include="Program.cs" />
@@ -164,6 +168,7 @@
     <None Include="Images\im_sosia01.png" />
     <None Include="Images\bg_sosia00.png" />
     <None Include="Images\bg_sosia01.png" />
+    <Content Include="icon_sosia.ico" />
     <Content Include="Resources\checkmark_small.png" />
     <Content Include="Resources\close_small.png" />
     <Content Include="Resources\edit_small.png" />
