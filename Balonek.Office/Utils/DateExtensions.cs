@@ -13,5 +13,10 @@ namespace Balonek.Office.Utils
         {
             return date.ToString("MMMM, yyyy");
         }
+
+        public static string ToBillDate(this DateTime date)
+        {
+            return date.ToString("dd.MM.yyyy");
+        }
     }
 }

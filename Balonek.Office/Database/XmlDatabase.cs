@@ -266,7 +266,6 @@ namespace Balonek.Office.Database
                         select new BillPosition
                         {
                             Id = Int32.Parse(_position.Element("Id").Value),
-                            ClientId = Int32.Parse(_position.Element("ClientId").Value),
                             Client = GetClientById(Int32.Parse(_position.Element("ClientId").Value)),
                             Description = _position.Element("Description").Value,
                             Date = DateTime.ParseExact(_position.Element("Date").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
@@ -291,7 +290,7 @@ namespace Balonek.Office.Database
                 doc.Root.Element(BillPosition.NODENAME).Add(
                      new XElement(BillPosition.ELEMENTNAME,
                             new XElement("Id", billPositionToAdd.Id),
-                            new XElement("ClientId", billPositionToAdd.ClientId),
+                            new XElement("ClientId", billPositionToAdd.Client.Id),
                             new XElement("Description", billPositionToAdd.Description),
                             new XElement("Date", billPositionToAdd.Date.ToString(DATEFORMAT)),
                             new XElement("Time", billPositionToAdd.Time),
@@ -316,7 +315,7 @@ namespace Balonek.Office.Database
                 XDocument doc = XDocument.Load(_databaseFile);
 
                 var target = doc.Root.Element(BillPosition.NODENAME).Elements(BillPosition.ELEMENTNAME).Where(e => e.Element("Id").Value.Equals(billPositionToUpdate.Id.ToString())).Single();
-                target.Element("ClientId").Value = billPositionToUpdate.ClientId.ToString();
+                target.Element("ClientId").Value = billPositionToUpdate.Client.Id.ToString();
                 target.Element("Description").Value = billPositionToUpdate.Description;
                 target.Element("Date").Value = billPositionToUpdate.Date.ToString(DATEFORMAT);
                 target.Element("Time").Value = billPositionToUpdate.Time.ToString();
@@ -349,7 +348,6 @@ namespace Balonek.Office.Database
                         select new Bill
                         {
                             Id = Int32.Parse(_bill.Element("Id").Value),
-                            ClientId = Int32.Parse(_bill.Element("ClientId").Value),
                             Client = GetClientById(Int32.Parse(_bill.Element("ClientId").Value)),
                             DateFrom = DateTime.ParseExact(_bill.Element("DateFrom").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
                             DateTo = DateTime.ParseExact(_bill.Element("DateTo").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
@@ -373,7 +371,7 @@ namespace Balonek.Office.Database
                 doc.Root.Element(Bill.NODENAME).Add(
                      new XElement(Bill.ELEMENTNAME,
                             new XElement("Id", billToAdd.Id),
-                            new XElement("ClientId", billToAdd.ClientId),
+                            new XElement("ClientId", billToAdd.Client.Id),
                             new XElement("DateFrom", billToAdd.DateFrom.ToString(DATEFORMAT)),
                             new XElement("DateTo", billToAdd.DateTo.ToString(DATEFORMAT)),
                             new XElement("Total", billToAdd.Total)
@@ -381,7 +379,7 @@ namespace Balonek.Office.Database
                      );
 
                 doc.Save(_databaseFile);
-                _logger.LogInfo(string.Format("Bill added - {0} {1}", billToAdd.Id, billToAdd.ClientId));
+                _logger.LogInfo(string.Format("Bill added - {0} {1}", billToAdd.Id, billToAdd.Client.Id));
             }
             catch (Exception e)
             {
@@ -396,13 +394,13 @@ namespace Balonek.Office.Database
                 XDocument doc = XDocument.Load(_databaseFile);
 
                 var target = doc.Root.Element(Bill.NODENAME).Elements(Bill.ELEMENTNAME).Where(e => e.Element("Id").Value.Equals(billToUpdate.Id.ToString())).Single();
-                target.Element("ClientId").Value = billToUpdate.ClientId.ToString();
+                target.Element("ClientId").Value = billToUpdate.Client.Id.ToString();
                 target.Element("DateFrom").Value = billToUpdate.DateFrom.ToString(DATEFORMAT);
                 target.Element("DateTo").Value = billToUpdate.DateTo.ToString(DATEFORMAT);
                 target.Element("Total").Value = billToUpdate.Total.ToString();
 
                 doc.Save(_databaseFile);
-                _logger.LogInfo(string.Format("Bill updated - {0} {1}", billToUpdate.Id, billToUpdate.ClientId));
+                _logger.LogInfo(string.Format("Bill updated - {0} {1}", billToUpdate.Id, billToUpdate.Client.Id));
             }
             catch (Exception e)
             {

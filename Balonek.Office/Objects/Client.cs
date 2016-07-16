@@ -23,6 +23,7 @@ namespace Balonek.Office.Objects
         public Dictionary<string, string> StringReplacementDictionary()
         {
             var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%clientid%", Id.ToString());
             dictionary.Add("%name%", Name);
             dictionary.Add("%street%", Street);
             dictionary.Add("%zip%", Zip);

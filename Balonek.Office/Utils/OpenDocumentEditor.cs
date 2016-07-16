@@ -1,5 +1,6 @@
 ﻿using AODL.Document.Content.Text;
 using AODL.Document.TextDocuments;
+using ICSharpCode.SharpZipLib.Zip;
 using System.Collections.Generic;
 
 namespace Balonek.Office.Utils
@@ -13,6 +14,12 @@ namespace Balonek.Office.Utils
             var document = new TextDocument();
             document.Load(templatePath);
             _document = document;
+        }
+
+        public void ReplaceStringWithDictonaryInContent(Dictionary<string, string> dictionary)
+        {
+            foreach (var tuple in dictionary)
+                ReplaceString(tuple.Key, tuple.Value);
         }
 
         public void ReplaceStringWithDictonary(Dictionary<string, string> dictionary)

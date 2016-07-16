@@ -38,7 +38,7 @@ namespace Balonek.Office.Controls
             if(!useCache)
                 _billList = Program.Database.GetBillList();
 
-            _billSearchList = _billList.OrderByDescending(p => p.ClientId).ToList();
+            _billSearchList = _billList.OrderByDescending(p => p.Client.Id).ToList();
             if (!String.IsNullOrWhiteSpace(_searchContent))
                 _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent)|| p.DateFrom.ToMonthAndYear().Contains(_searchContent)).ToList();
 
@@ -94,7 +94,6 @@ namespace Balonek.Office.Controls
                 return;
 
             _currentBill.Client = _clientList[index];
-            _currentBill.ClientId = _clientList[index].Id;
             textBoxClientName.Text = _currentBill.Client.Name;
 
             LoadAssociatedBillPositions();
@@ -181,7 +180,7 @@ namespace Balonek.Office.Controls
 
         private void LoadAssociatedBillPositions()
         {
-            var results = _positionList.Where(pb => pb.Date >= _currentBill.DateFrom && pb.Date <= _currentBill.DateTo && pb.ClientId == _currentBill.ClientId).ToList();
+            var results = _positionList.Where(pb => pb.Date >= _currentBill.DateFrom && pb.Date <= _currentBill.DateTo && pb.Client.Id == _currentBill.Client.Id).ToList();
             _currentBill.Positions = results;
             AssociatedBillPositions = new BindingList<BillPosition>(results);
             var source = new BindingSource(AssociatedBillPositions, null);
@@ -243,7 +242,7 @@ namespace Balonek.Office.Controls
             get
             {
                 _message = string.Empty;
-                if (_currentBill.ClientId == 0)
+                if (_currentBill.Client.Id == 0)
                     _message += "Es wurde kein Kunde ausgewählt!";
                 if(pickerDateFrom.Value >= pickerDateTo.Value)
                     _message += "Es wurde ein ungültiger Zeitraum ausgewählt!";

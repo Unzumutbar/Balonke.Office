@@ -15,7 +15,6 @@ namespace Balonek.Office.Objects
         }
 
         public int Id { get; set; }
-        public int ClientId { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public decimal Total { get; set; }
@@ -29,6 +28,8 @@ namespace Balonek.Office.Objects
         public Dictionary<string, string> StringReplacementDictionary()
         {
             var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%billid%", Id.ToString());
+            dictionary.Add("%billdate%", DateTime.Now.ToBillDate());
             dictionary.Add("%monthfrom%", DateFrom.ToMonth());
             dictionary.Add("%monthto%", DateTo.ToMonth());
             dictionary.Add("%totalsum%", Total.ToString());

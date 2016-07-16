@@ -99,8 +99,6 @@ namespace Balonek.Office.Controls
             if (_currentClient == null)
                 return;
 
-            _currentPosition.ClientId = _currentClient.Id;
-            _currentPosition.Client.Name = _currentClient.Name;
             textBoxClientName.Text = _currentClient.Name;
         }
 
@@ -269,7 +267,7 @@ namespace Balonek.Office.Controls
             get
             {
                 _message = string.Empty;
-                if (_currentPosition.ClientId == 0)
+                if (_currentPosition.Client.Id == 0)
                     _message += "Es wurde kein Kunde ausgewählt!";
                 if (String.IsNullOrWhiteSpace(comboBoxDescription.Text))
                     _message += "Es wurde keine Tatigkeitsbeschreibung eingegeben!";
