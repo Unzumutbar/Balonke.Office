@@ -32,3 +32,23 @@
 16.07.2016 11:18:41 Info: Application Balonek Office started
 16.07.2016 11:18:43 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
 16.07.2016 11:32:10 Info: Application Balonek Office started
+17.07.2016 14:40:48 Info: Application Balonek Office started
+17.07.2016 14:43:03 Info: Application Balonek Office started
+17.07.2016 14:43:51 Info: Application Balonek Office started
+17.07.2016 14:45:04 Info: Application Balonek Office started
+17.07.2016 14:45:47 Info: Application Balonek Office started
+17.07.2016 14:48:28 Info: Application Balonek Office started
+17.07.2016 14:52:22 Info: Application Balonek Office started
+17.07.2016 14:52:24 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+17.07.2016 23:45:24 Info: Application Balonek Office started
+17.07.2016 23:45:33 Info: Application Balonek Office started
+07/17/2016 23:47:06 Info: Application Balonek Office started
+07/17/2016 23:47:09 Error: GetBillPositionTextList - Object reference not set to an instance of an object
+07/17/2016 23:47:39 Info: Settings updated
+07/17/2016 23:48:24 Error: GetBillPositionTextList - Object reference not set to an instance of an object
+18.07.2016 21:38:55 Info: Application Balonek Office started
+18.07.2016 21:41:18 Info: Application Balonek Office started
+18.07.2016 21:44:33 Info: Application Balonek Office started
+18.07.2016 21:50:36 Info: Application Balonek Office started
+20.07.2016 23:11:02 Info: Application Balonek Office started
+20.07.2016 23:13:07 Info: Application Balonek Office started

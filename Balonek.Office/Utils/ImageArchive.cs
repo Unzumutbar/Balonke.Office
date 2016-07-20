@@ -36,7 +36,5 @@ namespace Balonek.Office.Utils
 
             return imageList;
         }
-
-
     }
 }

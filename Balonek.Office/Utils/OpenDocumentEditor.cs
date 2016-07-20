@@ -1,81 +1,59 @@
-﻿using AODL.Document.Content.Text;
-using AODL.Document.TextDocuments;
-using ICSharpCode.SharpZipLib.Zip;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Balonek.Office.Utils
 {
     public class OpenDocumentEditor
     {
-        private TextDocument _document;
+        private string _document;
 
         public void CreateFromTemplate(string templatePath)
         {
-            var document = new TextDocument();
-            document.Load(templatePath);
-            _document = document;
+            _document = DirectoryExtension.CreateTempDirectory();
+            Archive.ExtractZipFile(templatePath, _document);
         }
 
-        public void ReplaceStringWithDictonaryInContent(Dictionary<string, string> dictionary)
+        public void ReplaceWithDictonary(Dictionary<string, string> dictionary)
         {
+            string file = Path.Combine(_document,"content.xml");
+            var content = ReadContent(file);
+
             foreach (var tuple in dictionary)
-                ReplaceString(tuple.Key, tuple.Value);
+                content = content.Replace(tuple.Key, tuple.Value);
+
+            SaveContent(content, file);
         }
 
-        public void ReplaceStringWithDictonary(Dictionary<string, string> dictionary)
+        public void DeleteTableRow(string rowIdentifier)
         {
-            foreach (var tuple in dictionary)
-                ReplaceString(tuple.Key, tuple.Value);
-        }
-
-        private void ReplaceString(string searchText, string replaceText)
-        {
-            var content = _document.Content;
-
-            foreach (var item in content)
+            string file = Path.Combine(_document, "content.xml");
+            var content = ReadContent(file);
+            string pattern = @"<table:table-row [\s\S]*?<\/table:table-row>";
+            var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+            var matches = regex.Matches(content);
+            foreach (var match in matches)
             {
-                if (item is Paragraph)
-                {
-                    foreach (IText textContent in ((Paragraph)item).TextContent)
-                    {
-                        if (textContent.Text != null && textContent.Text.Contains(searchText))
-                        {
-                            textContent.Text = textContent.Text.Replace(searchText, replaceText);
-                        }
-                    }
-                }
+                if (match.ToString().Contains(rowIdentifier))
+                    content = content.Replace(match.ToString(), "");
             }
+            SaveContent(content, file);
         }
 
-        private void DeleteParagraph(string paragraphContent)
+        private void SaveContent(string content, string file)
         {
-            var content = _document.Content;
-            foreach (var item in content)
-            {
-                if (item is Paragraph)
-                {
-                    var removeParagraph = false;
-                    foreach (IText textContent in ((Paragraph)item).TextContent)
-                    {
-                        removeParagraph = textContent.Text != null && textContent.Text.Contains(paragraphContent);
-                    }
-                    if (removeParagraph)
-                    {
-                        var para = item as Paragraph;
-                        para.Content.Clear();
-                    }
-                }
-            }
+            File.WriteAllText(file, content);
         }
 
-        public void SaveDocument(string filePath)
+        private string ReadContent(string file)
         {
-            _document.SaveTo(filePath);
+            return File.ReadAllText(file);
         }
 
-        public void Close()
+        public void Save(string filePath)
         {
-            _document.Dispose();
+            Archive.CreateArchive(filePath, _document);
         }
     }
 }

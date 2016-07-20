@@ -45,18 +45,6 @@ namespace Balonek.Office.Objects
                 }
                 posnr++;
             }
-            for(int i = posnr; posnr <= 10; posnr++)
-            {
-                var position = new BillPosition();
-                foreach (var tuple in position.StringReplacementDictionary())
-                {
-                    var tupleValue = 0m;
-                    if(Decimal.TryParse(tuple.Value, out tupleValue))
-                        dictionary.Add(tuple.Key.Replace("pos", "pos" + posnr), string.Empty);
-                    else
-                    dictionary.Add(tuple.Key.Replace("pos", "pos" + posnr), tuple.Value);
-                }
-            }
             return dictionary;
         }
         

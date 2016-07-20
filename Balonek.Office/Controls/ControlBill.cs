@@ -282,9 +282,10 @@ namespace Balonek.Office.Controls
 
             var editor = new OpenDocumentEditor();
             editor.CreateFromTemplate(templateFile);
-            editor.ReplaceStringWithDictonary(_currentBill.StringReplacementDictionary());
-            editor.SaveDocument(billDocument);
-            editor.Close();
+            editor.ReplaceWithDictonary(_currentBill.StringReplacementDictionary());
+            editor.DeleteTableRow("%pos");
+            editor.Save(billDocument);
+            _message = string.Format("{0} erfolgreich exportiert.", Path.GetFullPath(billDocument));
         }
     }
 }
