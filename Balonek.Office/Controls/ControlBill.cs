@@ -280,7 +280,7 @@ namespace Balonek.Office.Controls
             if (File.Exists(billDocument))
                 File.Delete(billDocument);
 
-            var editor = new OpenDocumentEditor();
+            var editor = new OpenDocumentEditor(Program.Logger);
             editor.CreateFromTemplate(templateFile);
             editor.ReplaceWithDictonary(_currentBill.StringReplacementDictionary());
             editor.DeleteTableRow("%pos");
