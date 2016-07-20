@@ -52,3 +52,15 @@
 18.07.2016 21:50:36 Info: Application Balonek Office started
 20.07.2016 23:11:02 Info: Application Balonek Office started
 20.07.2016 23:13:07 Info: Application Balonek Office started
+20.07.2016 23:26:14 Info: Application Balonek Office started
+20.07.2016 23:26:17 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:20 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:20 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:22 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:23 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:28 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:31 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:34 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:36 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:26:43 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+20.07.2016 23:46:09 Info: Application Balonek Office started

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Balonek.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -8,6 +9,12 @@ namespace Balonek.Office.Utils
     public class OpenDocumentEditor
     {
         private string _document;
+        private ILogger _logger;
+
+        public OpenDocumentEditor(ILogger logger)
+        {
+            _logger = logger;
+        }
 
         public void CreateFromTemplate(string templatePath)
         {
@@ -53,7 +60,15 @@ namespace Balonek.Office.Utils
 
         public void Save(string filePath)
         {
-            Archive.CreateArchive(filePath, _document);
+            try
+            {
+                Archive.CreateArchive(filePath, _document);
+                DirectoryExtension.DeleteDirectoryAndContent(_document);
+            }
+            catch(Exception e)
+            {
+                _logger.LogError(e.ToString());
+            }
         }
     }
 }

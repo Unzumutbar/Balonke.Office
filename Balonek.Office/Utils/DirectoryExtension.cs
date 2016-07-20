@@ -14,5 +14,24 @@ namespace Balonek.Office.Utils
             Directory.CreateDirectory(tempDir);
             return tempDir;
         }
+
+        public static void DeleteDirectoryAndContent(string directory)
+        {
+            var directoryInfo = new DirectoryInfo(directory);
+            directoryInfo.DeleteDirectoryAndContent();
+        }
+
+        public static void DeleteDirectoryAndContent(this DirectoryInfo directoryInfo)
+        {
+            foreach (var file in directoryInfo.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (var dir in directoryInfo.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+            directoryInfo.Delete();
+        }
     }
 }
