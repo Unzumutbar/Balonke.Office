@@ -1,20 +1,23 @@
 ﻿using Balonek.Office.Objects;
+using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using static Balonek.Office.Utils.Enums;
 
 namespace Balonek.Office.Controls
 {
     public partial class ControlBillPosition : UserControl
     {
         private List<BillPosition> _positionList;
-        private List<BillPosition> _positionSearchList;
+        private List<BillPosition> _singlePositionList;
+        private List<BillPosition> _periodicalPositionList;
         private List<Client> _clientList;
         private List<BillPositionText> _positionTextList;
         private BillPosition _currentPosition;
-        private Client _currentClient;
+
         private bool _isAdding;
         private string _searchContent;
         private string _message;
@@ -25,6 +28,26 @@ namespace Balonek.Office.Controls
             UpdatePositionList();
             UpdateClientList();
             UpdatePositionTextList();
+            UpdatePositionType();
+            UpdatePeriodType();
+        }
+
+        private void UpdatePeriodType()
+        {
+            var enumList = new List<string>();
+            foreach (Period value in Enum.GetValues(typeof(Period)))
+                comboBoxPeriod.Items.Add(value.GetDescription());
+
+            comboBoxPeriod.SelectedItem = Period.Weekly.GetDescription();
+        }
+
+        private void UpdatePositionType()
+        {
+            var enumList = new List<string>();
+            foreach (PositionType value in Enum.GetValues(typeof(PositionType)))
+                comboBoxPositionType.Items.Add(value.GetDescription());
+
+            comboBoxPositionType.SelectedItem = PositionType.Single.GetDescription();
         }
 
         private void UpdatePositionTextList(bool useCache = false)
@@ -49,14 +72,35 @@ namespace Balonek.Office.Controls
             if(!useCache)
                 _positionList = Program.Database.GetBillPositionList();
 
-            _positionSearchList = _positionList.OrderByDescending(p => p.Date).ToList();
+            UpdateSinglePositionList();
+            UpdatePeriodicalPositionList();
+
+
+        }
+
+        private void UpdatePeriodicalPositionList()
+        {
+            _periodicalPositionList = _positionList.Where(p => p.Type == PositionType.Periodical).OrderByDescending(p => p.Date).ToList();
             if (!String.IsNullOrWhiteSpace(_searchContent))
-                _positionSearchList = _positionList.Where(p => p.Client.Name.Contains(_searchContent) || p.Description.Contains(_searchContent)).ToList();
+                _periodicalPositionList = _positionList.Where(p => p.Client.Name.Contains(_searchContent) || p.Description.Contains(_searchContent)).ToList();
+
+            this.listBoxRepeatition.Items.Clear();
+            foreach (var position in _periodicalPositionList)
+            {
+                this.listBoxRepeatition.Items.Add(position.ToString());
+            }
+        }
+
+        private void UpdateSinglePositionList()
+        {
+            _singlePositionList = _positionList.Where(p => p.Type == PositionType.Single).OrderByDescending(p => p.Date).ToList();
+            if (!String.IsNullOrWhiteSpace(_searchContent))
+                _singlePositionList = _positionList.Where(p => p.Client.Name.Contains(_searchContent) || p.Description.Contains(_searchContent)).ToList();
 
             this.listBoxPositions.Items.Clear();
-            foreach (var client in _positionSearchList)
+            foreach (var position in _singlePositionList)
             {
-                this.listBoxPositions.Items.Add(client.ToString());
+                this.listBoxPositions.Items.Add(position.ToString());
             }
         }
 
@@ -70,13 +114,24 @@ namespace Balonek.Office.Controls
             }
         }
 
-        private void listBoxClients_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxSingle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listBoxPositions.SelectedIndex;
+            var list = _singlePositionList;
+            PositionIsSelected(sender as ListBox, _singlePositionList);
+        }
+
+        private void listBoxPeriodical_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PositionIsSelected(sender as ListBox, _periodicalPositionList);
+        }
+
+        private void PositionIsSelected(ListBox listbox, List<BillPosition>list)
+        {
+            int index = listbox.SelectedIndex;
             if (index < 0)
                 return;
 
-            _currentPosition = _positionSearchList[index];
+            _currentPosition = list[index];
             if (_currentPosition == null)
             {
                 buttonEdit.Enabled = false;
@@ -95,11 +150,12 @@ namespace Balonek.Office.Controls
             if (index < 0)
                 return;
 
-            _currentClient = _clientList[index];
-            if (_currentClient == null)
+            var client = _clientList[index];
+            if (client == null)
                 return;
 
-            textBoxClientName.Text = _currentClient.Name;
+            _currentPosition.Client = client;
+            textBoxClientName.Text = client.Name;
         }
 
 
@@ -174,6 +230,10 @@ namespace Balonek.Office.Controls
             textBoxTime.Text = _currentPosition.Time.ToString();
             textBoxRate.Text = _currentPosition.Rate.ToString();
             textBoxTotal.Text = _currentPosition.Total.ToString();
+
+            comboBoxPositionType.SelectedItem = _currentPosition.Type.GetDescription();
+            comboBoxPeriod.SelectedItem = _currentPosition.Period.GetDescription();
+            comboBoxPeriod.Visible = _currentPosition.Type == PositionType.Periodical;
         }
 
         private void UpdateCurrentClient()
@@ -202,6 +262,8 @@ namespace Balonek.Office.Controls
             comboBoxClient.Enabled = enabled;
             listBoxPositions.Enabled = !enabled;
             comboBoxDescription.Enabled = enabled;
+            comboBoxPositionType.Enabled = enabled;
+            comboBoxPeriod.Enabled = enabled;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
@@ -278,6 +340,23 @@ namespace Balonek.Office.Controls
 
                 return String.IsNullOrEmpty(_message);
             }
+        }
+
+        private void comboBoxPeriod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_currentPosition == null)
+                return;
+
+            _currentPosition.Period = (Period)EnumExtensions.GetValueFromDescription<Period>(comboBoxPeriod.Text);
+        }
+
+        private void comboBoxPositionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_currentPosition == null)
+                return;
+
+            _currentPosition.Type = (PositionType)EnumExtensions.GetValueFromDescription<PositionType>(comboBoxPositionType.Text);
+            comboBoxPeriod.Visible = _currentPosition.Type == PositionType.Periodical;
         }
     }
 }

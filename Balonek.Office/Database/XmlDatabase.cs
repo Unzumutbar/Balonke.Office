@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using static Balonek.Office.Utils.Enums;
 
 namespace Balonek.Office.Database
 {
@@ -266,9 +267,11 @@ namespace Balonek.Office.Database
                         select new BillPosition
                         {
                             Id = Int32.Parse(_position.Element("Id").Value),
+                            Type = (PositionType)(Int32.Parse(_position.Element("Type").Value)),
                             Client = GetClientById(Int32.Parse(_position.Element("ClientId").Value)),
                             Description = _position.Element("Description").Value,
                             Date = DateTime.ParseExact(_position.Element("Date").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
+                            Period = (Period)(Int32.Parse(_position.Element("Period").Value)),
                             Time = Decimal.Parse(_position.Element("Time").Value),
                             Rate = Decimal.Parse(_position.Element("Rate").Value),
 
@@ -290,9 +293,11 @@ namespace Balonek.Office.Database
                 doc.Root.Element(BillPosition.NODENAME).Add(
                      new XElement(BillPosition.ELEMENTNAME,
                             new XElement("Id", billPositionToAdd.Id),
+                            new XElement("Type", (int)billPositionToAdd.Type),
                             new XElement("ClientId", billPositionToAdd.Client.Id),
                             new XElement("Description", billPositionToAdd.Description),
                             new XElement("Date", billPositionToAdd.Date.ToString(DATEFORMAT)),
+                            new XElement("Period", billPositionToAdd.Type == PositionType.Periodical ? (int)billPositionToAdd.Period : 0 ),
                             new XElement("Time", billPositionToAdd.Time),
                             new XElement("Rate", billPositionToAdd.Rate),
                             new XElement("Total", billPositionToAdd.Total)
@@ -315,9 +320,11 @@ namespace Balonek.Office.Database
                 XDocument doc = XDocument.Load(_databaseFile);
 
                 var target = doc.Root.Element(BillPosition.NODENAME).Elements(BillPosition.ELEMENTNAME).Where(e => e.Element("Id").Value.Equals(billPositionToUpdate.Id.ToString())).Single();
+                target.Element("Type").Value = ((int)billPositionToUpdate.Type).ToString();
                 target.Element("ClientId").Value = billPositionToUpdate.Client.Id.ToString();
                 target.Element("Description").Value = billPositionToUpdate.Description;
                 target.Element("Date").Value = billPositionToUpdate.Date.ToString(DATEFORMAT);
+                target.Element("Period").Value = ((int)(billPositionToUpdate.Type == PositionType.Periodical ? billPositionToUpdate.Period : 0)).ToString();
                 target.Element("Time").Value = billPositionToUpdate.Time.ToString();
                 target.Element("Rate").Value = billPositionToUpdate.Rate.ToString();
                 target.Element("Total").Value = billPositionToUpdate.Total.ToString();

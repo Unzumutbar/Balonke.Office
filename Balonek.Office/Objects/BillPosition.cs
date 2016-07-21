@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Balonek.Office.Utils;
+using static Balonek.Office.Utils.Enums;
 
 namespace Balonek.Office.Objects
 {
@@ -13,9 +15,11 @@ namespace Balonek.Office.Objects
             Client = new Client();
         }
         public int Id { get; set; }
+        public PositionType Type { get; set; }
         public Client Client { get; set; }
         public string Description { get; set; }
         public DateTime Date  { get; set; }
+        public Period Period { get; set; }
         public decimal Time { get; set; }
         public decimal Rate { get; set; }
         public decimal Total
