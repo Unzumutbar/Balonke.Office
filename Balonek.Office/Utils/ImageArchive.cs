@@ -12,6 +12,15 @@ namespace Balonek.Office.Utils
             var backgroundList = new List<Bitmap>();
             backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia00);
             backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia01);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia02);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia03);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia04);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia05);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia06);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia07);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia08);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia09);
+            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia10);
 
             return backgroundList;
         }

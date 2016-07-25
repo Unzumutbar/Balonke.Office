@@ -87,7 +87,7 @@ namespace Balonek.Office.Controls
             this.listBoxRepeatition.Items.Clear();
             foreach (var position in _periodicalPositionList)
             {
-                this.listBoxRepeatition.Items.Add(position.ToString());
+                this.listBoxRepeatition.Items.Add(position.ToPeriodicalString());
             }
         }
 
@@ -170,6 +170,8 @@ namespace Balonek.Office.Controls
 
             LoadCurrentPosition();
             EnableEditMode(true);
+            comboBoxPositionType.Focus();
+            comboBoxPositionType.SelectedItem = PositionType.Single.GetDescription();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -233,7 +235,7 @@ namespace Balonek.Office.Controls
 
             comboBoxPositionType.SelectedItem = _currentPosition.Type.GetDescription();
             comboBoxPeriod.SelectedItem = _currentPosition.Period.GetDescription();
-            comboBoxPeriod.Visible = _currentPosition.Type == PositionType.Periodical;
+            SwitchPositionType();
         }
 
         private void UpdateCurrentClient()
@@ -356,7 +358,17 @@ namespace Balonek.Office.Controls
                 return;
 
             _currentPosition.Type = (PositionType)EnumExtensions.GetValueFromDescription<PositionType>(comboBoxPositionType.Text);
-            comboBoxPeriod.Visible = _currentPosition.Type == PositionType.Periodical;
+            SwitchPositionType();
+        }
+
+        private void SwitchPositionType()
+        {
+            var isPeriodical = _currentPosition.Type == PositionType.Periodical;
+            comboBoxPeriod.Visible = isPeriodical;
+            if (isPeriodical)
+                labelDate.Text = "Startdatum";
+            else
+                labelDate.Text = "Datum";
         }
     }
 }

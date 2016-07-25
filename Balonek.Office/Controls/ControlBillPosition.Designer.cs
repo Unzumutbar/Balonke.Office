@@ -46,7 +46,7 @@
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxClientName = new System.Windows.Forms.TextBox();
             this.labelDescription = new System.Windows.Forms.Label();
-            this.labelZipCity = new System.Windows.Forms.Label();
+            this.labelDate = new System.Windows.Forms.Label();
             this.textBoxTime = new System.Windows.Forms.TextBox();
             this.labelTime = new System.Windows.Forms.Label();
             this.textBoxRate = new System.Windows.Forms.TextBox();
@@ -238,7 +238,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxId, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxClientName, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.labelDescription, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.labelZipCity, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.labelDate, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.textBoxTime, 2, 10);
             this.tableLayoutPanel1.Controls.Add(this.labelTime, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.textBoxRate, 4, 10);
@@ -320,16 +320,16 @@
             this.labelDescription.TabIndex = 5;
             this.labelDescription.Text = "Text";
             // 
-            // labelZipCity
+            // labelDate
             // 
-            this.labelZipCity.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelZipCity.AutoSize = true;
-            this.labelZipCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZipCity.Location = new System.Drawing.Point(23, 181);
-            this.labelZipCity.Name = "labelZipCity";
-            this.labelZipCity.Size = new System.Drawing.Size(59, 20);
-            this.labelZipCity.TabIndex = 7;
-            this.labelZipCity.Text = "Datum";
+            this.labelDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelDate.AutoSize = true;
+            this.labelDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.Location = new System.Drawing.Point(23, 181);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(59, 20);
+            this.labelDate.TabIndex = 7;
+            this.labelDate.Text = "Datum";
             // 
             // textBoxTime
             // 
@@ -464,6 +464,7 @@
             // 
             this.comboBoxPositionType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxPositionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPositionType.Enabled = false;
             this.comboBoxPositionType.FormattingEnabled = true;
             this.comboBoxPositionType.Location = new System.Drawing.Point(379, 23);
             this.comboBoxPositionType.Name = "comboBoxPositionType";
@@ -524,7 +525,7 @@
         private System.Windows.Forms.TextBox textBoxClientName;
         private System.Windows.Forms.Label labelClient;
         private System.Windows.Forms.Label labelDescription;
-        private System.Windows.Forms.Label labelZipCity;
+        private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.TextBox textBoxTime;
         private System.Windows.Forms.TextBox textBoxRate;
         private System.Windows.Forms.TextBox textBoxTotal;
