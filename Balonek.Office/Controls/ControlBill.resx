@@ -166,10 +166,9 @@
   <data name="buttonExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACrSURBVDhP1ZJBCsIwEEWz0bsUREFBRHAleq3iIewlPIgb
-        T+FKRVTEvX2/thImSelSHzySzISfEOL+jhWecVmtDEd8R9ygmOMWVVNIgBr9zzRggS88YIFrDFBAjBk+
-        Uf0HTjBKLECb76jeDaeYxAYM8YqqaxyjyOsxwA/IUA+l2gVH2GAP+uI3dqj1CQcqeHQK2KNCdBNLp4A2
-        WgNS/6Chh8mA1E+0at/P4FwJaMA36NJuFzUAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAB6SURBVDhPzdPBCkBAEMbxfQflRXFw814OygN4G5zEN2Wn
+        Td/sjlz865cyYx0k/LIJBoPMismilTnrYYPTaYUOtB3YIjPeV3lGey55aWzoobGhh3ZAvFn6CvSAGdID
+        cuLeAloFDbAHmBZqoMmCVW6mpW9iin3+F14UwgXsimnUfcX6MQAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="bindingBillPosition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

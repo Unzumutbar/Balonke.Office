@@ -196,6 +196,7 @@
             // 
             this.buttonFindTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonFindTemplate.Enabled = false;
+            this.buttonFindTemplate.Image = ((System.Drawing.Image)(resources.GetObject("buttonFindTemplate.Image")));
             this.buttonFindTemplate.Location = new System.Drawing.Point(669, 66);
             this.buttonFindTemplate.Name = "buttonFindTemplate";
             this.buttonFindTemplate.Size = new System.Drawing.Size(34, 27);

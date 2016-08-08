@@ -22,7 +22,7 @@ namespace Balonek.Office.Objects
         public List<BillPosition> Positions { get; set; }
         public override string ToString()
         {
-            return string.Format("{0} {1}", Client.Name, DateFrom.ToMonthAndYear());
+            return string.Format("{0} - {1}", Client.Name, DateFrom.ToMonthAndYear());
         }
 
         public Dictionary<string, string> StringReplacementDictionary()

@@ -1,8 +1,10 @@
-﻿using Balonek.Office.Objects;
+﻿using Balonek.Office.Forms;
+using Balonek.Office.Objects;
 using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static Balonek.Office.Utils.Enums;
@@ -17,6 +19,8 @@ namespace Balonek.Office.Controls
         private List<Client> _clientList;
         private List<BillPositionText> _positionTextList;
         private BillPosition _currentPosition;
+
+        private AutoPositionsForm AutoPositionsForm;
 
         private bool _isAdding;
         private string _searchContent;
@@ -67,15 +71,13 @@ namespace Balonek.Office.Controls
             }
         }
 
-        private void UpdatePositionList(bool useCache = false)
+        public void UpdatePositionList(bool useCache = false)
         {
             if(!useCache)
                 _positionList = Program.Database.GetBillPositionList();
 
             UpdateSinglePositionList();
             UpdatePeriodicalPositionList();
-
-
         }
 
         private void UpdatePeriodicalPositionList()
@@ -260,6 +262,7 @@ namespace Balonek.Office.Controls
             buttonDelete.Enabled = !enabled;
             buttonSave.Enabled = enabled;
             buttonCancel.Enabled = enabled;
+            buttonAuto.Enabled = !enabled;
             dateTimePickerDate.Enabled = enabled;
             comboBoxClient.Enabled = enabled;
             listBoxPositions.Enabled = !enabled;
@@ -369,6 +372,18 @@ namespace Balonek.Office.Controls
                 labelDate.Text = "Startdatum";
             else
                 labelDate.Text = "Datum";
+        }
+
+        private void buttonAuto_Click(object sender, EventArgs e)
+        {
+            if (AutoPositionsForm == null || (AutoPositionsForm.IsDisposed))
+            {
+                var parent = this.ParentForm;
+                AutoPositionsForm = new AutoPositionsForm() { Owner = parent, Location = new Point(parent.Location.X + parent.Width, parent.Location.Y) };
+            }
+            AutoPositionsForm.SetPositionList(_positionList);
+            AutoPositionsForm.SetParentControl(this);
+            AutoPositionsForm.Show();
         }
     }
 }

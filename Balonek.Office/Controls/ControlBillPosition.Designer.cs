@@ -36,6 +36,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonSave = new System.Windows.Forms.ToolStripButton();
             this.buttonCancel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonAuto = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listBoxPositions = new System.Windows.Forms.ListBox();
@@ -59,6 +61,8 @@
             this.comboBoxDescription = new System.Windows.Forms.ComboBox();
             this.comboBoxPositionType = new System.Windows.Forms.ComboBox();
             this.comboBoxPeriod = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,7 +82,9 @@
             this.buttonDelete,
             this.toolStripSeparator1,
             this.buttonSave,
-            this.buttonCancel});
+            this.buttonCancel,
+            this.toolStripSeparator2,
+            this.buttonAuto});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(757, 30);
@@ -149,6 +155,22 @@
             this.buttonCancel.Text = "Abbruch";
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
+            // 
+            // buttonAuto
+            // 
+            this.buttonAuto.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.buttonAuto.Image = ((System.Drawing.Image)(resources.GetObject("buttonAuto.Image")));
+            this.buttonAuto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAuto.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonAuto.Name = "buttonAuto";
+            this.buttonAuto.Size = new System.Drawing.Size(217, 27);
+            this.buttonAuto.Text = "Automatische Erfassung";
+            this.buttonAuto.Click += new System.EventHandler(this.buttonAuto_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -172,16 +194,20 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.listBoxPositions, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.listBoxPositions, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.textBoxSearch, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.listBoxRepeatition, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.listBoxRepeatition, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(216, 498);
             this.tableLayoutPanel2.TabIndex = 2;
@@ -192,10 +218,10 @@
             this.listBoxPositions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxPositions.FormattingEnabled = true;
             this.listBoxPositions.ItemHeight = 20;
-            this.listBoxPositions.Location = new System.Drawing.Point(3, 199);
+            this.listBoxPositions.Location = new System.Drawing.Point(3, 225);
             this.listBoxPositions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPositions.Name = "listBoxPositions";
-            this.listBoxPositions.Size = new System.Drawing.Size(210, 297);
+            this.listBoxPositions.Size = new System.Drawing.Size(210, 271);
             this.listBoxPositions.TabIndex = 0;
             this.listBoxPositions.SelectedIndexChanged += new System.EventHandler(this.listBoxSingle_SelectedIndexChanged);
             // 
@@ -217,10 +243,10 @@
             this.listBoxRepeatition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxRepeatition.FormattingEnabled = true;
             this.listBoxRepeatition.ItemHeight = 20;
-            this.listBoxRepeatition.Location = new System.Drawing.Point(3, 37);
+            this.listBoxRepeatition.Location = new System.Drawing.Point(3, 57);
             this.listBoxRepeatition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxRepeatition.Name = "listBoxRepeatition";
-            this.listBoxRepeatition.Size = new System.Drawing.Size(210, 158);
+            this.listBoxRepeatition.Size = new System.Drawing.Size(210, 144);
             this.listBoxRepeatition.TabIndex = 2;
             this.listBoxRepeatition.SelectedIndexChanged += new System.EventHandler(this.listBoxPeriodical_SelectedIndexChanged);
             // 
@@ -484,6 +510,26 @@
             this.comboBoxPeriod.Visible = false;
             this.comboBoxPeriod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPeriod_SelectedIndexChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(177, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Regelmäße Positionen";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 203);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(139, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Einzel-Positionen";
+            // 
             // ControlBillPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -540,5 +586,9 @@
         private System.Windows.Forms.ListBox listBoxRepeatition;
         private System.Windows.Forms.ComboBox comboBoxPositionType;
         private System.Windows.Forms.ComboBox comboBoxPeriod;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton buttonAuto;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

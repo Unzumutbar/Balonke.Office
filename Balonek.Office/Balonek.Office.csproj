@@ -93,6 +93,12 @@
       <DependentUpon>ControlStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\XmlDatabase.cs" />
+    <Compile Include="Forms\AutoPositionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AutoPositionsForm.Designer.cs">
+      <DependentUpon>AutoPositionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ControlStart.resx">
       <DependentUpon>ControlStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AutoPositionsForm.resx">
+      <DependentUpon>AutoPositionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

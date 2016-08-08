@@ -38,7 +38,7 @@ namespace Balonek.Office.Controls
             if(!useCache)
                 _billList = Program.Database.GetBillList();
 
-            _billSearchList = _billList.OrderByDescending(p => p.Client.Id).ToList();
+            _billSearchList = _billList.OrderBy(p => p.Client.Id).ThenByDescending(p => p.DateFrom).ToList();
             if (!String.IsNullOrWhiteSpace(_searchContent))
                 _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent)|| p.DateFrom.ToMonthAndYear().Contains(_searchContent)).ToList();
 
@@ -62,6 +62,7 @@ namespace Balonek.Office.Controls
         private void UpdateBillPositionList()
         {
             _positionList = Program.Database.GetBillPositionList();
+            _positionList = _positionList.Where(p => p.Type == Enums.PositionType.Single).ToList();
         }
 
         private void listBoxBills_SelectedIndexChanged(object sender, EventArgs e)
