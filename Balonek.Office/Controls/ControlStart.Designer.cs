@@ -42,12 +42,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Hobo Std", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.HotPink;
-            this.label1.Location = new System.Drawing.Point(18, 0);
+            this.label1.Location = new System.Drawing.Point(19, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(562, 79);
+            this.label1.Size = new System.Drawing.Size(560, 79);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Sosias kleines Büro";
+            this.label1.Text = "Zosias kleines Büro";
             // 
             // tableLayoutPanel1
             // 
@@ -59,7 +59,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -75,7 +75,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ControlStart";
             this.Size = new System.Drawing.Size(600, 650);
             this.tableLayoutPanel1.ResumeLayout(false);

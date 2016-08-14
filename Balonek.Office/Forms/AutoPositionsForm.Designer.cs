@@ -55,9 +55,9 @@
             this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Controls.Add(this.listBoxPositions, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.button1, 3, 5);
@@ -89,7 +89,7 @@
             this.listBoxPositions.Location = new System.Drawing.Point(17, 45);
             this.listBoxPositions.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxPositions.Name = "listBoxPositions";
-            this.listBoxPositions.Size = new System.Drawing.Size(540, 206);
+            this.listBoxPositions.Size = new System.Drawing.Size(539, 206);
             this.listBoxPositions.TabIndex = 20;
             this.listBoxPositions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listBoxPositions_ItemCheck);
             // 
@@ -98,10 +98,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.button1, 2);
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(289, 481);
+            this.button1.Location = new System.Drawing.Point(254, 481);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(268, 24);
+            this.button1.Size = new System.Drawing.Size(302, 24);
             this.button1.TabIndex = 19;
             this.button1.Text = "Positionen hinzufügen";
             this.button1.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             this.pickerDateFrom.Margin = new System.Windows.Forms.Padding(2);
             this.pickerDateFrom.Name = "pickerDateFrom";
             this.pickerDateFrom.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pickerDateFrom.Size = new System.Drawing.Size(168, 23);
+            this.pickerDateFrom.Size = new System.Drawing.Size(133, 23);
             this.pickerDateFrom.TabIndex = 9;
             this.pickerDateFrom.Value = new System.DateTime(2016, 7, 5, 0, 0, 0, 0);
             this.pickerDateFrom.ValueChanged += new System.EventHandler(this.pickerDateFrom_ValueChanged);
@@ -128,11 +128,11 @@
             this.pickerDateEnd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pickerDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pickerDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.pickerDateEnd.Location = new System.Drawing.Point(389, 18);
+            this.pickerDateEnd.Location = new System.Drawing.Point(354, 18);
             this.pickerDateEnd.Margin = new System.Windows.Forms.Padding(2);
             this.pickerDateEnd.Name = "pickerDateEnd";
             this.pickerDateEnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pickerDateEnd.Size = new System.Drawing.Size(168, 23);
+            this.pickerDateEnd.Size = new System.Drawing.Size(202, 23);
             this.pickerDateEnd.TabIndex = 10;
             this.pickerDateEnd.Value = new System.DateTime(2016, 7, 5, 0, 0, 0, 0);
             this.pickerDateEnd.ValueChanged += new System.EventHandler(this.pickerDateFrom_ValueChanged);
@@ -154,7 +154,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(289, 21);
+            this.label1.Location = new System.Drawing.Point(254, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 17);
@@ -183,7 +183,7 @@
             this.dataGridPositions.ReadOnly = true;
             this.dataGridPositions.RowHeadersVisible = false;
             this.dataGridPositions.RowTemplate.Height = 24;
-            this.dataGridPositions.Size = new System.Drawing.Size(540, 206);
+            this.dataGridPositions.Size = new System.Drawing.Size(539, 206);
             this.dataGridPositions.TabIndex = 21;
             this.dataGridPositions.TabStop = false;
             // 
@@ -247,6 +247,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AutoPositionsForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Automatische Stundenerfassung";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
