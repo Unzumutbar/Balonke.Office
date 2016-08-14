@@ -29,13 +29,11 @@ namespace Balonek.Office.Objects
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", Date.ToString("yyyy-MM-dd"), Client.Name);
-        }
+            if(Type == PositionType.Single)
+                return string.Format("{0} {1}", Date.ToString("yyyy-MM-dd"), Client.Name);
 
-        public string ToPeriodicalString()
-        {
             var culture = new System.Globalization.CultureInfo("de-DE");
-            return string.Format("{0} {1}", culture.DateTimeFormat.GetDayName(Date.DayOfWeek).ToString(), Client.Name);
+            return string.Format("{0} - {1}, {2}", culture.DateTimeFormat.GetDayName(Date.DayOfWeek).ToString(), Client.Name, Period.GetDescription());
         }
 
         public Dictionary<string, string> StringReplacementDictionary()

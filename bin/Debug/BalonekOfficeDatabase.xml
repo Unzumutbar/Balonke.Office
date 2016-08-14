@@ -2,14 +2,13 @@
 <BalonekOfficeDatabase>
   <Settings>
     <DatabaseVersion>1</DatabaseVersion>
-    <BillTemplateFile>D:\Develop\Balonke.Office\Balonek.Office\bin\Debug\templates\_billTemplate.odt</BillTemplateFile>
   </Settings>
   <Clients>
     <Client>
       <Id>1</Id>
       <Name>Kock</Name>
-      <Street>str</Street>
-      <Zip>888</Zip>
+      <Street></Street>
+      <Zip></Zip>
       <City></City>
       <Telephone></Telephone>
       <Fax></Fax>
@@ -19,30 +18,76 @@
   <BillPositions>
     <BillPosition>
       <Id>1</Id>
+      <Type>2</Type>
       <ClientId>1</ClientId>
-      <Description>Hausf</Description>
-      <Date>2016-07-15</Date>
-      <Time>3</Time>
-      <Rate>12</Rate>
-      <Total>36</Total>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-08-12</Date>
+      <Period>1</Period>
+      <Time>1</Time>
+      <Rate>1</Rate>
+      <Total>1</Total>
     </BillPosition>
     <BillPosition>
       <Id>2</Id>
+      <Type>2</Type>
       <ClientId>1</ClientId>
-      <Description>Wäsche</Description>
-      <Date>2016-07-14</Date>
-      <Time>4</Time>
-      <Rate>11</Rate>
-      <Total>44</Total>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-08-14</Date>
+      <Period>2</Period>
+      <Time>3</Time>
+      <Rate>20</Rate>
+      <Total>60</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>3</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-08-14</Date>
+      <Period>0</Period>
+      <Time>3</Time>
+      <Rate>20</Rate>
+      <Total>60</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>4</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-08-19</Date>
+      <Period>0</Period>
+      <Time>1</Time>
+      <Rate>1</Rate>
+      <Total>1</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>5</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-08-26</Date>
+      <Period>0</Period>
+      <Time>1</Time>
+      <Rate>1</Rate>
+      <Total>1</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>6</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-08-28</Date>
+      <Period>0</Period>
+      <Time>3</Time>
+      <Rate>20</Rate>
+      <Total>60</Total>
     </BillPosition>
   </BillPositions>
-  <Bills>
-    <Bill>
+  <Bills />
+  <BillPositionTexts>
+    <BillPositionText>
       <Id>1</Id>
-      <ClientId>1</ClientId>
-      <DateFrom>2016-07-01</DateFrom>
-      <DateTo>2016-07-31</DateTo>
-      <Total>360</Total>
-    </Bill>
-  </Bills>
+      <Text>Haushaltshilfe</Text>
+    </BillPositionText>
+  </BillPositionTexts>
 </BalonekOfficeDatabase>

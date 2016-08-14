@@ -89,7 +89,7 @@ namespace Balonek.Office.Controls
             this.listBoxRepeatition.Items.Clear();
             foreach (var position in _periodicalPositionList)
             {
-                this.listBoxRepeatition.Items.Add(position.ToPeriodicalString());
+                this.listBoxRepeatition.Items.Add(position.ToString());
             }
         }
 

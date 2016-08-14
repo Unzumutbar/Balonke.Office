@@ -53,12 +53,12 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Controls.Add(this.listBoxPositions, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.button1, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.pickerDateFrom, 2, 1);
@@ -68,16 +68,17 @@
             this.tableLayoutPanel1.Controls.Add(this.dataGridPositions, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(634, 442);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(575, 524);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // listBoxPositions
@@ -85,9 +86,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.listBoxPositions, 4);
             this.listBoxPositions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPositions.FormattingEnabled = true;
-            this.listBoxPositions.Location = new System.Drawing.Point(23, 54);
+            this.listBoxPositions.Location = new System.Drawing.Point(17, 45);
+            this.listBoxPositions.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxPositions.Name = "listBoxPositions";
-            this.listBoxPositions.Size = new System.Drawing.Size(588, 152);
+            this.listBoxPositions.Size = new System.Drawing.Size(540, 206);
             this.listBoxPositions.TabIndex = 20;
             this.listBoxPositions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listBoxPositions_ItemCheck);
             // 
@@ -96,9 +98,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.button1, 2);
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(320, 390);
+            this.button1.Location = new System.Drawing.Point(289, 481);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(291, 29);
+            this.button1.Size = new System.Drawing.Size(268, 24);
             this.button1.TabIndex = 19;
             this.button1.Text = "Positionen hinzufügen";
             this.button1.UseVisualStyleBackColor = true;
@@ -107,13 +110,14 @@
             // pickerDateFrom
             // 
             this.pickerDateFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickerDateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pickerDateFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pickerDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.pickerDateFrom.Location = new System.Drawing.Point(170, 22);
-            this.pickerDateFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pickerDateFrom.Location = new System.Drawing.Point(117, 18);
+            this.pickerDateFrom.Margin = new System.Windows.Forms.Padding(2);
             this.pickerDateFrom.Name = "pickerDateFrom";
             this.pickerDateFrom.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pickerDateFrom.Size = new System.Drawing.Size(128, 27);
+            this.pickerDateFrom.Size = new System.Drawing.Size(168, 23);
             this.pickerDateFrom.TabIndex = 9;
             this.pickerDateFrom.Value = new System.DateTime(2016, 7, 5, 0, 0, 0, 0);
             this.pickerDateFrom.ValueChanged += new System.EventHandler(this.pickerDateFrom_ValueChanged);
@@ -121,13 +125,14 @@
             // pickerDateEnd
             // 
             this.pickerDateEnd.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickerDateEnd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pickerDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pickerDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.pickerDateEnd.Location = new System.Drawing.Point(467, 22);
-            this.pickerDateEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pickerDateEnd.Location = new System.Drawing.Point(389, 18);
+            this.pickerDateEnd.Margin = new System.Windows.Forms.Padding(2);
             this.pickerDateEnd.Name = "pickerDateEnd";
             this.pickerDateEnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pickerDateEnd.Size = new System.Drawing.Size(112, 27);
+            this.pickerDateEnd.Size = new System.Drawing.Size(168, 23);
             this.pickerDateEnd.TabIndex = 10;
             this.pickerDateEnd.Value = new System.DateTime(2016, 7, 5, 0, 0, 0, 0);
             this.pickerDateEnd.ValueChanged += new System.EventHandler(this.pickerDateFrom_ValueChanged);
@@ -137,9 +142,10 @@
             this.labelZipCity.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelZipCity.AutoSize = true;
             this.labelZipCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZipCity.Location = new System.Drawing.Point(23, 25);
+            this.labelZipCity.Location = new System.Drawing.Point(17, 21);
+            this.labelZipCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelZipCity.Name = "labelZipCity";
-            this.labelZipCity.Size = new System.Drawing.Size(90, 20);
+            this.labelZipCity.Size = new System.Drawing.Size(76, 17);
             this.labelZipCity.TabIndex = 8;
             this.labelZipCity.Text = "Datum von";
             // 
@@ -148,9 +154,10 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(320, 25);
+            this.label1.Location = new System.Drawing.Point(289, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 20);
+            this.label1.Size = new System.Drawing.Size(26, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "bis";
             // 
@@ -170,13 +177,13 @@
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridPositions, 4);
             this.dataGridPositions.DataSource = this.bindingBillPosition;
             this.dataGridPositions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridPositions.Location = new System.Drawing.Point(23, 231);
-            this.dataGridPositions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridPositions.Location = new System.Drawing.Point(17, 271);
+            this.dataGridPositions.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridPositions.Name = "dataGridPositions";
             this.dataGridPositions.ReadOnly = true;
             this.dataGridPositions.RowHeadersVisible = false;
             this.dataGridPositions.RowTemplate.Height = 24;
-            this.dataGridPositions.Size = new System.Drawing.Size(588, 154);
+            this.dataGridPositions.Size = new System.Drawing.Size(540, 206);
             this.dataGridPositions.TabIndex = 21;
             this.dataGridPositions.TabStop = false;
             // 
@@ -233,11 +240,12 @@
             // 
             // AutoPositionsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 442);
+            this.ClientSize = new System.Drawing.Size(575, 524);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AutoPositionsForm";
             this.Text = "Automatische Stundenerfassung";
             this.tableLayoutPanel1.ResumeLayout(false);

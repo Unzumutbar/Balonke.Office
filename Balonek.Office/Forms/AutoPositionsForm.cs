@@ -1,5 +1,6 @@
 ﻿using Balonek.Office.Controls;
 using Balonek.Office.Objects;
+using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,8 @@ namespace Balonek.Office.Forms
         {
             InitializeComponent();
             pickerDateFrom.Value = DateTime.Now.Date;
-            pickerDateEnd.Value = pickerDateFrom.Value.AddMonths(1);
+            var lastDayOfMonth = DateTime.DaysInMonth(pickerDateFrom.Value.Year, pickerDateFrom.Value.Month);
+            pickerDateEnd.Value = pickerDateFrom.Value.AddDays(lastDayOfMonth - pickerDateFrom.Value.Day);
         }
 
         public void SetPositionList(List<BillPosition> positionList)
@@ -36,7 +38,7 @@ namespace Balonek.Office.Forms
             this.listBoxPositions.Items.Clear();
             foreach (var position in _periodicalPositionList)
             {
-                this.listBoxPositions.Items.Add(position.ToPeriodicalString(), true);
+                this.listBoxPositions.Items.Add(position.ToString(), true);
             }
         }
 
@@ -45,43 +47,53 @@ namespace Balonek.Office.Forms
             _parentControl = control;
         }
 
-        private void CreateSinglePositions()
+        private void CreateSinglePositions(List<BillPosition> checkedPeriodicalPositions)
         {
-            var startDate = this.pickerDateFrom.Value.Date;
-            var endDate = this.pickerDateEnd.Value.Date;
-            if (startDate > endDate)
-                return;
-
-            var checkedPeriodicalPositions = GetCheckedPositions();
-            if (!checkedPeriodicalPositions.Any())
-                return;
-
-            var nextId = GetStartId();
-            _newPositions = new List<BillPosition>();
-            for (var date = startDate; date <= endDate; date = date.AddDays(1))
+            try
             {
-                foreach (var pos in checkedPeriodicalPositions)
+                var startDate = this.pickerDateFrom.Value.Date;
+                var endDate = this.pickerDateEnd.Value.Date;
+                if (startDate > endDate)
+                    return;
+
+                //var checkedPeriodicalPositions = GetCheckedPositions();
+                //if (!checkedPeriodicalPositions.Any())
+                //    return;
+
+                var nextId = GetStartId();
+                _newPositions = new List<BillPosition>();
+                for (var date = startDate; date <= endDate; date = date.AddDays(1))
                 {
-                    if (PositionIsEligible(date, pos))
+                    foreach (var pos in checkedPeriodicalPositions)
                     {
-                        var singlePosition = ConvertToSinglePosition(pos);
-                        singlePosition.Id = nextId;
-                        singlePosition.Date = date;
-                        if (!PositionExists(singlePosition))
+                        if (PositionIsEligible(date, pos))
                         {
-                            _newPositions.Add(singlePosition);
-                            nextId++;
+                            var singlePosition = ConvertToSinglePosition(pos);
+                            singlePosition.Id = nextId;
+                            singlePosition.Date = date;
+                            if (!PositionExists(singlePosition))
+                            {
+                                _newPositions.Add(singlePosition);
+                                nextId++;
+                            }
                         }
                     }
                 }
-            }
 
-            var source = new BindingSource(_newPositions, null);
-            dataGridPositions.DataSource = source;
+                var source = new BindingSource(_newPositions, null);
+                dataGridPositions.DataSource = source;
+            }
+            catch(Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private int GetStartId()
         {
+            if (_periodicalPositionList == null)
+                return -1;
             var positionList = new List<BillPosition>();
             positionList.AddRange(_periodicalPositionList);
             positionList.AddRange(_singlePositionList);
@@ -118,8 +130,14 @@ namespace Balonek.Office.Forms
             else if (pos.Period == Period.TriWeekly)
                 return days % 21 == 0;
 
-            else if (pos.Period == Period.Monthly)
+            else if (pos.Period == Period.QuarterWeekly)
                 return days % 28 == 0;
+
+            else if (pos.Period == Period.Monthly)
+            {
+                var daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+                return days % daysInMonth == 0;
+            }
 
             return false;
         }
@@ -130,32 +148,41 @@ namespace Balonek.Office.Forms
             return _singlePositionList.Any(sp => sp.Client.Id == pos.Client.Id && sp.Date.Date == pos.Date.Date);
         }
 
-        public List<BillPosition> GetCheckedPositions()
+        public List<BillPosition> GetCheckedPositions(ItemCheckEventArgs e = null)
         {
-            var checkedPeriodicalPositions = new List<BillPosition>();
-            for (int i = 0; i < listBoxPositions.Items.Count; i++)
+            try
             {
-                if (listBoxPositions.GetItemChecked(i))
-                    checkedPeriodicalPositions.Add(_periodicalPositionList[i]);
+                var currentItemIndex = -1;
+                if (e != null)
+                    currentItemIndex = e.Index;
+
+                var checkedPeriodicalPositions = new List<BillPosition>();
+                for (int i = 0; i < listBoxPositions.Items.Count; i++)
+                {
+                    if (i != currentItemIndex && listBoxPositions.GetItemChecked(i))
+                        checkedPeriodicalPositions.Add(_periodicalPositionList[i]);
+                }
+                if (e != null && e.NewValue == CheckState.Checked)
+                    checkedPeriodicalPositions.Add(_periodicalPositionList[currentItemIndex]);
+
+                return checkedPeriodicalPositions;
             }
-            return checkedPeriodicalPositions;
-        }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                return new List<BillPosition>();
+            }
+}
 
         private void pickerDateFrom_ValueChanged(object sender, EventArgs e)
         {
-            CreateSinglePositions();
+            CreateSinglePositions(GetCheckedPositions());
         }
 
         private void listBoxPositions_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            List<string> checkedItems = new List<string>();
-            foreach (var item in listBoxPositions.CheckedItems)
-                checkedItems.Add(item.ToString());
-
-            if (e.NewValue == CheckState.Checked)
-                checkedItems.Add(listBoxPositions.Items[e.Index].ToString());
-
-            CreateSinglePositions();
+        {  
+            CreateSinglePositions(GetCheckedPositions(e));
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -1,66 +1,28 @@
-12.07.2016 20:28:30 Info: Application Balonek Office started
-12.07.2016 20:28:30 Error: GetDatabaseVersion - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-12.07.2016 20:28:33 Error: GetBillTemplateFile - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-12.07.2016 20:32:09 Info: Application Balonek Office started
-12.07.2016 20:32:50 Info: Application Balonek Office started
-12.07.2016 20:33:20 Info: Application Balonek Office started
-12.07.2016 20:36:58 Info: Application Balonek Office started
-12.07.2016 20:37:20 Info: Application Balonek Office started
-12.07.2016 20:37:45 Info: Application Balonek Office started
-12.07.2016 20:39:12 Info: Application Balonek Office started
-12.07.2016 20:47:53 Info: Application Balonek Office started
-12.07.2016 20:58:47 Info: Application Balonek Office started
-14.07.2016 18:34:32 Info: Application Balonek Office started
-14.07.2016 18:36:07 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-14.07.2016 18:36:48 Info: Client added - 1 Kock
-14.07.2016 18:36:50 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-14.07.2016 18:38:07 Info: BillPosition added - 1 Kock Hausf
-14.07.2016 18:38:53 Info: Bill added - 1 1
-14.07.2016 18:38:56 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-14.07.2016 18:39:01 Info: BillPosition updated - 1 Kock Hausf
-14.07.2016 18:40:16 Info: Settings updated
-14.07.2016 18:41:01 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-14.07.2016 18:41:26 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-14.07.2016 18:41:41 Info: BillPosition added - 2 Kock Wäsche
-14.07.2016 18:42:09 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-07/14/2016 18:45:04 Info: Application Balonek Office started
-07/14/2016 18:45:24 Error: GetBillPositionTextList - Object reference not set to an instance of an object
-07/14/2016 18:45:54 Error: GetBillPositionTextList - Object reference not set to an instance of an object
-16.07.2016 11:10:31 Info: Application Balonek Office started
-16.07.2016 11:10:34 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-16.07.2016 11:10:34 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-16.07.2016 11:18:41 Info: Application Balonek Office started
-16.07.2016 11:18:43 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-16.07.2016 11:32:10 Info: Application Balonek Office started
-17.07.2016 14:40:48 Info: Application Balonek Office started
-17.07.2016 14:43:03 Info: Application Balonek Office started
-17.07.2016 14:43:51 Info: Application Balonek Office started
-17.07.2016 14:45:04 Info: Application Balonek Office started
-17.07.2016 14:45:47 Info: Application Balonek Office started
-17.07.2016 14:48:28 Info: Application Balonek Office started
-17.07.2016 14:52:22 Info: Application Balonek Office started
-17.07.2016 14:52:24 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-17.07.2016 23:45:24 Info: Application Balonek Office started
-17.07.2016 23:45:33 Info: Application Balonek Office started
-07/17/2016 23:47:06 Info: Application Balonek Office started
-07/17/2016 23:47:09 Error: GetBillPositionTextList - Object reference not set to an instance of an object
-07/17/2016 23:47:39 Info: Settings updated
-07/17/2016 23:48:24 Error: GetBillPositionTextList - Object reference not set to an instance of an object
-18.07.2016 21:38:55 Info: Application Balonek Office started
-18.07.2016 21:41:18 Info: Application Balonek Office started
-18.07.2016 21:44:33 Info: Application Balonek Office started
-18.07.2016 21:50:36 Info: Application Balonek Office started
-20.07.2016 23:11:02 Info: Application Balonek Office started
-20.07.2016 23:13:07 Info: Application Balonek Office started
-20.07.2016 23:26:14 Info: Application Balonek Office started
-20.07.2016 23:26:17 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:20 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:20 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:22 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:23 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:28 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:31 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:34 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:36 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:26:43 Error: GetBillPositionTextList - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
-20.07.2016 23:46:09 Info: Application Balonek Office started
+14.08.2016 02:08:10 Info: Application Balonek Office started
+14.08.2016 02:08:10 Info: BillPositionText added - 1 Haushaltshilfe
+14.08.2016 02:08:10 Error: GetDatabaseVersion - Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+14.08.2016 02:16:52 Info: Application Balonek Office started
+14.08.2016 02:17:02 Info: Client added - 1 Kock
+14.08.2016 02:17:18 Info: BillPosition added - 1 Kock Haushaltshilfe
+14.08.2016 02:22:56 Info: Application Balonek Office started
+14.08.2016 02:23:15 Info: BillPosition added - 2 Kock Haushaltshilfe
+14.08.2016 02:25:00 Info: Application Balonek Office started
+14.08.2016 02:27:40 Info: Application Balonek Office started
+14.08.2016 02:28:00 Info: Application Balonek Office started
+14.08.2016 02:28:28 Info: Application Balonek Office started
+14.08.2016 02:30:16 Info: Application Balonek Office started
+14.08.2016 02:35:06 Info: Application Balonek Office started
+14.08.2016 02:37:07 Info: Application Balonek Office started
+14.08.2016 02:44:01 Info: Application Balonek Office started
+14.08.2016 02:44:42 Info: Application Balonek Office started
+14.08.2016 02:44:48 Error: Der Wert darf nicht NULL sein.
+Parametername: collection
+14.08.2016 02:45:30 Error: Der Wert darf nicht NULL sein.
+Parametername: collection
+14.08.2016 02:46:12 Error: Der Wert darf nicht NULL sein.
+Parametername: collection
+14.08.2016 02:47:26 Info: Application Balonek Office started
+14.08.2016 02:47:41 Info: BillPosition added - 3 Kock Haushaltshilfe
+14.08.2016 02:47:41 Info: BillPosition added - 4 Kock Haushaltshilfe
+14.08.2016 02:47:41 Info: BillPosition added - 5 Kock Haushaltshilfe
+14.08.2016 02:47:41 Info: BillPosition added - 6 Kock Haushaltshilfe

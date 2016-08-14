@@ -32,8 +32,11 @@ namespace Balonek.Office.Utils
             [Description("Alle drei Wochen")]
             TriWeekly = 3,
 
+            [Description("Alle vier Wochen")]
+            QuarterWeekly = 4,
+
             [Description("Monatlich")]
-            Monthly = 4,
+            Monthly = 5,
         };
     }
 }

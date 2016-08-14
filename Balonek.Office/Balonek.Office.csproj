@@ -121,6 +121,7 @@
     <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\OpenDocumentEditor.cs" />
     <Compile Include="Utils\Archive.cs" />
+    <Compile Include="Utils\StaticStrings.cs" />
     <EmbeddedResource Include="Controls\ControlBill.resx">
       <DependentUpon>ControlBill.cs</DependentUpon>
     </EmbeddedResource>
