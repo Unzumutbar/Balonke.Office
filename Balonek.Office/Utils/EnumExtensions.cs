@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Balonek.Office.Utils.Enums;
 
 namespace Balonek.Office.Utils
 {
@@ -41,8 +42,9 @@ namespace Balonek.Office.Utils
                         return (T)field.GetValue(null);
                 }
             }
-            throw new ArgumentException("Not found.", "description");
-            // or return default(T);
+            Program.Logger.LogError(string.Format("Element: {0} in Enum {1} not found.", description, type.ToString()));
+            //throw new ArgumentException(string.Format("Element in Enum {0} not found.", type.ToString()), description);
+            return default(T);
         }
     }
 }

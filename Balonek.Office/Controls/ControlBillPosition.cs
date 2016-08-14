@@ -393,7 +393,7 @@ namespace Balonek.Office.Controls
 
         private void comboBoxPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_currentPosition == null)
+            if (_currentPosition == null || string.IsNullOrEmpty(comboBoxPeriod.Text))
                 return;
 
             _currentPosition.Period = (Period)EnumExtensions.GetValueFromDescription<Period>(comboBoxPeriod.Text);
@@ -401,7 +401,7 @@ namespace Balonek.Office.Controls
 
         private void comboBoxPositionType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_currentPosition == null)
+            if (_currentPosition == null || string.IsNullOrEmpty(comboBoxPositionType.Text))
                 return;
 
             _currentPosition.Type = (PositionType)EnumExtensions.GetValueFromDescription<PositionType>(comboBoxPositionType.Text);
