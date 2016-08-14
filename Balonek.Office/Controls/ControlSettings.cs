@@ -69,6 +69,7 @@ namespace Balonek.Office.Controls
             if(result == DialogResult.OK)
             {
                 _settings.TemplateBillPath = openFileDialog.FileName;
+                this.textBoxTemplateBills.Text = openFileDialog.FileName;
             }
         }
     }

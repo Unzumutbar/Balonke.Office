@@ -40,10 +40,10 @@ namespace Balonek.Office.Objects
         {
             var dictionary = new Dictionary<string, string>();
             dictionary.Add("%posdescription%", Description);
-            dictionary.Add("%posdate%", Total.ToString());
+            dictionary.Add("%posdate%", Date.ToString("dd.MM.yyyy"));
             dictionary.Add("%postime%", Time.ToString());
-            dictionary.Add("%posrate%", Rate.ToString());
-            dictionary.Add("%postotal%", Total.ToString());
+            dictionary.Add("%posrate%", Rate.ToString("N2"));
+            dictionary.Add("%postotal%", Total.ToString("N2"));
             return dictionary;
         }
     }

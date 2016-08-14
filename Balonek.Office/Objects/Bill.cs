@@ -32,7 +32,9 @@ namespace Balonek.Office.Objects
             dictionary.Add("%billdate%", DateTime.Now.ToBillDate());
             dictionary.Add("%monthfrom%", DateFrom.ToMonth());
             dictionary.Add("%monthto%", DateTo.ToMonth());
-            dictionary.Add("%totalsum%", Total.ToString());
+            dictionary.Add("%month%", DateTo.ToMonth());
+            dictionary.Add("%year%", DateTo.Year.ToString());
+            dictionary.Add("%totalsum%", Total.ToString("N2"));
             foreach (var tuple in Client.StringReplacementDictionary())
                 dictionary.Add(tuple.Key, tuple.Value);
 

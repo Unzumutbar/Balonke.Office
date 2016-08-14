@@ -2,6 +2,7 @@
 <BalonekOfficeDatabase>
   <Settings>
     <DatabaseVersion>1</DatabaseVersion>
+    <BillTemplateFile>D:\Develop\Balonke.Office\bin\Release\templates\Rechnungsmuster.odt</BillTemplateFile>
   </Settings>
   <Clients>
     <Client>
@@ -21,69 +22,154 @@
       <Type>2</Type>
       <ClientId>1</ClientId>
       <Description>Haushaltshilfe</Description>
-      <Date>2016-08-12</Date>
+      <Date>2016-08-14</Date>
       <Period>1</Period>
-      <Time>1</Time>
+      <Time>10</Time>
       <Rate>1</Rate>
-      <Total>1</Total>
+      <Total>10</Total>
     </BillPosition>
     <BillPosition>
       <Id>2</Id>
-      <Type>2</Type>
+      <Type>1</Type>
       <ClientId>1</ClientId>
       <Description>Haushaltshilfe</Description>
       <Date>2016-08-14</Date>
-      <Period>2</Period>
-      <Time>3</Time>
-      <Rate>20</Rate>
-      <Total>60</Total>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
     </BillPosition>
     <BillPosition>
       <Id>3</Id>
       <Type>1</Type>
       <ClientId>1</ClientId>
       <Description>Haushaltshilfe</Description>
-      <Date>2016-08-14</Date>
+      <Date>2016-08-21</Date>
       <Period>0</Period>
-      <Time>3</Time>
-      <Rate>20</Rate>
-      <Total>60</Total>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
     </BillPosition>
     <BillPosition>
       <Id>4</Id>
       <Type>1</Type>
       <ClientId>1</ClientId>
       <Description>Haushaltshilfe</Description>
-      <Date>2016-08-19</Date>
+      <Date>2016-08-28</Date>
       <Period>0</Period>
-      <Time>1</Time>
+      <Time>10</Time>
       <Rate>1</Rate>
-      <Total>1</Total>
+      <Total>10</Total>
     </BillPosition>
     <BillPosition>
       <Id>5</Id>
       <Type>1</Type>
       <ClientId>1</ClientId>
       <Description>Haushaltshilfe</Description>
-      <Date>2016-08-26</Date>
+      <Date>2016-09-04</Date>
       <Period>0</Period>
-      <Time>1</Time>
+      <Time>10</Time>
       <Rate>1</Rate>
-      <Total>1</Total>
+      <Total>10</Total>
     </BillPosition>
     <BillPosition>
       <Id>6</Id>
       <Type>1</Type>
       <ClientId>1</ClientId>
       <Description>Haushaltshilfe</Description>
-      <Date>2016-08-28</Date>
+      <Date>2016-09-11</Date>
       <Period>0</Period>
-      <Time>3</Time>
-      <Rate>20</Rate>
-      <Total>60</Total>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>7</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-09-18</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>8</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-09-25</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>9</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-10-02</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>10</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-10-09</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>11</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-10-16</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>12</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-10-23</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
+    </BillPosition>
+    <BillPosition>
+      <Id>13</Id>
+      <Type>1</Type>
+      <ClientId>1</ClientId>
+      <Description>Haushaltshilfe</Description>
+      <Date>2016-10-30</Date>
+      <Period>0</Period>
+      <Time>10</Time>
+      <Rate>1</Rate>
+      <Total>10</Total>
     </BillPosition>
   </BillPositions>
-  <Bills />
+  <Bills>
+    <Bill>
+      <Id>1</Id>
+      <ClientId>1</ClientId>
+      <DateFrom>2016-08-01</DateFrom>
+      <DateTo>2016-08-31</DateTo>
+      <Total>30</Total>
+    </Bill>
+  </Bills>
   <BillPositionTexts>
     <BillPositionText>
       <Id>1</Id>
