@@ -1,4 +1,5 @@
 ﻿using Balonek.Office.Objects;
+using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,8 +14,16 @@ namespace Balonek.Office.Controls
 
         public ControlSettings()
         {
-            InitializeComponent();
-            LoadSettings();
+            try
+            {
+                InitializeComponent();
+                LoadSettings();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -24,8 +33,16 @@ namespace Balonek.Office.Controls
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            EnableEditMode(false);
-            Program.Database.UpdateSettings(_settings);
+            try
+            {
+                EnableEditMode(false);
+                Program.Database.UpdateSettings(_settings);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

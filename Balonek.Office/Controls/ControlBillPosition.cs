@@ -28,13 +28,21 @@ namespace Balonek.Office.Controls
 
         public ControlBillPosition()
         {
-            InitializeComponent();
-            UpdatePositionList();
-            UpdateClientList();
-            UpdatePositionTextList();
-            UpdatePositionType();
-            UpdatePeriodType();
-        }
+            try
+            {
+                InitializeComponent();
+                UpdatePositionList();
+                UpdateClientList();
+                UpdatePositionTextList();
+                UpdatePositionType();
+                UpdatePeriodType();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
+}
 
         private void UpdatePeriodType()
         {
@@ -163,59 +171,92 @@ namespace Balonek.Office.Controls
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _isAdding = true;
-            _currentPosition = new BillPosition();
-            if (_positionList.Any())
-                _currentPosition.Id = _positionList.Max(c => c.Id) + 1;
-            else
-                _currentPosition.Id = 1;
+            try
+            {
+                _isAdding = true;
+                _currentPosition = new BillPosition();
+                if (_positionList.Any())
+                    _currentPosition.Id = _positionList.Max(c => c.Id) + 1;
+                else
+                    _currentPosition.Id = 1;
 
-            LoadCurrentPosition();
-            EnableEditMode(true);
-            comboBoxPositionType.Focus();
-            comboBoxPositionType.SelectedItem = PositionType.Single.GetDescription();
+                LoadCurrentPosition();
+                EnableEditMode(true);
+                comboBoxPositionType.Focus();
+                comboBoxPositionType.SelectedItem = PositionType.Single.GetDescription();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            _isAdding = false;
-            if (_currentPosition == null)
-                return;
-            _isAdding = false;
-            EnableEditMode(true);
-        }
+            try
+            {
+                _isAdding = false;
+                if (_currentPosition == null)
+                    return;
+                _isAdding = false;
+                EnableEditMode(true);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
+}
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            _isAdding = false;
-            if (_currentPosition == null)
-                return;
+            try
+            {
+                _isAdding = false;
+                if (_currentPosition == null)
+                    return;
 
-            Program.Database.DeleteBillPosition(_currentPosition);
-            EnableEditMode(false);
+                Program.Database.DeleteBillPosition(_currentPosition);
+                EnableEditMode(false);
 
-            _currentPosition = new BillPosition();
-            LoadCurrentPosition();
-            UpdatePositionList();
+                _currentPosition = new BillPosition();
+                LoadCurrentPosition();
+                UpdatePositionList();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
 
-        }
+
+}
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            UpdateCurrentClient();
-            if (CanSave)
+            try
             {
-                if (_isAdding)
-                    Program.Database.AddBillPosition(_currentPosition);
-                else
-                    Program.Database.UpdateBillPosition(_currentPosition);
+                UpdateCurrentClient();
+                if (CanSave)
+                {
+                    if (_isAdding)
+                        Program.Database.AddBillPosition(_currentPosition);
+                    else
+                        Program.Database.UpdateBillPosition(_currentPosition);
 
-                EnableEditMode(false);
-                UpdatePositionList();
+                    EnableEditMode(false);
+                    UpdatePositionList();
+                }
+                else
+                    MessageBox.Show(_message);
             }
-            else
-                MessageBox.Show(_message);
-        }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
+}
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {

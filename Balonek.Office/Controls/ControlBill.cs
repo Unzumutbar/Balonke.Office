@@ -27,10 +27,18 @@ namespace Balonek.Office.Controls
 
         public ControlBill()
         {
-            InitializeComponent();
-            UpdateBillList();
-            UpdateClientList();
-            UpdateBillPositionList();
+            try
+            {
+                InitializeComponent();
+                UpdateBillList();
+                UpdateClientList();
+                UpdateBillPositionList();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void UpdateBillList(bool useCache = false)
@@ -67,22 +75,30 @@ namespace Balonek.Office.Controls
 
         private void listBoxBills_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listBoxPositions.SelectedIndex;
-            if (index < 0)
-                return;
-
-            _currentBill = _billSearchList[index];
-            if (_currentBill == null)
+            try
             {
-                buttonEdit.Enabled = false;
-                buttonDelete.Enabled = false;
-                return;
-            }
+                int index = listBoxPositions.SelectedIndex;
+                if (index < 0)
+                    return;
 
-            LoadCurrentBill();
-            buttonEdit.Enabled = true;
-            buttonDelete.Enabled = true;
-            buttonExport.Enabled = true;
+                _currentBill = _billSearchList[index];
+                if (_currentBill == null)
+                {
+                    buttonEdit.Enabled = false;
+                    buttonDelete.Enabled = false;
+                    return;
+                }
+
+                LoadCurrentBill();
+                buttonEdit.Enabled = true;
+                buttonDelete.Enabled = true;
+                buttonExport.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void comboBoxClient_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,15 +119,23 @@ namespace Balonek.Office.Controls
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _isAdding = true;
-            _currentBill = new Bill();
-            if (_billList.Any())
-                _currentBill.Id = _billList.Max(c => c.Id) + 1;
-            else
-                _currentBill.Id = 1;
+            try
+            {
+                _isAdding = true;
+                _currentBill = new Bill();
+                if (_billList.Any())
+                    _currentBill.Id = _billList.Max(c => c.Id) + 1;
+                else
+                    _currentBill.Id = 1;
 
-            LoadCurrentBill();
-            EnableEditMode(true);
+                LoadCurrentBill();
+                EnableEditMode(true);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -125,34 +149,49 @@ namespace Balonek.Office.Controls
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            _isAdding = false;
-            if (_currentBill == null)
-                return;
+            try
+            {
+                _isAdding = false;
+                if (_currentBill == null)
+                    return;
 
-            Program.Database.DeleteBill(_currentBill);
-            EnableEditMode(false);
+                Program.Database.DeleteBill(_currentBill);
+                EnableEditMode(false);
 
-            _currentBill = new Bill();
-            LoadCurrentBill();
-            UpdateBillList();
-
-        }
+                _currentBill = new Bill();
+                LoadCurrentBill();
+                UpdateBillList();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
+}
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            UpdateCurrentClient();
-            if (CanSave)
+            try
             {
-                if (_isAdding)
-                    Program.Database.AddBill(_currentBill);
-                else
-                    Program.Database.UpdateBill(_currentBill);
+                UpdateCurrentClient();
+                if (CanSave)
+                {
+                    if (_isAdding)
+                        Program.Database.AddBill(_currentBill);
+                    else
+                        Program.Database.UpdateBill(_currentBill);
 
-                EnableEditMode(false);
-                UpdateBillList();
+                    EnableEditMode(false);
+                    UpdateBillList();
+                }
+                else
+                    MessageBox.Show(_message);
             }
-            else
-                MessageBox.Show(_message);
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -254,22 +293,30 @@ namespace Balonek.Office.Controls
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "Open Document Text(*.odt)|*.odt|All files (*.*)|*.*";
-            saveFileDialog.FilterIndex = 1;
-            saveFileDialog.RestoreDirectory = true;
-            saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToMonth());
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                CreateBillFromTemplate(saveFileDialog.FileName);
-                MessageBox.Show(_message);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                saveFileDialog.Filter = "Open Document Text(*.odt)|*.odt|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToMonth());
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    CreateBillFromTemplate(saveFileDialog.FileName);
+                    MessageBox.Show(_message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
             }
         }
 
         private void CreateBillFromTemplate(string billDocument)
-        {
+        {     
             _message = string.Empty;
             var templateFile = Program.Database.GetBillTemplate();
             if (!File.Exists(templateFile))
