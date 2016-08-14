@@ -15,7 +15,7 @@ namespace Balonek.Office.Database
         private const int DATABASEVERSION = 1;
         private const string ROOTNAME = "BalonekOfficeDatabase";
         private const string DATEFORMAT = "yyyy-MM-dd";
-        private const string DEFAULTBILLTEMPLATE = @"templates\_billTemplate.odt";
+        private const string DEFAULTBILLTEMPLATE = @"ExportTemplates\TemplateRechnung.odt";
 
 
         private string _databaseFile;

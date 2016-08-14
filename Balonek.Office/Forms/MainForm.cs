@@ -48,8 +48,16 @@ namespace Balonek.Office.Forms
 
         private void secret_Click(object sender, EventArgs e)
         {
-            SoundPlayer audio = new SoundPlayer(Balonek.Office.Properties.Resources.secret);
-            audio.Play();
+            try
+            {
+                SoundPlayer audio = new SoundPlayer(Balonek.Office.Properties.Resources.secret);
+                audio.Play();
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+            }
         }
     }
 }
