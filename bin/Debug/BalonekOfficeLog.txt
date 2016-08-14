@@ -26,3 +26,5 @@ Parametername: collection
 14.08.2016 02:47:41 Info: BillPosition added - 4 Kock Haushaltshilfe
 14.08.2016 02:47:41 Info: BillPosition added - 5 Kock Haushaltshilfe
 14.08.2016 02:47:41 Info: BillPosition added - 6 Kock Haushaltshilfe
+14.08.2016 02:58:28 Info: Application Balonek Office started
+14.08.2016 03:00:43 Info: Application Balonek Office started
