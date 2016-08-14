@@ -319,7 +319,6 @@ namespace Balonek.Office.Controls
         {
             try
             {
-                var textbox = sender as TextBox;
                 if (!char.IsNumber(e.KeyChar) & (Keys)e.KeyChar != Keys.Back
                     & e.KeyChar != ',')
                 {

@@ -154,7 +154,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ExportTemplates\TemplateRechnung.odt" />
-    <None Include="Fonts\HoboStd.otf" />
+    <Content Include="Fonts\HoboStd.otf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -198,7 +198,7 @@
     <Content Include="Resources\close_small.png" />
     <Content Include="Resources\edit_small.png" />
     <Content Include="Resources\plus_small.png" />
-    <Content Include="Resources\secret.wav" />
+    <EmbeddedResource Include="Resources\secret.wav" />
     <Content Include="Resources\trash_small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
