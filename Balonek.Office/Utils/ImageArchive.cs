@@ -6,7 +6,6 @@ namespace Balonek.Office.Utils
 {
     public class ImageArchive
     {
-        private static Random rnd = new Random();
         public static List<Bitmap> GetBackgrounds()
         {
             var backgroundList = new List<Bitmap>();

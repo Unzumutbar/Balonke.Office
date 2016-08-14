@@ -206,10 +206,10 @@ namespace Balonek.Office.Controls
             var firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            if (_currentBill.DateFrom == null || _currentBill.DateFrom <= DateTime.MinValue)
+            if (_currentBill.DateFrom <= DateTime.MinValue)
                 _currentBill.DateFrom = firstDayOfMonth;
 
-            if (_currentBill.DateTo == null || _currentBill.DateTo <= DateTime.MinValue)
+            if (_currentBill.DateTo <= DateTime.MinValue)
                 _currentBill.DateTo = lastDayOfMonth;
 
             pickerDateFrom.Value = _currentBill.DateFrom;

@@ -46,7 +46,6 @@ namespace Balonek.Office.Controls
 
         private void UpdatePeriodType()
         {
-            var enumList = new List<string>();
             foreach (Period value in Enum.GetValues(typeof(Period)))
                 comboBoxPeriod.Items.Add(value.GetDescription());
 
@@ -55,7 +54,6 @@ namespace Balonek.Office.Controls
 
         private void UpdatePositionType()
         {
-            var enumList = new List<string>();
             foreach (PositionType value in Enum.GetValues(typeof(PositionType)))
                 comboBoxPositionType.Items.Add(value.GetDescription());
 
@@ -126,7 +124,6 @@ namespace Balonek.Office.Controls
 
         private void listBoxSingle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var list = _singlePositionList;
             PositionIsSelected(sender as ListBox, _singlePositionList);
         }
 
@@ -268,7 +265,7 @@ namespace Balonek.Office.Controls
             textBoxId.Text = _currentPosition.Id.ToString();
             textBoxClientName.Text = _currentPosition.Client.Name;
             comboBoxDescription.Text = _currentPosition.Description;
-            if (_currentPosition.Date == null || _currentPosition.Date <= DateTime.MinValue)
+            if (_currentPosition.Date <= DateTime.MinValue)
                 _currentPosition.Date = DateTime.Today;
 
             dateTimePickerDate.Value = _currentPosition.Date;
@@ -320,11 +317,18 @@ namespace Balonek.Office.Controls
 
         private void OnKeyPress(object sender, KeyPressEventArgs e)
         {
-            var textbox = sender as TextBox;
-            if (!char.IsNumber(e.KeyChar) & (Keys)e.KeyChar != Keys.Back
-                & e.KeyChar != ',')
+            try
             {
-                e.Handled = true;
+                var textbox = sender as TextBox;
+                if (!char.IsNumber(e.KeyChar) & (Keys)e.KeyChar != Keys.Back
+                    & e.KeyChar != ',')
+                {
+                    e.Handled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                Program.Logger.LogError(ex);
             }
 
             base.OnKeyPress(e);

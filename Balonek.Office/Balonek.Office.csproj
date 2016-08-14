@@ -153,6 +153,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ExportTemplates\TemplateRechnung.odt" />
+    <None Include="Fonts\HoboStd.otf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
