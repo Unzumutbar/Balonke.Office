@@ -1,14 +1,13 @@
-﻿using Balonek.Logging;
-using Balonek.Office.Objects;
+﻿using Balonek.Database.Objects;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using static Balonek.Office.Utils.Enums;
+using Unzumutbar.Logging;
 
-namespace Balonek.Office.Database
+namespace Balonek.Database
 {
     public class XmlDatabase
     {

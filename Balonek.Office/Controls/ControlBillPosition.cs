@@ -1,5 +1,5 @@
-﻿using Balonek.Office.Forms;
-using Balonek.Office.Objects;
+﻿using Balonek.Database.Objects;
+using Balonek.Office.Forms;
 using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static Balonek.Office.Utils.Enums;
+using Unzumutbar.Extensions;
 
 namespace Balonek.Office.Controls
 {
@@ -42,7 +42,7 @@ namespace Balonek.Office.Controls
                 Program.Logger.LogError(ex);
                 MessageBox.Show(StaticStrings.ErrorMessage(ex));
             }
-}
+        }
 
         private void UpdatePeriodType()
         {
@@ -79,7 +79,7 @@ namespace Balonek.Office.Controls
 
         public void UpdatePositionList(bool useCache = false)
         {
-            if(!useCache)
+            if (!useCache)
                 _positionList = Program.Database.GetBillPositionList();
 
             UpdateSinglePositionList();
@@ -132,7 +132,7 @@ namespace Balonek.Office.Controls
             PositionIsSelected(sender as ListBox, _periodicalPositionList);
         }
 
-        private void PositionIsSelected(ListBox listbox, List<BillPosition>list)
+        private void PositionIsSelected(ListBox listbox, List<BillPosition> list)
         {
             int index = listbox.SelectedIndex;
             if (index < 0)
@@ -181,6 +181,7 @@ namespace Balonek.Office.Controls
                 EnableEditMode(true);
                 comboBoxPositionType.Focus();
                 comboBoxPositionType.SelectedItem = PositionType.Single.GetDescription();
+                _currentPosition.Type = PositionType.Single;
             }
             catch (Exception ex)
             {
@@ -204,7 +205,7 @@ namespace Balonek.Office.Controls
                 Program.Logger.LogError(ex);
                 MessageBox.Show(StaticStrings.ErrorMessage(ex));
             }
-}
+        }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -228,7 +229,7 @@ namespace Balonek.Office.Controls
             }
 
 
-}
+        }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -253,7 +254,7 @@ namespace Balonek.Office.Controls
                 Program.Logger.LogError(ex);
                 MessageBox.Show(StaticStrings.ErrorMessage(ex));
             }
-}
+        }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -325,7 +326,7 @@ namespace Balonek.Office.Controls
                     e.Handled = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Program.Logger.LogError(ex);
             }

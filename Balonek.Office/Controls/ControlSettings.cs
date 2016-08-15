@@ -1,9 +1,6 @@
-﻿using Balonek.Office.Objects;
+﻿using Balonek.Database.Objects;
 using Balonek.Office.Utils;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Balonek.Office.Controls
@@ -83,7 +80,7 @@ namespace Balonek.Office.Controls
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
             var result = openFileDialog.ShowDialog();
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 _settings.TemplateBillPath = openFileDialog.FileName;
                 this.textBoxTemplateBills.Text = openFileDialog.FileName;

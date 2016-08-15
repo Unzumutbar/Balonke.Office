@@ -1,4 +1,4 @@
-﻿using Balonek.Office.Objects;
+﻿using Balonek.Database.Objects;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +23,7 @@ namespace Balonek.Office.Controls
 
         private void UpdateClientList(bool useCache = false)
         {
-            if(!useCache)
+            if (!useCache)
                 _clientList = Program.Database.GetClientList();
 
             _clientSearchList = _clientList;

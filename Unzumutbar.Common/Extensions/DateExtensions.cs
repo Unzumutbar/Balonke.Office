@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Balonek.Office.Utils
+namespace Unzumutbar.Extensions
 {
     public static class DateExtensions
     {

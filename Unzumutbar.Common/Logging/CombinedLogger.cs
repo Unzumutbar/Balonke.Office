@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Balonek.Logging
+namespace Unzumutbar.Logging
 {
     public class CombinedLogger : ILogger
     {

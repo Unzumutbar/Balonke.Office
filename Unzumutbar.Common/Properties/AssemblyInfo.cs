@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Balonek.Office")]
+[assembly: AssemblyTitle("Unzumutbar.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Balonek.Office")]
+[assembly: AssemblyProduct("Unzumutbar.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("292eb7f9-b82e-4d44-85dd-e2dee6bf7fe0")]
+[assembly: Guid("f19fd20e-a090-44d5-8931-425deb84a12e")]
 
 // Version information for an assembly consists of the following four values:
 //

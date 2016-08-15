@@ -1,8 +1,9 @@
-﻿using Balonek.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using Unzumutbar.Extensions;
+using Unzumutbar.Logging;
 
 namespace Balonek.Office.Utils
 {
@@ -24,7 +25,7 @@ namespace Balonek.Office.Utils
 
         public void ReplaceWithDictonary(Dictionary<string, string> dictionary)
         {
-            string file = Path.Combine(_document,"content.xml");
+            string file = Path.Combine(_document, "content.xml");
             var content = ReadContent(file);
 
             foreach (var tuple in dictionary)
@@ -65,7 +66,7 @@ namespace Balonek.Office.Utils
                 Archive.CreateArchive(filePath, _document);
                 DirectoryExtension.DeleteDirectoryAndContent(_document);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogError(e.ToString());
             }

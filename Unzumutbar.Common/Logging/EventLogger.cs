@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Balonek.Logging
+namespace Unzumutbar.Logging
 {
-    public class EventLogger :ILogger
+    public class EventLogger : ILogger
     {
         private string servicename;
 
@@ -14,7 +14,7 @@ namespace Balonek.Logging
 
         public void LogInfo(string message)
         {
-            EventLog.WriteEntry(this.servicename, GetMessage(message) , EventLogEntryType.Information);
+            EventLog.WriteEntry(this.servicename, GetMessage(message), EventLogEntryType.Information);
         }
 
         private string GetMessage(string message)

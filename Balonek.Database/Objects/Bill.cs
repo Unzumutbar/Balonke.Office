@@ -1,8 +1,8 @@
-﻿using Balonek.Office.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Unzumutbar.Extensions;
 
-namespace Balonek.Office.Objects
+namespace Balonek.Database.Objects
 {
     public class Bill
     {
@@ -39,7 +39,7 @@ namespace Balonek.Office.Objects
                 dictionary.Add(tuple.Key, tuple.Value);
 
             int posnr = 1;
-            foreach(var position in Positions)
+            foreach (var position in Positions)
             {
                 foreach (var tuple in position.StringReplacementDictionary())
                 {
@@ -49,6 +49,6 @@ namespace Balonek.Office.Objects
             }
             return dictionary;
         }
-        
+
     }
 }

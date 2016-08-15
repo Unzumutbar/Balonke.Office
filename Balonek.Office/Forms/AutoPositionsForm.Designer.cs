@@ -236,7 +236,7 @@
             // 
             // bindingBillPosition
             // 
-            this.bindingBillPosition.DataSource = typeof(Balonek.Office.Objects.BillPosition);
+            this.bindingBillPosition.DataSource = typeof(Balonek.Database.Objects.BillPosition);
             // 
             // AutoPositionsForm
             // 

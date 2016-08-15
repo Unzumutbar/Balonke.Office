@@ -92,7 +92,6 @@
     <Compile Include="Controls\ControlStart.Designer.cs">
       <DependentUpon>ControlStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database\XmlDatabase.cs" />
     <Compile Include="Forms\AutoPositionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,20 +104,9 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Objects\Bill.cs" />
-    <Compile Include="Objects\BillPosition.cs" />
-    <Compile Include="Objects\BillPositionText.cs" />
-    <Compile Include="Objects\Client.cs" />
-    <Compile Include="Objects\Settings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\DirectoryExtension.cs" />
-    <Compile Include="Utils\EnumExtensions.cs" />
-    <Compile Include="Utils\Enums.cs" />
     <Compile Include="Utils\ImageArchive.cs" />
-    <Compile Include="Utils\ButtonExtensions.cs" />
-    <Compile Include="Utils\DateExtensions.cs" />
-    <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\OpenDocumentEditor.cs" />
     <Compile Include="Utils\Archive.cs" />
     <Compile Include="Utils\StaticStrings.cs" />
@@ -177,11 +165,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Balonek.Logging\Balonek.Logging.csproj">
-      <Project>{a53473fd-c628-4122-a6f3-ac6a8852b61d}</Project>
-      <Name>Balonek.Logging</Name>
+    <ProjectReference Include="..\Balonek.Database\Balonek.Database.csproj">
+      <Project>{efbd786d-4525-4c4b-aba2-a92f3501143a}</Project>
+      <Name>Balonek.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unzumutbar.Common\Unzumutbar.Common.csproj">
+      <Project>{f19fd20e-a090-44d5-8931-425deb84a12e}</Project>
+      <Name>Unzumutbar.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

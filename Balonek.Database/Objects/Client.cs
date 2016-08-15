@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Balonek.Office.Objects
+namespace Balonek.Database.Objects
 {
     public class Client
     {

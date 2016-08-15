@@ -1,4 +1,4 @@
-﻿using Balonek.Office.Objects;
+﻿using Balonek.Database.Objects;
 using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Unzumutbar.Extensions;
 
 namespace Balonek.Office.Controls
 {
@@ -43,12 +44,12 @@ namespace Balonek.Office.Controls
 
         private void UpdateBillList(bool useCache = false)
         {
-            if(!useCache)
+            if (!useCache)
                 _billList = Program.Database.GetBillList();
 
             _billSearchList = _billList.OrderBy(p => p.Client.Id).ThenByDescending(p => p.DateFrom).ToList();
             if (!String.IsNullOrWhiteSpace(_searchContent))
-                _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent)|| p.DateFrom.ToMonthAndYear().Contains(_searchContent)).ToList();
+                _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent) || p.DateFrom.ToMonthAndYear().Contains(_searchContent)).ToList();
 
             this.listBoxPositions.Items.Clear();
             foreach (var bill in _billSearchList)
@@ -70,7 +71,7 @@ namespace Balonek.Office.Controls
         private void UpdateBillPositionList()
         {
             _positionList = Program.Database.GetBillPositionList();
-            _positionList = _positionList.Where(p => p.Type == Enums.PositionType.Single).ToList();
+            _positionList = _positionList.Where(p => p.Type == PositionType.Single).ToList();
         }
 
         private void listBoxBills_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,7 +168,7 @@ namespace Balonek.Office.Controls
                 Program.Logger.LogError(ex);
                 MessageBox.Show(StaticStrings.ErrorMessage(ex));
             }
-}
+        }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -261,11 +262,11 @@ namespace Balonek.Office.Controls
         private void CalculateSum()
         {
             var totalsum = 0m;
-            if(AssociatedBillPositions.Any())
+            if (AssociatedBillPositions.Any())
             {
                 foreach (var position in AssociatedBillPositions)
                 {
-                    totalsum += position.Time * position.Rate;  
+                    totalsum += position.Time * position.Rate;
                 }
             }
             textBoxTotal.Text = totalsum.ToString();
@@ -284,11 +285,11 @@ namespace Balonek.Office.Controls
                 _message = string.Empty;
                 if (_currentBill.Client.Id == 0)
                     _message += "Es wurde kein Kunde ausgewählt!";
-                if(pickerDateFrom.Value >= pickerDateTo.Value)
+                if (pickerDateFrom.Value >= pickerDateTo.Value)
                     _message += "Es wurde ein ungültiger Zeitraum ausgewählt!";
 
                 return String.IsNullOrEmpty(_message);
-            } 
+            }
         }
 
         private void buttonExport_Click(object sender, EventArgs e)
@@ -316,7 +317,7 @@ namespace Balonek.Office.Controls
         }
 
         private void CreateBillFromTemplate(string billDocument)
-        {     
+        {
             _message = string.Empty;
             var templateFile = Program.Database.GetBillTemplate();
             if (!File.Exists(templateFile))
