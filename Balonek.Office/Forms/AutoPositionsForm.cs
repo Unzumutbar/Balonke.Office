@@ -78,10 +78,9 @@ namespace Balonek.Office.Forms
                 var source = new BindingSource(_newPositions, null);
                 dataGridPositions.DataSource = source;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -164,11 +163,10 @@ namespace Balonek.Office.Forms
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
                 return new List<BillPosition>();
             }
-}
+        }
 
         private void pickerDateFrom_ValueChanged(object sender, EventArgs e)
         {
@@ -176,7 +174,7 @@ namespace Balonek.Office.Forms
         }
 
         private void listBoxPositions_ItemCheck(object sender, ItemCheckEventArgs e)
-        {  
+        {
             CreateSinglePositions(GetCheckedPositions(e));
         }
 

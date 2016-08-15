@@ -3,19 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using Unzumutbar.Extensions;
-using Unzumutbar.Logging;
 
 namespace Balonek.Office.Utils
 {
     public class OpenDocumentEditor
     {
         private string _document;
-        private ILogger _logger;
-
-        public OpenDocumentEditor(ILogger logger)
-        {
-            _logger = logger;
-        }
 
         public void CreateFromTemplate(string templatePath)
         {
@@ -68,7 +61,7 @@ namespace Balonek.Office.Utils
             }
             catch (Exception e)
             {
-                _logger.LogError(e.ToString());
+                throw e;
             }
         }
     }

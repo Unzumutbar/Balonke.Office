@@ -38,7 +38,7 @@ namespace Balonek.Office.Forms
             UserControl = userControl;
             UserControl.Dock = DockStyle.Fill;
             this.splitContainer1.Panel2.Controls.Add(UserControl);
-            this.secretPanel.BackgroundImage = ImageArchive.GetRandomSmallImage();        
+            this.secretPanel.BackgroundImage = ImageArchive.GetRandomSmallImage();
         }
 
         private void toolStripSettings_Click(object sender, EventArgs e)
@@ -55,8 +55,7 @@ namespace Balonek.Office.Forms
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
     }

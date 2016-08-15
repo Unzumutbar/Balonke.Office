@@ -107,9 +107,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ImageArchive.cs" />
+    <Compile Include="Utils\BalonekMessageBox.cs" />
     <Compile Include="Utils\OpenDocumentEditor.cs" />
     <Compile Include="Utils\Archive.cs" />
-    <Compile Include="Utils\StaticStrings.cs" />
     <EmbeddedResource Include="Controls\ControlBill.resx">
       <DependentUpon>ControlBill.cs</DependentUpon>
     </EmbeddedResource>

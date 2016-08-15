@@ -18,8 +18,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -37,8 +36,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 

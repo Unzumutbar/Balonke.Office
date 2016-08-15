@@ -37,8 +37,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -97,8 +96,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -134,8 +132,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -165,8 +162,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -186,12 +182,11 @@ namespace Balonek.Office.Controls
                     UpdateBillList();
                 }
                 else
-                    MessageBox.Show(_message);
+                    BalonekMessageBox.ShowStop(Program.Logger, _message);
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -306,35 +301,41 @@ namespace Balonek.Office.Controls
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     CreateBillFromTemplate(saveFileDialog.FileName);
-                    MessageBox.Show(_message);
+                    BalonekMessageBox.Show(Program.Logger, _message);
                 }
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
         private void CreateBillFromTemplate(string billDocument)
         {
-            _message = string.Empty;
-            var templateFile = Program.Database.GetBillTemplate();
-            if (!File.Exists(templateFile))
+            try
             {
-                _message = string.Format("Template '{0}' exisitert nicht!", Path.GetFullPath(templateFile));
-                return;
+                _message = string.Empty;
+                var templateFile = Program.Database.GetBillTemplate();
+                if (!File.Exists(templateFile))
+                {
+                    _message = string.Format("Template '{0}' exisitert nicht!", Path.GetFullPath(templateFile));
+                    return;
+                }
+
+                if (File.Exists(billDocument))
+                    File.Delete(billDocument);
+
+                var editor = new OpenDocumentEditor();
+                editor.CreateFromTemplate(templateFile);
+                editor.ReplaceWithDictonary(_currentBill.StringReplacementDictionary());
+                editor.DeleteTableRow("%pos");
+                editor.Save(billDocument);
+                _message = string.Format("{0} erfolgreich exportiert.", Path.GetFullPath(billDocument));
             }
-
-            if (File.Exists(billDocument))
-                File.Delete(billDocument);
-
-            var editor = new OpenDocumentEditor(Program.Logger);
-            editor.CreateFromTemplate(templateFile);
-            editor.ReplaceWithDictonary(_currentBill.StringReplacementDictionary());
-            editor.DeleteTableRow("%pos");
-            editor.Save(billDocument);
-            _message = string.Format("{0} erfolgreich exportiert.", Path.GetFullPath(billDocument));
+            catch (Exception ex)
+            {
+                BalonekMessageBox.ShowError(Program.Logger, ex);
+            }
         }
     }
 }

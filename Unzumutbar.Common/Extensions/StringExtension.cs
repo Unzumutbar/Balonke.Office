@@ -91,6 +91,22 @@ namespace Unzumutbar.Utilities
             return !String.IsNullOrEmpty(value);
         }
 
+        /// <summary>Indicates whether the specified string is null or an empty string or whitespace.</summary>
+        /// <param name="value">The string to test.</param>
+        /// <returns>true if the value parameter is null or an empty string (""); otherwise, false.</returns>
+        public static bool IsNullOrWhitespace(this string value)
+        {
+            return String.IsNullOrWhiteSpace(value);
+        }
+
+        /// <summary>Indicates whether the specified string is not null or a not empty or not whitespace string.</summary>
+        /// <param name="value">The string to test.</param>
+        /// <returns>true if the value parameter is not null or a not empty string (""); otherwise, false.</returns>
+        public static bool IsNotNullOrWhitespace(this string value)
+        {
+            return !String.IsNullOrWhiteSpace(value);
+        }
+
         /// <summary>Indicates if the specified string contains one of test values, ignoring the case.</summary>
         /// <param name="value">The string to test.</param>
         /// <param name="testValues">To values to check one of them is contained in value</param>

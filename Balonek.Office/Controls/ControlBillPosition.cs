@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Unzumutbar.Extensions;
+using Unzumutbar.Utilities;
 
 namespace Balonek.Office.Controls
 {
@@ -39,8 +40,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -185,8 +185,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -202,8 +201,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -224,8 +222,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
 
 
@@ -251,8 +248,7 @@ namespace Balonek.Office.Controls
             }
             catch (Exception ex)
             {
-                Program.Logger.LogError(ex);
-                MessageBox.Show(StaticStrings.ErrorMessage(ex));
+                BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
 
@@ -365,7 +361,7 @@ namespace Balonek.Office.Controls
 
         private void CalculateSum()
         {
-            if (String.IsNullOrEmpty(textBoxTime.Text) || String.IsNullOrEmpty(textBoxRate.Text))
+            if (textBoxTime.Text.IsNullOrWhitespace() || textBoxRate.Text.IsNullOrWhitespace())
                 return;
 
             var timeAsDecimal = Decimal.Parse(textBoxTime.Text);
@@ -381,20 +377,20 @@ namespace Balonek.Office.Controls
                 _message = string.Empty;
                 if (_currentPosition.Client.Id == 0)
                     _message += "Es wurde kein Kunde ausgewählt!";
-                if (String.IsNullOrWhiteSpace(comboBoxDescription.Text))
+                if (comboBoxDescription.Text.IsNullOrWhitespace())
                     _message += "Es wurde keine Tatigkeitsbeschreibung eingegeben!";
-                if (String.IsNullOrWhiteSpace(textBoxTime.Text))
+                if (textBoxTime.Text.IsNullOrWhitespace())
                     _message += "Es wurde keine Zeit eingegeben!";
-                if (String.IsNullOrWhiteSpace(textBoxRate.Text))
+                if (textBoxRate.Text.IsNullOrWhitespace())
                     _message += "Es wurde kein Stundensatz eingegeben!";
 
-                return String.IsNullOrEmpty(_message);
+                return _message.IsNullOrWhitespace();
             }
         }
 
         private void comboBoxPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_currentPosition == null || string.IsNullOrEmpty(comboBoxPeriod.Text))
+            if (_currentPosition == null || comboBoxPeriod.Text.IsNullOrWhitespace())
                 return;
 
             _currentPosition.Period = (Period)EnumExtensions.GetValueFromDescription<Period>(comboBoxPeriod.Text);
@@ -402,7 +398,7 @@ namespace Balonek.Office.Controls
 
         private void comboBoxPositionType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_currentPosition == null || string.IsNullOrEmpty(comboBoxPositionType.Text))
+            if (_currentPosition == null || comboBoxPositionType.Text.IsNullOrWhitespace())
                 return;
 
             _currentPosition.Type = (PositionType)EnumExtensions.GetValueFromDescription<PositionType>(comboBoxPositionType.Text);
