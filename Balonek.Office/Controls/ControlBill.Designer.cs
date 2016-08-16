@@ -447,7 +447,7 @@
             // 
             // bindingBillPosition
             // 
-            this.bindingBillPosition.DataSource = typeof(Balonek.Database.Objects.BillPosition);
+            this.bindingBillPosition.DataSource = typeof(Balonek.Database.Entities.BillPosition);
             // 
             // pickerDateTo
             // 

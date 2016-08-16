@@ -1,8 +1,7 @@
-﻿namespace Balonek.Database.Objects
+﻿namespace Balonek.Database.Entities
 {
-    public class Settings
+    public class Setting
     {
-        public static string NODENAME = "Settings";
         public int DataBaseVersion { get; set; }
         public string TemplateBillPath { get; set; }
     }

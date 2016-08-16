@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using Unzumutbar.Extensions;
 
-namespace Balonek.Database.Objects
+namespace Balonek.Database.Entities
 {
-    public class Bill
+    public class Bill : BaseEntity
     {
-        public static string NODENAME = "Bills";
-        public static string ELEMENTNAME = "Bill";
-
         public Bill()
         {
             Client = new Client();
         }
 
-        public int Id { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public decimal Total { get; set; }

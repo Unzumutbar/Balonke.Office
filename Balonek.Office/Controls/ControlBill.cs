@@ -1,4 +1,4 @@
-﻿using Balonek.Database.Objects;
+﻿using Balonek.Database.Entities;
 using Balonek.Office.Utils;
 using System;
 using System.Collections.Generic;
@@ -44,7 +44,7 @@ namespace Balonek.Office.Controls
         private void UpdateBillList(bool useCache = false)
         {
             if (!useCache)
-                _billList = Program.Database.GetBillList();
+                _billList = Program.Database.Bills.Get();
 
             _billSearchList = _billList.OrderBy(p => p.Client.Id).ThenByDescending(p => p.DateFrom).ToList();
             if (!String.IsNullOrWhiteSpace(_searchContent))
@@ -59,7 +59,7 @@ namespace Balonek.Office.Controls
 
         private void UpdateClientList(bool useCache = false)
         {
-            _clientList = Program.Database.GetClientList();
+            _clientList = Program.Database.Clients.Get();
             this.comboBoxClient.Items.Clear();
             foreach (var client in _clientList)
             {
@@ -69,7 +69,7 @@ namespace Balonek.Office.Controls
 
         private void UpdateBillPositionList()
         {
-            _positionList = Program.Database.GetBillPositionList();
+            _positionList = Program.Database.BillPositions.Get();
             _positionList = _positionList.Where(p => p.Type == PositionType.Single).ToList();
         }
 
@@ -153,7 +153,7 @@ namespace Balonek.Office.Controls
                 if (_currentBill == null)
                     return;
 
-                Program.Database.DeleteBill(_currentBill);
+                Program.Database.Bills.Delete(_currentBill);
                 EnableEditMode(false);
 
                 _currentBill = new Bill();
@@ -174,9 +174,9 @@ namespace Balonek.Office.Controls
                 if (CanSave)
                 {
                     if (_isAdding)
-                        Program.Database.AddBill(_currentBill);
+                        Program.Database.Bills.Add(_currentBill);
                     else
-                        Program.Database.UpdateBill(_currentBill);
+                        Program.Database.Bills.Update(_currentBill);
 
                     EnableEditMode(false);
                     UpdateBillList();
@@ -315,7 +315,7 @@ namespace Balonek.Office.Controls
             try
             {
                 _message = string.Empty;
-                var templateFile = Program.Database.GetBillTemplate();
+                var templateFile = Program.Database.Settings.Get().TemplateBillPath;
                 if (!File.Exists(templateFile))
                 {
                     _message = string.Format("Template '{0}' exisitert nicht!", Path.GetFullPath(templateFile));

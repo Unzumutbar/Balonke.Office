@@ -1,4 +1,4 @@
-﻿using Balonek.Database.Objects;
+﻿using Balonek.Database.Entities;
 using Balonek.Office.Forms;
 using Balonek.Office.Utils;
 using System;
@@ -18,7 +18,7 @@ namespace Balonek.Office.Controls
         private List<BillPosition> _singlePositionList;
         private List<BillPosition> _periodicalPositionList;
         private List<Client> _clientList;
-        private List<BillPositionText> _positionTextList;
+        private List<Text> _positionTextList;
         private BillPosition _currentPosition;
 
         private AutoPositionsForm AutoPositionsForm;
@@ -63,7 +63,7 @@ namespace Balonek.Office.Controls
         private void UpdatePositionTextList(bool useCache = false)
         {
             if (!useCache)
-                _positionTextList = Program.Database.GetBillPositionTextList();
+                _positionTextList = Program.Database.Texts.Get();
 
             this.comboBoxDescription.Items.Clear();
             if (_currentPosition != null)
@@ -73,14 +73,14 @@ namespace Balonek.Office.Controls
 
             foreach (var posText in _positionTextList)
             {
-                this.comboBoxDescription.Items.Add(posText.Text);
+                this.comboBoxDescription.Items.Add(posText.Value);
             }
         }
 
         public void UpdatePositionList(bool useCache = false)
         {
             if (!useCache)
-                _positionList = Program.Database.GetBillPositionList();
+                _positionList = Program.Database.BillPositions.Get();
 
             UpdateSinglePositionList();
             UpdatePeriodicalPositionList();
@@ -114,7 +114,7 @@ namespace Balonek.Office.Controls
 
         private void UpdateClientList()
         {
-            _clientList = Program.Database.GetClientList();
+            _clientList = Program.Database.Clients.Get();
             this.comboBoxClient.Items.Clear();
             foreach (var client in _clientList)
             {
@@ -213,7 +213,7 @@ namespace Balonek.Office.Controls
                 if (_currentPosition == null)
                     return;
 
-                Program.Database.DeleteBillPosition(_currentPosition);
+                Program.Database.BillPositions.Delete(_currentPosition);
                 EnableEditMode(false);
 
                 _currentPosition = new BillPosition();
@@ -236,9 +236,9 @@ namespace Balonek.Office.Controls
                 if (CanSave)
                 {
                     if (_isAdding)
-                        Program.Database.AddBillPosition(_currentPosition);
+                        Program.Database.BillPositions.Add(_currentPosition);
                     else
-                        Program.Database.UpdateBillPosition(_currentPosition);
+                        Program.Database.BillPositions.Update(_currentPosition);
 
                     EnableEditMode(false);
                     UpdatePositionList();

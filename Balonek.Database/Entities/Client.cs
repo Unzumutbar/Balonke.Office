@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace Balonek.Database.Objects
+namespace Balonek.Database.Entities
 {
-    public class Client
+    public class Client : BaseEntity
     {
-        public static string NODENAME = "Clients";
-        public static string ELEMENTNAME = "Client";
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }
         public string Zip { get; set; }

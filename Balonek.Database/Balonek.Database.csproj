@@ -40,13 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\XmlDatabase.cs" />
-    <Compile Include="Objects\Bill.cs" />
-    <Compile Include="Objects\BillPosition.cs" />
-    <Compile Include="Objects\BillPositionText.cs" />
-    <Compile Include="Objects\Client.cs" />
-    <Compile Include="Objects\Settings.cs" />
+    <Compile Include="Database\Database.cs" />
+    <Compile Include="Entities\Bill.cs" />
+    <Compile Include="Entities\BillPosition.cs" />
+    <Compile Include="Entities\Text.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Setting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\BaseTable.cs" />
+    <Compile Include="Tables\BillPositions.cs" />
+    <Compile Include="Tables\Bills.cs" />
+    <Compile Include="Tables\Clients.cs" />
+    <Compile Include="Tables\Settings.cs" />
+    <Compile Include="Tables\Texts.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

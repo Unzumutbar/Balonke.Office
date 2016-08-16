@@ -1,4 +1,4 @@
-﻿using Balonek.Database.Objects;
+﻿using Balonek.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,7 +24,7 @@ namespace Balonek.Office.Controls
         private void UpdateClientList(bool useCache = false)
         {
             if (!useCache)
-                _clientList = Program.Database.GetClientList();
+                _clientList = Program.Database.Clients.Get();
 
             _clientSearchList = _clientList;
             if (!String.IsNullOrWhiteSpace(_searchContent))
@@ -84,7 +84,7 @@ namespace Balonek.Office.Controls
             if (_currentClient == null)
                 return;
 
-            Program.Database.DeleteClient(_currentClient);
+            Program.Database.Clients.Delete(_currentClient);
             EnableEditMode(false);
 
             _currentClient = new Client();
@@ -97,9 +97,9 @@ namespace Balonek.Office.Controls
         {
             UpdateCurrentClient();
             if (_isAdding)
-                Program.Database.AddClient(_currentClient);
+                Program.Database.Clients.Add(_currentClient);
             else
-                Program.Database.UpdateClient(_currentClient);
+                Program.Database.Clients.Update(_currentClient);
 
             EnableEditMode(false);
             UpdateClientList();

@@ -1,4 +1,4 @@
-﻿using Balonek.Database.Objects;
+﻿using Balonek.Database.Entities;
 using Balonek.Office.Utils;
 using System;
 using System.Windows.Forms;
@@ -7,7 +7,7 @@ namespace Balonek.Office.Controls
 {
     public partial class ControlSettings : UserControl
     {
-        private Settings _settings;
+        private Setting _settings;
 
         public ControlSettings()
         {
@@ -32,7 +32,7 @@ namespace Balonek.Office.Controls
             try
             {
                 EnableEditMode(false);
-                Program.Database.UpdateSettings(_settings);
+                Program.Database.Settings.Update(_settings);
             }
             catch (Exception ex)
             {
@@ -55,9 +55,7 @@ namespace Balonek.Office.Controls
 
         private void ReadSettingFromDatabase()
         {
-            _settings = new Settings();
-            _settings.DataBaseVersion = Program.Database.GetDatabaseVersion();
-            _settings.TemplateBillPath = Program.Database.GetBillTemplate();
+            _settings = Program.Database.Settings.Get();
         }
 
         private void EnableEditMode(bool enabled)

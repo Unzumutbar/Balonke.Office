@@ -1,4 +1,4 @@
-﻿using Balonek.Database.Objects;
+﻿using Balonek.Database.Entities;
 using Balonek.Office.Controls;
 using Balonek.Office.Utils;
 using System;
@@ -181,7 +181,7 @@ namespace Balonek.Office.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (var pos in _newPositions)
-                Program.Database.AddBillPosition(pos);
+                Program.Database.BillPositions.Add(pos);
 
             if (_parentControl is ControlBillPosition)
                 (_parentControl as ControlBillPosition).UpdatePositionList();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unzumutbar.Extensions;
 
-namespace Balonek.Database.Objects
+namespace Balonek.Database.Entities
 {
     public enum PositionType
     {
@@ -35,16 +35,12 @@ namespace Balonek.Database.Objects
         Monthly = 5,
     };
 
-    public class BillPosition
+    public class BillPosition : BaseEntity
     {
-        public static string NODENAME = "BillPositions";
-        public static string ELEMENTNAME = "BillPosition";
-
         public BillPosition()
         {
             Client = new Client();
         }
-        public int Id { get; set; }
         public PositionType Type { get; set; }
         public Client Client { get; set; }
         public string Description { get; set; }
