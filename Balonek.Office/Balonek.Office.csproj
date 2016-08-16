@@ -192,6 +192,10 @@
     <Content Include="Resources\checkmark_small.png" />
     <Content Include="Resources\close_small.png" />
     <Content Include="Resources\edit_small.png" />
+    <None Include="Resources\im_sosia02.png" />
+    <None Include="Resources\im_sosia03.png" />
+    <None Include="Resources\im_sosia04.png" />
+    <None Include="Resources\im_sosia05.png" />
     <Content Include="Resources\plus_small.png" />
     <EmbeddedResource Include="Resources\secret.wav" />
     <Content Include="Resources\trash_small.png" />

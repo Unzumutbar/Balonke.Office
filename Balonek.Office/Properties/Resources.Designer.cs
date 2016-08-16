@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Balonek.Office.Properties
-{
-
-
+namespace Balonek.Office.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -176,6 +176,46 @@ namespace Balonek.Office.Properties
         internal static System.Drawing.Bitmap im_sosia01 {
             get {
                 object obj = ResourceManager.GetObject("im_sosia01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap im_sosia02 {
+            get {
+                object obj = ResourceManager.GetObject("im_sosia02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap im_sosia03 {
+            get {
+                object obj = ResourceManager.GetObject("im_sosia03", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap im_sosia04 {
+            get {
+                object obj = ResourceManager.GetObject("im_sosia04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap im_sosia05 {
+            get {
+                object obj = ResourceManager.GetObject("im_sosia05", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

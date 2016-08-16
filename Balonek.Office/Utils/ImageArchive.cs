@@ -41,6 +41,10 @@ namespace Balonek.Office.Utils
         {
             var imageList = new List<Bitmap>();
             imageList.Add(Balonek.Office.Properties.Resources.im_sosia01);
+            imageList.Add(Balonek.Office.Properties.Resources.im_sosia02);
+            imageList.Add(Balonek.Office.Properties.Resources.im_sosia03);
+            imageList.Add(Balonek.Office.Properties.Resources.im_sosia04);
+            imageList.Add(Balonek.Office.Properties.Resources.im_sosia05);
 
             return imageList;
         }
