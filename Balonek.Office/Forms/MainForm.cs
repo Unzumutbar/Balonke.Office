@@ -57,5 +57,10 @@ namespace Balonek.Office.Forms
                 BalonekMessageBox.ShowError(Program.Logger, ex);
             }
         }
+
+        private void buttonText_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new ControlText());
+        }
     }
 }

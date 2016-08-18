@@ -31,12 +31,12 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetBillPositionTextList - {0}", e.Message));
+                _database.Logger.LogError(string.Format("GetTextList - {0}", e.Message));
                 return new List<Text>();
             }
         }
 
-        public void AddBillPositionText(Text textToAdd)
+        public void Add(Text textToAdd)
         {
             try
             {
@@ -51,15 +51,15 @@ namespace Balonek.Database.Tables
                      );
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("BillPositionText added - {0} {1}", textToAdd.Id, textToAdd.Value));
+                _database.Logger.LogInfo(string.Format("Text added - {0} {1}", textToAdd.Id, textToAdd.Value));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("AddBillPositionText - {0}", e.Message));
+                _database.Logger.LogError(string.Format("AddText - {0}", e.Message));
             }
         }
 
-        public void UpdateBillPositionText(Text textToUpdate)
+        public void Update(Text textToUpdate)
         {
             try
             {
@@ -69,11 +69,11 @@ namespace Balonek.Database.Tables
                 target.Element("Text").Value = textToUpdate.Value;
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("BillPositionText updated - {0} {1}", textToUpdate.Id, textToUpdate.Value));
+                _database.Logger.LogInfo(string.Format("Text updated - {0} {1}", textToUpdate.Id, textToUpdate.Value));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateBillPositionText - {0}", e.Message));
+                _database.Logger.LogError(string.Format("UpdateText - {0}", e.Message));
             }
         }
     }

@@ -30,16 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSettings = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonClients = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonBillPositions = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonBills = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSettings = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.secretPanel = new System.Windows.Forms.Panel();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonText = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
@@ -58,12 +60,31 @@
             this.buttonBillPositions,
             this.toolStripSeparator2,
             this.buttonBills,
+            this.toolStripSeparator5,
+            this.buttonText,
             this.toolStripSeparator3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(172, 977);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSettings
+            // 
+            this.toolStripSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSettings.Image")));
+            this.toolStripSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSettings.Name = "toolStripSettings";
+            this.toolStripSettings.Size = new System.Drawing.Size(169, 32);
+            this.toolStripSettings.Text = "Unternehmen";
+            this.toolStripSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripSettings.Click += new System.EventHandler(this.toolStripSettings_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(169, 6);
             // 
             // buttonClients
             // 
@@ -116,18 +137,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
             // 
-            // toolStripSettings
-            // 
-            this.toolStripSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSettings.Image")));
-            this.toolStripSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSettings.Name = "toolStripSettings";
-            this.toolStripSettings.Size = new System.Drawing.Size(169, 32);
-            this.toolStripSettings.Text = "Unternehmen";
-            this.toolStripSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripSettings.Click += new System.EventHandler(this.toolStripSettings_Click);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -158,10 +167,22 @@
             this.secretPanel.TabIndex = 2;
             this.secretPanel.Click += new System.EventHandler(this.secret_Click);
             // 
-            // toolStripSeparator4
+            // buttonText
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(169, 6);
+            this.buttonText.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.buttonText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonText.Image = ((System.Drawing.Image)(resources.GetObject("buttonText.Image")));
+            this.buttonText.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonText.Name = "buttonText";
+            this.buttonText.Size = new System.Drawing.Size(169, 32);
+            this.buttonText.Text = "Texte";
+            this.buttonText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonText.Click += new System.EventHandler(this.buttonText_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(169, 6);
             // 
             // MainForm
             // 
@@ -197,5 +218,7 @@
         private System.Windows.Forms.ToolStripButton toolStripSettings;
         private System.Windows.Forms.Panel secretPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton buttonText;
     }
 }

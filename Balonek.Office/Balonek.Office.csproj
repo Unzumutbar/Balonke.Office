@@ -74,6 +74,12 @@
     <Compile Include="Controls\ControlBillPosition.Designer.cs">
       <DependentUpon>ControlBillPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ControlText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlText.Designer.cs">
+      <DependentUpon>ControlText.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ControlCompany.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ControlBillPosition.resx">
       <DependentUpon>ControlBillPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ControlText.resx">
+      <DependentUpon>ControlText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ControlCompany.resx">
       <DependentUpon>ControlCompany.cs</DependentUpon>
