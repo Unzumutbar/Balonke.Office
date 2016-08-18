@@ -42,7 +42,7 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetCompany - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Add()", this.GetType().FullName), e);
                 return null;
             }
         }
@@ -60,7 +60,7 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetDatabaseVersion - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.GetDatabaseVersion()", this.GetType().FullName), e);
                 return -1;
             }
         }
@@ -72,7 +72,6 @@ namespace Balonek.Database.Tables
             company.DataBaseVersion = 2;
             company.TemplateBillPath = Path.Combine("ExportTemplates", "TemplateRechnung.odt");
             this.Add(company);
-
         }
 
         public void Add(Company companyToAdd)
@@ -99,11 +98,12 @@ namespace Balonek.Database.Tables
                      );
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Company added - {0} {1}", companyToAdd.Id, companyToAdd.Name));
+                _database.Logger.LogInfo(string.Format("{0}.Add({1})", this.GetType().FullName, companyToAdd));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("AddCompany - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Add({1})", this.GetType().FullName, companyToAdd), e);
+                throw e;
             }
         }
 
@@ -126,11 +126,12 @@ namespace Balonek.Database.Tables
                 target.Element("BillTemplateFile").Value = companyToUpdate.TemplateBillPath;
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Company updated - {0} {1}", companyToUpdate.Id, companyToUpdate.Name));
+                _database.Logger.LogInfo(string.Format("{0}.Update({1})", this.GetType().FullName, companyToUpdate));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateCompany - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Update({1})", this.GetType().FullName, companyToUpdate), e);
+                throw e;
             }
         }
 
@@ -144,11 +145,12 @@ namespace Balonek.Database.Tables
                 target.Element("DatabaseVersion").Value = newVersion.ToString();
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("DatabaseVersion updated - {0}", newVersion));
+                _database.Logger.LogInfo(string.Format("{0}.UpdateDataBaseVersion({1})", this.GetType().FullName, newVersion));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateDataBaseVersion - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.UpdateDataBaseVersion({1})", this.GetType().FullName, newVersion), e);
+                throw e;
             }
         }
     }

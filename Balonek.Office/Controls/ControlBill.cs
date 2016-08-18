@@ -170,10 +170,11 @@ namespace Balonek.Office.Controls
                 if (CanSave)
                 {
                     if (_isAdding)
-                        Program.Database.Bills.Add(_currentBill);
+                        _currentBill = Program.Database.Bills.Add(_currentBill);
                     else
                         Program.Database.Bills.Update(_currentBill);
 
+                    this.textBoxId.Text = _currentBill.Id.ToString();
                     EnableEditMode(false);
                     UpdateBillList();
                 }

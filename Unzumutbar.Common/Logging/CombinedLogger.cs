@@ -26,6 +26,13 @@ namespace Unzumutbar.Logging
             eventLog.LogError(message);
         }
 
+        public void LogError(string message, Exception exception)
+        {
+            var combinedMessage = string.Format("{0}|{1}", message, exception.StackTrace);
+            consoleLog.LogError(combinedMessage);
+            eventLog.LogError(combinedMessage);
+        }
+
         public void LogInfo(string message)
         {
             consoleLog.LogInfo(message);

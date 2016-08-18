@@ -31,31 +31,33 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetTextList - {0}", e.Message));
-                return new List<Text>();
+                _database.Logger.LogError(string.Format("{0}.Add()", this.GetType().FullName), e);
+                throw e;
             }
         }
 
-        public void Add(Text textToAdd)
+        public Text Add(Text textToAdd)
         {
             try
             {
-                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
+                textToAdd.Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
                 XDocument doc = XDocument.Load(_tableFile);
 
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", Id),
+                            new XElement("Id", textToAdd.Id),
                             new XElement("Text", textToAdd.Value)
                             )
                      );
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Text added - {0} {1}", textToAdd.Id, textToAdd.Value));
+                _database.Logger.LogInfo(string.Format("{0}.Add({1})", this.GetType().FullName, textToAdd));
+                return textToAdd;
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("AddText - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Add({1})", this.GetType().FullName, textToAdd), e);
+                throw e;
             }
         }
 
@@ -69,11 +71,12 @@ namespace Balonek.Database.Tables
                 target.Element("Text").Value = textToUpdate.Value;
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Text updated - {0} {1}", textToUpdate.Id, textToUpdate.Value));
+                _database.Logger.LogInfo(string.Format("{0}.Update({1})", this.GetType().FullName, textToUpdate));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateText - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Update({1})", this.GetType().FullName, textToUpdate), e);
+                throw e;
             }
         }
     }

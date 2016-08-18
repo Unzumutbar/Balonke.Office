@@ -37,21 +37,21 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetBillPositionList - {0}", e.Message));
-                return new List<BillPosition>();
+                _database.Logger.LogError(string.Format("{0}.Get()", this.GetType().FullName), e);
+                throw e;
             }
         }
 
-        public void Add(BillPosition billPositionToAdd)
+        public BillPosition Add(BillPosition billPositionToAdd)
         {
             try
             {
-                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
+                billPositionToAdd.Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
 
                 XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", Id),
+                            new XElement("Id", billPositionToAdd.Id),
                             new XElement("Type", (int)billPositionToAdd.Type),
                             new XElement("ClientId", billPositionToAdd.Client.Id),
                             new XElement("Description", billPositionToAdd.Description),
@@ -64,11 +64,13 @@ namespace Balonek.Database.Tables
                      );
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("BillPosition added - {0} {1} {2}", billPositionToAdd.Id, billPositionToAdd.Client.Name, billPositionToAdd.Description));
+                _database.Logger.LogInfo(string.Format("{0}.Add({1})", this.GetType().FullName, billPositionToAdd));
+                return billPositionToAdd;
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("AddBillPosition - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Add({1})", this.GetType().FullName, billPositionToAdd), e);
+                throw e;
             }
         }
 
@@ -89,11 +91,12 @@ namespace Balonek.Database.Tables
                 target.Element("Total").Value = billPositionToUpdate.Total.ToString();
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("BillPosition updated - {0} {1} {2}", billPositionToUpdate.Id, billPositionToUpdate.Client.Name, billPositionToUpdate.Description));
+                _database.Logger.LogInfo(string.Format("{0}.Update({1})", this.GetType().FullName, billPositionToUpdate));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateBillPosition - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Update({1})", this.GetType().FullName, billPositionToUpdate), e);
+                throw e;
             }
         }
     }

@@ -11,6 +11,7 @@ namespace Balonek.Database.Entities
         public string Telephone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
+        public bool Deleted { get; set; }
 
         public override string ToString()
         {

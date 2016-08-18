@@ -19,7 +19,7 @@ namespace Balonek.Database.Tables
         public string ELEMENTNAME;
         public string TABLEFILE;
 
-        protected virtual void InitilizeTable(string tableDirectory, Database database)
+        protected void InitilizeTable(string tableDirectory, Database database)
         {
             _database = database;
             _tableFile = Path.Combine(tableDirectory, TABLEFILE);
@@ -29,10 +29,19 @@ namespace Balonek.Database.Tables
 
         public virtual void Delete(BaseEntity entityToDelete)
         {
-            DeleteElementById(ELEMENTNAME, entityToDelete.Id);
+            try
+            {
+                DeleteElementById(ELEMENTNAME, entityToDelete.Id);
+                _database.Logger.LogInfo(string.Format("{0}.Delete({1})", this.GetType().FullName, entityToDelete));
+            }
+            catch (Exception e)
+            {
+                _database.Logger.LogError(string.Format("{0}.Delete({1})", this.GetType().FullName, entityToDelete), e);
+                throw e;
+            }
         }
 
-        protected virtual void WriteEmptyDatabase()
+        protected void WriteEmptyDatabase()
         {
             if (File.Exists(_tableFile))
                 return;
@@ -48,20 +57,12 @@ namespace Balonek.Database.Tables
 
         private void DeleteElementById(string ElementName, int Id)
         {
-            try
-            {
-                XDocument doc = XDocument.Load(_tableFile);
-                doc.Root.Elements(ElementName).Where(e => e.Element("Id").Value.Equals(Id.ToString())).Select(e => e).Single().Remove();
-                doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("{0} deleted - {1}", ElementName, Id));
-            }
-            catch (Exception e)
-            {
-                _database.Logger.LogError(string.Format("Delete{0} - {1}", ElementName, e.Message));
-            }
+            XDocument doc = XDocument.Load(_tableFile);
+            doc.Root.Elements(ElementName).Where(e => e.Element("Id").Value.Equals(Id.ToString())).Select(e => e).Single().Remove();
+            doc.Save(_tableFile);
         }
 
-        protected virtual int CreateNewId(List<BaseEntity> entities)
+        protected int CreateNewId(List<BaseEntity> entities)
         {
             if (entities.Any())
                 return entities.Max(ent => ent.Id) + 1;

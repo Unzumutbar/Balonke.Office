@@ -33,13 +33,14 @@ namespace Balonek.Database.Tables
                             Telephone = _client.Element("Telephone").Value,
                             Fax = _client.Element("Fax").Value,
                             Email = _client.Element("Email").Value,
+                            Deleted = _client.Element("Deleted").Value == "true" ? true : false,
 
                         }).ToList();
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetClientList - {0}", e.Message));
-                return new List<Client>();
+                _database.Logger.LogError(string.Format("{0}.Get()", this.GetType().FullName), e);
+                throw e;
             }
         }
 
@@ -66,36 +67,39 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetClientById - {0}", e.Message));
-                return new Client();
+                _database.Logger.LogError(string.Format("{0}.GetById({1})", this.GetType().FullName, clientId), e);
+                throw e;
             }
         }
 
-        public void Add(Client clientToAdd)
+        public Client Add(Client clientToAdd)
         {
             try
             {
-                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
+                clientToAdd.Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
                 XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", Id),
+                            new XElement("Id", clientToAdd.Id),
                             new XElement("Name", clientToAdd.Name),
                             new XElement("Street", clientToAdd.Street),
                             new XElement("Zip", clientToAdd.Zip),
                             new XElement("City", clientToAdd.City),
                             new XElement("Telephone", clientToAdd.Telephone),
                             new XElement("Fax", clientToAdd.Fax),
-                            new XElement("Email", clientToAdd.Email)
+                            new XElement("Email", clientToAdd.Email),
+                            new XElement("Deleted", "false")
                             )
                      );
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Client added - {0} {1}", clientToAdd.Id, clientToAdd.Name));
+                _database.Logger.LogInfo(string.Format("{0}.Add({1})", this.GetType().FullName, clientToAdd));
+                return clientToAdd;
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("AddClient - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Add({1})", this.GetType().FullName, clientToAdd), e);
+                throw e;
             }
         }
 
@@ -113,14 +117,23 @@ namespace Balonek.Database.Tables
                 target.Element("Telephone").Value = clientToUpdate.Telephone;
                 target.Element("Fax").Value = clientToUpdate.Fax;
                 target.Element("Email").Value = clientToUpdate.Email;
+                target.Element("Deleted").Value = clientToUpdate.Deleted ? "true" : "false";
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Client updated - {0} {1}", clientToUpdate.Id, clientToUpdate.Name));
+                _database.Logger.LogInfo(string.Format("{0}.Update({1})", this.GetType().FullName, clientToUpdate));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateClient - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Update({1})", this.GetType().FullName, clientToUpdate), e);
+                throw e;
             }
+        }
+
+        public override void Delete(BaseEntity entityToDelete)
+        {
+            var clientToDelete = entityToDelete as Client;
+            clientToDelete.Deleted = true;
+            Update(clientToDelete); 
         }
     }
 }

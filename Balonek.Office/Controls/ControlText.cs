@@ -94,10 +94,11 @@ namespace Balonek.Office.Controls
         {
             UpdateCurrentClient();
             if (_isAdding)
-                Program.Database.Texts.Add(_currentText);
+                _currentText = Program.Database.Texts.Add(_currentText);
             else
                 Program.Database.Texts.Update(_currentText);
 
+            this.textBoxId.Text = _currentText.Id.ToString();
             EnableEditMode(false);
             UpdateClientList();
         }

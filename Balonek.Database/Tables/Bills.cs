@@ -34,21 +34,21 @@ namespace Balonek.Database.Tables
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("GetBillList - {0}", e.Message));
-                return new List<Bill>();
+                _database.Logger.LogError(string.Format("{0}.Get()|", this.GetType().FullName), e);
+                throw e;
             }
         }
 
-        public void Add(Bill billToAdd)
+        public Bill Add(Bill billToAdd)
         {
             try
             {
-                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
+                billToAdd.Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
 
                 XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", Id),
+                            new XElement("Id", billToAdd.Id),
                             new XElement("ClientId", billToAdd.Client.Id),
                             new XElement("DateFrom", billToAdd.DateFrom.ToString(DATEFORMAT)),
                             new XElement("DateTo", billToAdd.DateTo.ToString(DATEFORMAT)),
@@ -57,11 +57,13 @@ namespace Balonek.Database.Tables
                      );
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Bill added - {0} {1}", billToAdd.Id, billToAdd.Client.Id));
+                _database.Logger.LogInfo(string.Format("{0}.Add({1})", this.GetType().FullName, billToAdd));
+                return billToAdd;
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("AddBill - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Add({1})", this.GetType().FullName, billToAdd), e);
+                throw e;
             }
         }
 
@@ -78,11 +80,12 @@ namespace Balonek.Database.Tables
                 target.Element("Total").Value = billToUpdate.Total.ToString();
 
                 doc.Save(_tableFile);
-                _database.Logger.LogInfo(string.Format("Bill updated - {0} {1}", billToUpdate.Id, billToUpdate.Client.Id));
+                _database.Logger.LogInfo(string.Format("{0}.Update({1})", this.GetType().FullName, billToUpdate));
             }
             catch (Exception e)
             {
-                _database.Logger.LogError(string.Format("UpdateBill - {0}", e.Message));
+                _database.Logger.LogError(string.Format("{0}.Update({1})", this.GetType().FullName, billToUpdate), e);
+                throw e;
             }
         }
     }

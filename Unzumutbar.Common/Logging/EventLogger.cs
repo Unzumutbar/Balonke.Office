@@ -36,5 +36,9 @@ namespace Unzumutbar.Logging
             EventLog.WriteEntry(this.servicename, GetMessage(message), EventLogEntryType.Error);
         }
 
+        public void LogError(string message, Exception exception)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace Unzumutbar.Logging
         void LogError(string message);
 
         void LogError(Exception exception);
+
+        void LogError(string message, Exception exception);
     }
 }

@@ -25,7 +25,7 @@ namespace Balonek.Office.Controls
         private void UpdateClientList(bool useCache = false)
         {
             if (!useCache)
-                _clientList = Program.Database.Clients.Get();
+                _clientList = Program.Database.Clients.Get().Where(cli => !cli.Deleted).ToList();
 
             _clientSearchList = _clientList;
             if (_searchContent.IsNotNullOrWhitespace())
@@ -61,6 +61,7 @@ namespace Balonek.Office.Controls
         {
             _isAdding = true;
             _currentClient = new Client();
+            _currentClient.Deleted = false;
 
             LoadCurrentClient();
             EnableEditMode(true);
@@ -94,10 +95,11 @@ namespace Balonek.Office.Controls
         {
             UpdateCurrentClient();
             if (_isAdding)
-                Program.Database.Clients.Add(_currentClient);
+                _currentClient = Program.Database.Clients.Add(_currentClient);
             else
                 Program.Database.Clients.Update(_currentClient);
 
+            this.textBoxId.Text = _currentClient.Id.ToString();
             EnableEditMode(false);
             UpdateClientList();
         }

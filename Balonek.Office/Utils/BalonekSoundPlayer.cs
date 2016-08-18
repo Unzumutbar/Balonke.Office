@@ -11,7 +11,7 @@ namespace Balonek.Office.Utils
     {
         private BackgroundWorker musicPlayer;
         [DllImport("winmm.dll", SetLastError = true)]
-        static extern bool PlaySound(string pszSound, IntPtr hmod, int fdwSound);
+        private static extern bool PlaySound(string pszSound, IntPtr hmod, int fdwSound);
 
         public BalonekSoundPlayer()
         {

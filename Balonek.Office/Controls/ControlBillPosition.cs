@@ -219,8 +219,6 @@ namespace Balonek.Office.Controls
             {
                 BalonekMessageBox.ShowError(Program.Logger, ex);
             }
-
-
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -231,10 +229,11 @@ namespace Balonek.Office.Controls
                 if (CanSave)
                 {
                     if (_isAdding)
-                        Program.Database.BillPositions.Add(_currentPosition);
+                        _currentPosition = Program.Database.BillPositions.Add(_currentPosition);
                     else
                         Program.Database.BillPositions.Update(_currentPosition);
 
+                    this.textBoxId.Text = _currentPosition.Id.ToString();
                     EnableEditMode(false);
                     UpdatePositionList();
                 }
