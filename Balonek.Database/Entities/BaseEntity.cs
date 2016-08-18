@@ -1,6 +1,8 @@
-﻿namespace Balonek.Database.Entities
+﻿using Balonek.Database.Interfaces;
+
+namespace Balonek.Database.Entities
 {
-    public class BaseEntity
+    public class BaseEntity : IEntity
     {
         public int Id { get; set; }
     }

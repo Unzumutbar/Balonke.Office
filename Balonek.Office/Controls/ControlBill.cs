@@ -47,8 +47,8 @@ namespace Balonek.Office.Controls
                 _billList = Program.Database.Bills.Get();
 
             _billSearchList = _billList.OrderBy(p => p.Client.Id).ThenByDescending(p => p.DateFrom).ToList();
-            if (!String.IsNullOrWhiteSpace(_searchContent))
-                _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent) || p.DateFrom.ToMonthAndYear().Contains(_searchContent)).ToList();
+            if (_searchContent.IsNotNullOrWhitespace())
+                _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent) || p.DateFrom.ToMonthAndYearGerman().Contains(_searchContent)).ToList();
 
             this.listBoxPositions.Items.Clear();
             foreach (var bill in _billSearchList)
@@ -122,10 +122,6 @@ namespace Balonek.Office.Controls
             {
                 _isAdding = true;
                 _currentBill = new Bill();
-                if (_billList.Any())
-                    _currentBill.Id = _billList.Max(c => c.Id) + 1;
-                else
-                    _currentBill.Id = 1;
 
                 LoadCurrentBill();
                 EnableEditMode(true);
@@ -283,7 +279,7 @@ namespace Balonek.Office.Controls
                 if (pickerDateFrom.Value >= pickerDateTo.Value)
                     _message += "Es wurde ein ungültiger Zeitraum ausgewählt!";
 
-                return String.IsNullOrEmpty(_message);
+                return _message.IsNullOrWhitespace();
             }
         }
 
@@ -296,7 +292,7 @@ namespace Balonek.Office.Controls
                 saveFileDialog.Filter = "Open Document Text(*.odt)|*.odt|All files (*.*)|*.*";
                 saveFileDialog.FilterIndex = 1;
                 saveFileDialog.RestoreDirectory = true;
-                saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToMonth());
+                saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToMonthGerman());
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -315,7 +311,7 @@ namespace Balonek.Office.Controls
             try
             {
                 _message = string.Empty;
-                var templateFile = Program.Database.Settings.Get().TemplateBillPath;
+                var templateFile = Program.Database.Company.Get().TemplateBillPath;
                 if (!File.Exists(templateFile))
                 {
                     _message = string.Format("Template '{0}' exisitert nicht!", Path.GetFullPath(templateFile));

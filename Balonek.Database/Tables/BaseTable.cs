@@ -1,5 +1,6 @@
 ﻿using Balonek.Database.Entities;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -58,6 +59,13 @@ namespace Balonek.Database.Tables
             {
                 _database.Logger.LogError(string.Format("Delete{0} - {1}", ElementName, e.Message));
             }
+        }
+
+        protected virtual int CreateNewId(List<BaseEntity> entities)
+        {
+            if (entities.Any())
+                return entities.Max(ent => ent.Id) + 1;
+            return 1;
         }
     }
 }

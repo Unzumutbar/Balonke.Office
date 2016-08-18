@@ -9,7 +9,7 @@ namespace Balonek.Database.Tables
     public class Texts : BaseTable
     {
         public Texts(string tableDirectory, Database database)
-        {          
+        {
             TABLEFILE = "texts.xml";
             ROOTNAME = "BalonekOfficeTexts";
             ELEMENTNAME = "Text";
@@ -40,11 +40,12 @@ namespace Balonek.Database.Tables
         {
             try
             {
+                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
                 XDocument doc = XDocument.Load(_tableFile);
 
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", textToAdd.Id),
+                            new XElement("Id", Id),
                             new XElement("Text", textToAdd.Value)
                             )
                      );

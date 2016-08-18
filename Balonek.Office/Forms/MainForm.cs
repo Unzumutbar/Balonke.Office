@@ -1,7 +1,6 @@
 ﻿using Balonek.Office.Controls;
 using Balonek.Office.Utils;
 using System;
-using System.Media;
 using System.Windows.Forms;
 
 namespace Balonek.Office.Forms
@@ -43,15 +42,15 @@ namespace Balonek.Office.Forms
 
         private void toolStripSettings_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new ControlSettings());
+            LoadUserControl(new ControlCompany());
         }
 
         private void secret_Click(object sender, EventArgs e)
         {
             try
             {
-                SoundPlayer audio = new SoundPlayer(Balonek.Office.Properties.Resources.secret);
-                audio.Play();
+                var soundplayer = new BalonekSoundPlayer();
+                soundplayer.PlaySecretMusic();
             }
             catch (Exception ex)
             {

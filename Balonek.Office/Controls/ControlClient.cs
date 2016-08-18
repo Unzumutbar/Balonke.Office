@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using Unzumutbar.Extensions;
 
 namespace Balonek.Office.Controls
 {
@@ -27,7 +28,7 @@ namespace Balonek.Office.Controls
                 _clientList = Program.Database.Clients.Get();
 
             _clientSearchList = _clientList;
-            if (!String.IsNullOrWhiteSpace(_searchContent))
+            if (_searchContent.IsNotNullOrWhitespace())
                 _clientSearchList = _clientList.Where(c => c.Name.Contains(_searchContent) || c.City.Contains(_searchContent)).ToList();
 
             this.listBoxClients.Items.Clear();
@@ -60,10 +61,6 @@ namespace Balonek.Office.Controls
         {
             _isAdding = true;
             _currentClient = new Client();
-            if (_clientList.Any())
-                _currentClient.Id = _clientList.Max(c => c.Id) + 1;
-            else
-                _currentClient.Id = 1;
 
             LoadCurrentClient();
             EnableEditMode(true);

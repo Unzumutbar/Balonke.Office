@@ -12,7 +12,7 @@ namespace Balonek.Office.Utils
 
         public void CreateFromTemplate(string templatePath)
         {
-            _document = DirectoryExtension.CreateTempDirectory();
+            _document = DirectoryExtension.CreateTempDirectory("ZosiasOffice");
             Archive.ExtractZipFile(templatePath, _document);
         }
 

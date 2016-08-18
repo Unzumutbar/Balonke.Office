@@ -18,7 +18,7 @@ namespace Balonek.Database.Entities
         public List<BillPosition> Positions { get; set; }
         public override string ToString()
         {
-            return string.Format("{0} - {1}", Client.Name, DateFrom.ToMonthAndYear());
+            return string.Format("{0} - {1}", Client.Name, DateFrom.ToMonthAndYearGerman());
         }
 
         public Dictionary<string, string> StringReplacementDictionary()
@@ -26,9 +26,9 @@ namespace Balonek.Database.Entities
             var dictionary = new Dictionary<string, string>();
             dictionary.Add("%billid%", Id.ToString());
             dictionary.Add("%billdate%", DateTime.Now.ToBillDate());
-            dictionary.Add("%monthfrom%", DateFrom.ToMonth());
-            dictionary.Add("%monthto%", DateTo.ToMonth());
-            dictionary.Add("%month%", DateTo.ToMonth());
+            dictionary.Add("%monthfrom%", DateFrom.ToMonthGerman());
+            dictionary.Add("%monthto%", DateTo.ToMonthGerman());
+            dictionary.Add("%month%", DateTo.ToMonthGerman());
             dictionary.Add("%year%", DateTo.Year.ToString());
             dictionary.Add("%totalsum%", Total.ToString("N2"));
             foreach (var tuple in Client.StringReplacementDictionary())

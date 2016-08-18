@@ -4,9 +4,9 @@ namespace Unzumutbar.Extensions
 {
     public static class DirectoryExtension
     {
-        public static string CreateTempDirectory()
+        public static string CreateTempDirectory(string prefix)
         {
-            var tempDir = Path.Combine(Path.GetTempPath(), string.Format("SosiasOffice{0}", Path.GetRandomFileName()));
+            var tempDir = Path.Combine(Path.GetTempPath(), string.Format("{0}{1}", prefix, Path.GetRandomFileName()));
             Directory.CreateDirectory(tempDir);
             return tempDir;
         }

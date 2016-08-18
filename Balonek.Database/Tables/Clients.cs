@@ -75,11 +75,11 @@ namespace Balonek.Database.Tables
         {
             try
             {
+                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
                 XDocument doc = XDocument.Load(_tableFile);
-
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", clientToAdd.Id),
+                            new XElement("Id", Id),
                             new XElement("Name", clientToAdd.Name),
                             new XElement("Street", clientToAdd.Street),
                             new XElement("Zip", clientToAdd.Zip),

@@ -1,7 +1,6 @@
 ﻿using Balonek.Database.Entities;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -10,7 +9,7 @@ namespace Balonek.Database.Tables
     public class BillPositions : BaseTable
     {
         public BillPositions(string tableDirectory, Database database)
-        {        
+        {
             TABLEFILE = "billpositions.xml";
             ROOTNAME = "BalonekOfficeBillPositions";
             ELEMENTNAME = "BillPosition";
@@ -47,11 +46,12 @@ namespace Balonek.Database.Tables
         {
             try
             {
-                XDocument doc = XDocument.Load(_tableFile);
+                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
 
+                XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", billPositionToAdd.Id),
+                            new XElement("Id", Id),
                             new XElement("Type", (int)billPositionToAdd.Type),
                             new XElement("ClientId", billPositionToAdd.Client.Id),
                             new XElement("Description", billPositionToAdd.Description),

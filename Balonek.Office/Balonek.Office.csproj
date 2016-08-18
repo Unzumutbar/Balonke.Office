@@ -74,11 +74,11 @@
     <Compile Include="Controls\ControlBillPosition.Designer.cs">
       <DependentUpon>ControlBillPosition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ControlSettings.cs">
+    <Compile Include="Controls\ControlCompany.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ControlSettings.Designer.cs">
-      <DependentUpon>ControlSettings.cs</DependentUpon>
+    <Compile Include="Controls\ControlCompany.Designer.cs">
+      <DependentUpon>ControlCompany.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ControlClient.cs">
       <SubType>UserControl</SubType>
@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BalonekSoundPlayer.cs" />
     <Compile Include="Utils\ImageArchive.cs" />
     <Compile Include="Utils\BalonekMessageBox.cs" />
     <Compile Include="Utils\OpenDocumentEditor.cs" />
@@ -116,8 +117,8 @@
     <EmbeddedResource Include="Controls\ControlBillPosition.resx">
       <DependentUpon>ControlBillPosition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ControlSettings.resx">
-      <DependentUpon>ControlSettings.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ControlCompany.resx">
+      <DependentUpon>ControlCompany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ControlClient.resx">
       <DependentUpon>ControlClient.cs</DependentUpon>
@@ -197,7 +198,7 @@
     <None Include="Resources\im_sosia04.png" />
     <None Include="Resources\im_sosia05.png" />
     <Content Include="Resources\plus_small.png" />
-    <EmbeddedResource Include="Resources\secret.wav" />
+    <Content Include="Resources\secret.wav" />
     <Content Include="Resources\trash_small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

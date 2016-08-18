@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Unzumutbar.Utilities
+namespace Unzumutbar.Extensions
 {
     public static class StringExtension
     {

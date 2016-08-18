@@ -13,7 +13,7 @@ namespace Balonek.Database
         public BillPositions BillPositions;
         public Bills Bills;
         public Texts Texts;
-        public Settings Settings;
+        public Companies Company;
 
 
         public Database(string databaseDirectory, ILogger logger)
@@ -28,9 +28,9 @@ namespace Balonek.Database
 
         private void InitilizeTables(string databaseDirectory)
         {
-            Settings = new Settings(databaseDirectory, this);
-            if (Settings.Get() == null)
-                Settings.CreateDefaultValue();
+            Company = new Companies(databaseDirectory, this);
+            if (Company.Get() == null)
+                Company.CreateDefaultValue();
 
             Clients = new Clients(databaseDirectory, this);
             BillPositions = new BillPositions(databaseDirectory, this);

@@ -43,11 +43,12 @@ namespace Balonek.Database.Tables
         {
             try
             {
-                XDocument doc = XDocument.Load(_tableFile);
+                int Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
 
+                XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
-                            new XElement("Id", billToAdd.Id),
+                            new XElement("Id", Id),
                             new XElement("ClientId", billToAdd.Client.Id),
                             new XElement("DateFrom", billToAdd.DateFrom.ToString(DATEFORMAT)),
                             new XElement("DateTo", billToAdd.DateTo.ToString(DATEFORMAT)),

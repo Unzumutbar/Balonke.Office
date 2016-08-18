@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Unzumutbar.Extensions;
-using Unzumutbar.Utilities;
 
 namespace Balonek.Office.Controls
 {
@@ -89,7 +88,7 @@ namespace Balonek.Office.Controls
         private void UpdatePeriodicalPositionList()
         {
             _periodicalPositionList = _positionList.Where(p => p.Type == PositionType.Periodical).OrderByDescending(p => p.Date).ToList();
-            if (!String.IsNullOrWhiteSpace(_searchContent))
+            if (_searchContent.IsNotNullOrWhitespace())
                 _periodicalPositionList = _positionList.Where(p => p.Client.Name.Contains(_searchContent) || p.Description.Contains(_searchContent)).ToList();
 
             this.listBoxRepeatition.Items.Clear();
@@ -102,7 +101,7 @@ namespace Balonek.Office.Controls
         private void UpdateSinglePositionList()
         {
             _singlePositionList = _positionList.Where(p => p.Type == PositionType.Single).OrderByDescending(p => p.Date).ToList();
-            if (!String.IsNullOrWhiteSpace(_searchContent))
+            if (_searchContent.IsNotNullOrWhitespace())
                 _singlePositionList = _positionList.Where(p => p.Client.Name.Contains(_searchContent) || p.Description.Contains(_searchContent)).ToList();
 
             this.listBoxPositions.Items.Clear();
@@ -172,10 +171,6 @@ namespace Balonek.Office.Controls
             {
                 _isAdding = true;
                 _currentPosition = new BillPosition();
-                if (_positionList.Any())
-                    _currentPosition.Id = _positionList.Max(c => c.Id) + 1;
-                else
-                    _currentPosition.Id = 1;
 
                 LoadCurrentPosition();
                 EnableEditMode(true);
