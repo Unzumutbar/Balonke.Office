@@ -171,6 +171,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Resources\secret.ogg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -179,6 +180,10 @@
     <ProjectReference Include="..\Balonek.Database\Balonek.Database.csproj">
       <Project>{efbd786d-4525-4c4b-aba2-a92f3501143a}</Project>
       <Name>Balonek.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unzumutbar.OggPlayer\Unzumutbar.OggPlayer.csproj">
+      <Project>{4ca9eb23-e111-4dad-9932-f73e8e6c54c5}</Project>
+      <Name>Unzumutbar.OggPlayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Unzumutbar.Common\Unzumutbar.Common.csproj">
       <Project>{f19fd20e-a090-44d5-8931-425deb84a12e}</Project>
@@ -207,7 +212,6 @@
     <None Include="Resources\im_sosia04.png" />
     <None Include="Resources\im_sosia05.png" />
     <Content Include="Resources\plus_small.png" />
-    <Content Include="Resources\secret.wav" />
     <Content Include="Resources\trash_small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

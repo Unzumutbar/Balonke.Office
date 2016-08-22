@@ -30,7 +30,7 @@ namespace Balonek.Database
         {
             Company = new Companies(databaseDirectory, this);
             if (Company.Get() == null)
-                Company.CreateDefaultValue();
+                Company.CreateDefaultValues(databaseDirectory);
 
             Clients = new Clients(databaseDirectory, this);
             BillPositions = new BillPositions(databaseDirectory, this);

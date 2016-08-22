@@ -65,12 +65,12 @@ namespace Balonek.Database.Tables
             }
         }
 
-        public void CreateDefaultValue()
+        public void CreateDefaultValues(string databaseDirectory)
         {
             var company = new Company();
             company.Id = 0;
             company.DataBaseVersion = 2;
-            company.TemplateBillPath = Path.Combine("ExportTemplates", "TemplateRechnung.odt");
+            company.TemplateBillPath = Path.Combine(databaseDirectory, "ExportTemplates", "TemplateRechnung.odt");
             this.Add(company);
         }
 

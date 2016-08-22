@@ -4,14 +4,12 @@ namespace Unzumutbar.Utilities
 {
     public static class ResourceUtilities
     {
-        public static void ExtractEmbeddedResource(string outputFile, UnmanagedMemoryStream unmanagedStream)
+        public static void ExtractEmbeddedResource(string outputFile, byte[] content)
         {
             using (FileStream file = new FileStream(outputFile, FileMode.Create, System.IO.FileAccess.Write))
             {
-                byte[] bytes = new byte[unmanagedStream.Length];
-                unmanagedStream.Read(bytes, 0, (int)unmanagedStream.Length);
-                file.Write(bytes, 0, bytes.Length);
-                unmanagedStream.Close();
+                byte[] bytes = new byte[content.Length];
+                file.Write(content, 0, bytes.Length);
             }
         }
     }

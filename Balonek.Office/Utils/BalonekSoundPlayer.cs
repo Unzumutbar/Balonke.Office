@@ -1,36 +1,24 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.InteropServices;
+﻿using System.IO;
 using Unzumutbar.Extensions;
+using Unzumutbar.OggPlayer;
 using Unzumutbar.Utilities;
 
 namespace Balonek.Office.Utils
 {
     public class BalonekSoundPlayer
     {
-        private BackgroundWorker musicPlayer;
-        [DllImport("winmm.dll", SetLastError = true)]
-        private static extern bool PlaySound(string pszSound, IntPtr hmod, int fdwSound);
-
+        OggPlayer _player;
         public BalonekSoundPlayer()
         {
-            musicPlayer = new BackgroundWorker();
-            musicPlayer.DoWork += new DoWorkEventHandler(playsecretSong_DoWork);
+            _player = new OggPlayer();
         }
-
 
         public void PlaySecretMusic()
         {
-            musicPlayer.RunWorkerAsync();
-        }
-
-        private void playsecretSong_DoWork(object sender, DoWorkEventArgs e)
-        {
             var tempDir = DirectoryExtension.CreateTempDirectory("ZosiasOffice");
-            var sound = Path.Combine(tempDir, "secret.wav");
+            var sound = Path.Combine(tempDir, "secret.ogg");
             ResourceUtilities.ExtractEmbeddedResource(sound, Properties.Resources.secret);
-            PlaySound(sound, IntPtr.Zero, 0);
+            _player.Play(sound);
         }
     }
 }

@@ -221,11 +221,12 @@ namespace Balonek.Office.Properties
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream secret {
+        internal static byte[] secret {
             get {
-                return ResourceManager.GetStream("secret", resourceCulture);
+                object obj = ResourceManager.GetObject("secret", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }
