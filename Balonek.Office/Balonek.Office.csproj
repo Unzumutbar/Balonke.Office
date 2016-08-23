@@ -157,6 +157,7 @@
     <Content Include="Fonts\HoboStd.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Fonts\ThisLittlePiggy.ttf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -171,7 +172,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Resources\secret.ogg" />
+    <None Include="Images\im_sosia02.png" />
+    <None Include="Images\im_sosia03.png" />
+    <None Include="Images\im_sosia04.png" />
+    <None Include="Images\im_sosia05.png" />
+    <None Include="Secret\secret.ogg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -191,29 +196,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\im_sosia01.png" />
-    <Content Include="Images\bg_sosia00.png" />
-    <Content Include="Images\bg_sosia01.png" />
+    <None Include="Images\im_sosia01.png" />
+    <None Include="Images\bg_sosia00.png" />
+    <None Include="Images\bg_sosia01.png" />
     <Content Include="icon_sosia.ico" />
-    <Content Include="Images\bg_sosia02.png" />
-    <Content Include="Images\bg_sosia03.png" />
-    <Content Include="Images\bg_sosia04.png" />
-    <Content Include="Images\bg_sosia05.png" />
-    <Content Include="Images\bg_sosia06.png" />
-    <Content Include="Images\bg_sosia07.png" />
-    <Content Include="Images\bg_sosia08.png" />
-    <Content Include="Images\bg_sosia09.png" />
-    <Content Include="Images\bg_sosia10.png" />
+    <None Include="Images\bg_sosia02.png" />
+    <None Include="Images\bg_sosia03.png" />
+    <None Include="Images\bg_sosia04.png" />
+    <None Include="Images\bg_sosia05.png" />
+    <None Include="Images\bg_sosia06.png" />
+    <None Include="Images\bg_sosia07.png" />
+    <None Include="Images\bg_sosia08.png" />
+    <None Include="Images\bg_sosia09.png" />
+    <None Include="Images\bg_sosia10.png" />
     <Content Include="Resources\checkmark_small.png" />
     <Content Include="Resources\close_small.png" />
     <Content Include="Resources\edit_small.png" />
-    <None Include="Resources\im_sosia02.png" />
-    <None Include="Resources\im_sosia03.png" />
-    <None Include="Resources\im_sosia04.png" />
-    <None Include="Resources\im_sosia05.png" />
     <Content Include="Resources\plus_small.png" />
     <Content Include="Resources\trash_small.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
