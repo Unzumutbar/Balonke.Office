@@ -157,7 +157,6 @@
     <Content Include="Fonts\HoboStd.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Fonts\ThisLittlePiggy.ttf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
