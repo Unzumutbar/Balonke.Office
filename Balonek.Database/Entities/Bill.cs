@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unzumutbar.Extensions;
 
 namespace Balonek.Database.Entities
@@ -15,13 +16,14 @@ namespace Balonek.Database.Entities
         public DateTime DateTo { get; set; }
         public decimal Total { get; set; }
         public Client Client { get; set; }
+        public BillStatus Status { get; set; }
         public List<BillPosition> Positions { get; set; }
         public override string ToString()
         {
             return string.Format("{0} - {1}", Client.Name, DateFrom.ToMonthAndYearGerman());
         }
 
-        public Dictionary<string, string> StringReplacementDictionary()
+        public Dictionary<string, string> StringReplacementDictionary(Company company = null)
         {
             var dictionary = new Dictionary<string, string>();
             dictionary.Add("%billid%", Id.ToString());
@@ -31,6 +33,13 @@ namespace Balonek.Database.Entities
             dictionary.Add("%month%", DateTo.ToMonthGerman());
             dictionary.Add("%year%", DateTo.Year.ToString());
             dictionary.Add("%totalsum%", Total.ToString("N2"));
+
+            if (company == null)
+                company = new Company();
+
+            foreach (var tuple in company.StringReplacementDictionary())
+                dictionary.Add(tuple.Key, tuple.Value);
+
             foreach (var tuple in Client.StringReplacementDictionary())
                 dictionary.Add(tuple.Key, tuple.Value);
 
@@ -45,6 +54,17 @@ namespace Balonek.Database.Entities
             }
             return dictionary;
         }
-
     }
+
+    public enum BillStatus
+    {
+        [Description("ungedruckt")]
+        NotPrinted = 1,
+
+        [Description("gedruckt")]
+        Printed = 2,
+
+        [Description("bezahlt")]
+        Payed = 4,
+    };
 }

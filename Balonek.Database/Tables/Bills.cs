@@ -28,6 +28,7 @@ namespace Balonek.Database.Tables
                             Client = _database.Clients.GetById(Int32.Parse(_bill.Element("ClientId").Value)),
                             DateFrom = DateTime.ParseExact(_bill.Element("DateFrom").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
                             DateTo = DateTime.ParseExact(_bill.Element("DateTo").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
+                            Status = (BillStatus)(Int32.Parse(_bill.Element("Status").Value)),
                             Total = Decimal.Parse(_bill.Element("Total").Value),
 
                         }).ToList();
@@ -52,6 +53,7 @@ namespace Balonek.Database.Tables
                             new XElement("ClientId", billToAdd.Client.Id),
                             new XElement("DateFrom", billToAdd.DateFrom.ToString(DATEFORMAT)),
                             new XElement("DateTo", billToAdd.DateTo.ToString(DATEFORMAT)),
+                            new XElement("Status", (int)billToAdd.Status),
                             new XElement("Total", billToAdd.Total)
                             )
                      );
@@ -77,6 +79,7 @@ namespace Balonek.Database.Tables
                 target.Element("ClientId").Value = billToUpdate.Client.Id.ToString();
                 target.Element("DateFrom").Value = billToUpdate.DateFrom.ToString(DATEFORMAT);
                 target.Element("DateTo").Value = billToUpdate.DateTo.ToString(DATEFORMAT);
+                target.Element("Status").Value = ((int)billToUpdate.Status).ToString();
                 target.Element("Total").Value = billToUpdate.Total.ToString();
 
                 doc.Save(_tableFile);

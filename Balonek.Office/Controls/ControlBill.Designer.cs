@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlBill));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.buttonAdd = new System.Windows.Forms.ToolStripButton();
             this.buttonEdit = new System.Windows.Forms.ToolStripButton();
@@ -54,15 +54,16 @@
             this.labelClient = new System.Windows.Forms.Label();
             this.comboBoxClient = new System.Windows.Forms.ComboBox();
             this.dataGridPositions = new System.Windows.Forms.DataGridView();
+            this.pickerDateTo = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingBillPosition = new System.Windows.Forms.BindingSource(this.components);
-            this.pickerDateTo = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buttonStatus = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -194,7 +195,7 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearch.Location = new System.Drawing.Point(0, 0);
@@ -206,8 +207,8 @@
             // 
             // listBoxPositions
             // 
-            this.listBoxPositions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.listBoxPositions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxPositions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxPositions.FormattingEnabled = true;
@@ -241,6 +242,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dataGridPositions, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.pickerDateTo, 4, 6);
             this.tableLayoutPanel1.Controls.Add(this.label1, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.buttonStatus, 4, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -405,6 +407,39 @@
             this.dataGridPositions.TabIndex = 17;
             this.dataGridPositions.TabStop = false;
             // 
+            // pickerDateTo
+            // 
+            this.pickerDateTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickerDateTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pickerDateTo.Enabled = false;
+            this.pickerDateTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickerDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.pickerDateTo.Location = new System.Drawing.Point(377, 136);
+            this.pickerDateTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pickerDateTo.Name = "pickerDateTo";
+            this.pickerDateTo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pickerDateTo.Size = new System.Drawing.Size(128, 27);
+            this.pickerDateTo.TabIndex = 6;
+            this.pickerDateTo.Value = new System.DateTime(2016, 7, 5, 0, 0, 0, 0);
+            this.pickerDateTo.ValueChanged += new System.EventHandler(this.pickerDate_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(277, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "bis";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
@@ -439,8 +474,8 @@
             // totalDataGridViewTextBoxColumn
             // 
             this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.totalDataGridViewTextBoxColumn.HeaderText = "Summe";
             this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
             this.totalDataGridViewTextBoxColumn.ReadOnly = true;
@@ -449,38 +484,17 @@
             // 
             this.bindingBillPosition.DataSource = typeof(Balonek.Database.Entities.BillPosition);
             // 
-            // pickerDateTo
+            // buttonStatus
             // 
-            this.pickerDateTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickerDateTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pickerDateTo.Enabled = false;
-            this.pickerDateTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickerDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.pickerDateTo.Location = new System.Drawing.Point(377, 136);
-            this.pickerDateTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pickerDateTo.Name = "pickerDateTo";
-            this.pickerDateTo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pickerDateTo.Size = new System.Drawing.Size(128, 27);
-            this.pickerDateTo.TabIndex = 6;
-            this.pickerDateTo.Value = new System.DateTime(2016, 7, 5, 0, 0, 0, 0);
-            this.pickerDateTo.ValueChanged += new System.EventHandler(this.pickerDate_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(277, 139);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 20);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "bis";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.buttonStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStatus.Location = new System.Drawing.Point(377, 23);
+            this.buttonStatus.Name = "buttonStatus";
+            this.buttonStatus.Size = new System.Drawing.Size(128, 25);
+            this.buttonStatus.TabIndex = 20;
+            this.buttonStatus.Text = "Rechnungsstatus";
+            this.buttonStatus.UseVisualStyleBackColor = true;
+            this.buttonStatus.Click += new System.EventHandler(this.buttonStatus_Click);
             // 
             // ControlBill
             // 
@@ -541,5 +555,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton buttonExport;
+        private System.Windows.Forms.Button buttonStatus;
     }
 }

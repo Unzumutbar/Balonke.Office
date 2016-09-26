@@ -122,6 +122,7 @@ namespace Balonek.Office.Controls
             {
                 _isAdding = true;
                 _currentBill = new Bill();
+                _currentBill.Status = BillStatus.NotPrinted;
 
                 LoadCurrentBill();
                 EnableEditMode(true);
@@ -208,6 +209,7 @@ namespace Balonek.Office.Controls
             pickerDateFrom.Value = _currentBill.DateFrom;
             pickerDateTo.Value = _currentBill.DateTo;
 
+            UpdateStatusDisplay();
             LoadAssociatedBillPositions();
         }
 
@@ -293,13 +295,17 @@ namespace Balonek.Office.Controls
                 saveFileDialog.Filter = "Open Document Text(*.odt)|*.odt|All files (*.*)|*.*";
                 saveFileDialog.FilterIndex = 1;
                 saveFileDialog.RestoreDirectory = true;
-                saveFileDialog.FileName = string.Format("Rechnung {0} - {1}.odt", _currentBill.Client.Name, _currentBill.DateFrom.ToMonthGerman());
+                saveFileDialog.FileName = string.Format("Rechnung {0} {1:yyyy-MM}.odt", _currentBill.Client.Name, _currentBill.DateFrom);
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     CreateBillFromTemplate(saveFileDialog.FileName);
                     BalonekMessageBox.Show(Program.Logger, _message);
                 }
+
+                _currentBill.Status = BillStatus.Printed;
+                UpdateStatusDisplay();
+                Program.Database.Bills.Update(_currentBill);
             }
             catch (Exception ex)
             {
@@ -322,16 +328,54 @@ namespace Balonek.Office.Controls
                 if (File.Exists(billDocument))
                     File.Delete(billDocument);
 
+                var company = Program.Database.Company.Get();
                 var editor = new OpenDocumentEditor();
                 editor.CreateFromTemplate(templateFile);
-                editor.ReplaceWithDictonary(_currentBill.StringReplacementDictionary());
+                editor.ReplaceWithDictonary(_currentBill.StringReplacementDictionary(company));
                 editor.DeleteTableRow("%pos");
                 editor.Save(billDocument);
                 _message = string.Format("{0} erfolgreich exportiert.", Path.GetFullPath(billDocument));
             }
             catch (Exception ex)
             {
-                BalonekMessageBox.ShowError(Program.Logger, ex);
+                throw ex;
+            }
+        }
+
+        private void buttonStatus_Click(object sender, EventArgs e)
+        {
+            if (_currentBill == null || _currentBill.Status == BillStatus.NotPrinted || buttonEdit.Enabled)
+                return;
+
+            switch (_currentBill.Status)
+            {
+                case BillStatus.Printed:
+                    _currentBill.Status = BillStatus.Payed;
+                    break;
+                case BillStatus.Payed:
+                    _currentBill.Status = BillStatus.Printed;
+                    break;
+            }
+            UpdateStatusDisplay();
+        }
+
+        private void UpdateStatusDisplay()
+        {
+            if (_currentBill == null)
+                return;
+
+            buttonStatus.Text = _currentBill.Status.GetDescription();
+            switch (_currentBill.Status)
+            {
+                case BillStatus.NotPrinted:
+                    buttonStatus.BackColor = System.Drawing.Color.LightSalmon;
+                    break;
+                case BillStatus.Printed:
+                    buttonStatus.BackColor = System.Drawing.Color.Yellow;
+                    break;
+                case BillStatus.Payed:
+                    buttonStatus.BackColor = System.Drawing.Color.LightGreen;
+                    break;
             }
         }
     }
