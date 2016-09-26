@@ -54,6 +54,10 @@ namespace Balonek.Office.Controls
             _company.Telephone = textBoxTelephone.Text;
             _company.Fax = textBoxFax.Text;
             _company.Email = textBoxEmail.Text;
+            _company.BankName = textBoxBankName.Text;
+            _company.Iban = textBoxIBAN.Text;
+            _company.Bic = textBoxBIC.Text;
+            _company.TaxNr = textBoxTaxNr.Text;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -73,6 +77,10 @@ namespace Balonek.Office.Controls
             textBoxTelephone.Text = _company.Telephone;
             textBoxFax.Text = _company.Fax;
             textBoxEmail.Text = _company.Email;
+            textBoxBankName.Text = _company.BankName;
+            textBoxIBAN.Text = _company.Iban;
+            textBoxBIC.Text = _company.Bic;
+            textBoxTaxNr.Text = _company.TaxNr;
 
             textBoxDatabaseVersion.Text = _company.DataBaseVersion.ToString();
             textBoxTemplateBills.Text = _company.TemplateBillPath;
@@ -89,6 +97,10 @@ namespace Balonek.Office.Controls
             textBoxFax.ReadOnly = !enabled;
             textBoxEmail.ReadOnly = !enabled;
             textBoxTemplateBills.ReadOnly = !enabled;
+            textBoxBankName.ReadOnly = !enabled;
+            textBoxIBAN.ReadOnly = !enabled;
+            textBoxBIC.ReadOnly = !enabled;
+            textBoxTaxNr.ReadOnly = !enabled;
             buttonFindTemplate.Enabled = enabled;
 
             buttonEdit.Enabled = !enabled;

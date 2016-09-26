@@ -60,6 +60,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxCompany = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxIBAN = new System.Windows.Forms.TextBox();
+            this.textBoxTaxNr = new System.Windows.Forms.TextBox();
+            this.textBoxBIC = new System.Windows.Forms.TextBox();
+            this.textBoxBankName = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -172,25 +180,35 @@
             this.tableLayoutPanel2.Controls.Add(this.textBoxZip, 2, 9);
             this.tableLayoutPanel2.Controls.Add(this.labelZipCity, 1, 9);
             this.tableLayoutPanel2.Controls.Add(this.textBoxCity, 3, 9);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxTelephone, 2, 11);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxFax, 2, 13);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxEmail, 2, 15);
-            this.tableLayoutPanel2.Controls.Add(this.labelTel, 1, 11);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 1, 13);
-            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 15);
             this.tableLayoutPanel2.Controls.Add(this.textBoxDatabaseVersion, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 17);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxTemplateBills, 2, 17);
-            this.tableLayoutPanel2.Controls.Add(this.buttonFindTemplate, 5, 17);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 19);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxTemplateBills, 2, 19);
+            this.tableLayoutPanel2.Controls.Add(this.buttonFindTemplate, 5, 19);
             this.tableLayoutPanel2.Controls.Add(this.label3, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.textBoxCompany, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.labelTel, 3, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 3, 7);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxTelephone, 4, 5);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxFax, 4, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 11);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxEmail, 2, 11);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 13);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 15);
+            this.tableLayoutPanel2.Controls.Add(this.label7, 3, 15);
+            this.tableLayoutPanel2.Controls.Add(this.label8, 1, 17);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxIBAN, 2, 15);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxTaxNr, 2, 17);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxBIC, 4, 15);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxBankName, 2, 13);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 19;
+            this.tableLayoutPanel2.RowCount = 21;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -223,13 +241,12 @@
             // 
             // textBoxName
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.textBoxName, 4);
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxName.Location = new System.Drawing.Point(163, 119);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.ReadOnly = true;
-            this.textBoxName.Size = new System.Drawing.Size(540, 27);
+            this.textBoxName.Size = new System.Drawing.Size(197, 27);
             this.textBoxName.TabIndex = 3;
             // 
             // labelName
@@ -245,13 +262,12 @@
             // 
             // textBoxStreet
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.textBoxStreet, 4);
             this.textBoxStreet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxStreet.Location = new System.Drawing.Point(163, 162);
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.ReadOnly = true;
-            this.textBoxStreet.Size = new System.Drawing.Size(540, 27);
+            this.textBoxStreet.Size = new System.Drawing.Size(197, 27);
             this.textBoxStreet.TabIndex = 4;
             // 
             // labelStreet
@@ -295,28 +311,28 @@
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.ReadOnly = true;
             this.textBoxCity.Size = new System.Drawing.Size(337, 27);
-            this.textBoxCity.TabIndex = 8;
+            this.textBoxCity.TabIndex = 7;
             // 
             // textBoxTelephone
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.textBoxTelephone, 4);
+            this.tableLayoutPanel2.SetColumnSpan(this.textBoxTelephone, 2);
             this.textBoxTelephone.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTelephone.Location = new System.Drawing.Point(163, 268);
+            this.textBoxTelephone.Location = new System.Drawing.Point(466, 119);
             this.textBoxTelephone.Name = "textBoxTelephone";
             this.textBoxTelephone.ReadOnly = true;
-            this.textBoxTelephone.Size = new System.Drawing.Size(540, 27);
+            this.textBoxTelephone.Size = new System.Drawing.Size(237, 27);
             this.textBoxTelephone.TabIndex = 9;
             // 
             // textBoxFax
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.textBoxFax, 4);
+            this.tableLayoutPanel2.SetColumnSpan(this.textBoxFax, 2);
             this.textBoxFax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFax.Location = new System.Drawing.Point(163, 311);
+            this.textBoxFax.Location = new System.Drawing.Point(466, 162);
             this.textBoxFax.Name = "textBoxFax";
             this.textBoxFax.ReadOnly = true;
-            this.textBoxFax.Size = new System.Drawing.Size(540, 27);
+            this.textBoxFax.Size = new System.Drawing.Size(237, 27);
             this.textBoxFax.TabIndex = 10;
             // 
             // textBoxEmail
@@ -324,18 +340,18 @@
             this.tableLayoutPanel2.SetColumnSpan(this.textBoxEmail, 4);
             this.textBoxEmail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(163, 354);
+            this.textBoxEmail.Location = new System.Drawing.Point(163, 248);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.ReadOnly = true;
             this.textBoxEmail.Size = new System.Drawing.Size(540, 27);
-            this.textBoxEmail.TabIndex = 11;
+            this.textBoxEmail.TabIndex = 8;
             // 
             // labelTel
             // 
             this.labelTel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelTel.AutoSize = true;
             this.labelTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTel.Location = new System.Drawing.Point(23, 271);
+            this.labelTel.Location = new System.Drawing.Point(366, 122);
             this.labelTel.Name = "labelTel";
             this.labelTel.Size = new System.Drawing.Size(54, 20);
             this.labelTel.TabIndex = 12;
@@ -346,7 +362,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 314);
+            this.label1.Location = new System.Drawing.Point(366, 165);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 20);
             this.label1.TabIndex = 13;
@@ -357,7 +373,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 357);
+            this.label2.Location = new System.Drawing.Point(23, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 14;
@@ -379,7 +395,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 420);
+            this.label4.Location = new System.Drawing.Point(23, 463);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 5;
@@ -390,7 +406,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.textBoxTemplateBills, 3);
             this.textBoxTemplateBills.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTemplateBills.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTemplateBills.Location = new System.Drawing.Point(163, 417);
+            this.textBoxTemplateBills.Location = new System.Drawing.Point(163, 460);
             this.textBoxTemplateBills.Name = "textBoxTemplateBills";
             this.textBoxTemplateBills.ReadOnly = true;
             this.textBoxTemplateBills.Size = new System.Drawing.Size(500, 27);
@@ -401,7 +417,7 @@
             this.buttonFindTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonFindTemplate.Enabled = false;
             this.buttonFindTemplate.Image = ((System.Drawing.Image)(resources.GetObject("buttonFindTemplate.Image")));
-            this.buttonFindTemplate.Location = new System.Drawing.Point(669, 417);
+            this.buttonFindTemplate.Location = new System.Drawing.Point(669, 460);
             this.buttonFindTemplate.Name = "buttonFindTemplate";
             this.buttonFindTemplate.Size = new System.Drawing.Size(34, 27);
             this.buttonFindTemplate.TabIndex = 14;
@@ -435,6 +451,92 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(23, 314);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Bank";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(23, 357);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "IBAN";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(366, 357);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "BIC";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(23, 400);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 20);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "SteuerNr.";
+            // 
+            // textBoxIBAN
+            // 
+            this.textBoxIBAN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxIBAN.Location = new System.Drawing.Point(163, 354);
+            this.textBoxIBAN.Name = "textBoxIBAN";
+            this.textBoxIBAN.ReadOnly = true;
+            this.textBoxIBAN.Size = new System.Drawing.Size(197, 27);
+            this.textBoxIBAN.TabIndex = 20;
+            // 
+            // textBoxTaxNr
+            // 
+            this.textBoxTaxNr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxTaxNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTaxNr.Location = new System.Drawing.Point(163, 397);
+            this.textBoxTaxNr.Name = "textBoxTaxNr";
+            this.textBoxTaxNr.ReadOnly = true;
+            this.textBoxTaxNr.Size = new System.Drawing.Size(197, 27);
+            this.textBoxTaxNr.TabIndex = 21;
+            // 
+            // textBoxBIC
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.textBoxBIC, 2);
+            this.textBoxBIC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBIC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxBIC.Location = new System.Drawing.Point(466, 354);
+            this.textBoxBIC.Name = "textBoxBIC";
+            this.textBoxBIC.ReadOnly = true;
+            this.textBoxBIC.Size = new System.Drawing.Size(237, 27);
+            this.textBoxBIC.TabIndex = 22;
+            // 
+            // textBoxBankName
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.textBoxBankName, 4);
+            this.textBoxBankName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBankName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxBankName.Location = new System.Drawing.Point(163, 311);
+            this.textBoxBankName.Name = "textBoxBankName";
+            this.textBoxBankName.ReadOnly = true;
+            this.textBoxBankName.Size = new System.Drawing.Size(540, 27);
+            this.textBoxBankName.TabIndex = 23;
             // 
             // ControlCompany
             // 
@@ -488,5 +590,13 @@
         private System.Windows.Forms.TextBox textBoxCompany;
         private System.Windows.Forms.ToolStripButton buttonExport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxIBAN;
+        private System.Windows.Forms.TextBox textBoxTaxNr;
+        private System.Windows.Forms.TextBox textBoxBIC;
+        private System.Windows.Forms.TextBox textBoxBankName;
     }
 }

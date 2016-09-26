@@ -13,6 +13,11 @@ namespace Balonek.Database.Entities
         public string Fax { get; set; }
         public string Email { get; set; }
 
+        public string BankName { get; set; }
+        public string Iban { get; set; }
+        public string Bic { get; set; }
+        public string TaxNr { get; set; }
+
         public int DataBaseVersion { get; set; }
         public string TemplateBillPath { get; set; }
 
@@ -33,6 +38,10 @@ namespace Balonek.Database.Entities
             dictionary.Add("%comtelephone%", Telephone);
             dictionary.Add("%comfax%", Fax);
             dictionary.Add("%comemail%", Email);
+            dictionary.Add("%combank%", BankName);
+            dictionary.Add("%comiban%", Iban);
+            dictionary.Add("%combic%", Bic);
+            dictionary.Add("%comtaxnr%", TaxNr);
             return dictionary;
         }
     }

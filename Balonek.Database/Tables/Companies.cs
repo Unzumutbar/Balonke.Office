@@ -34,6 +34,10 @@ namespace Balonek.Database.Tables
                                 Telephone = _company.Element("Telephone").Value,
                                 Fax = _company.Element("Fax").Value,
                                 Email = _company.Element("Email").Value,
+                                BankName = _company.Element("BankName").Value,
+                                Iban = _company.Element("Iban").Value,
+                                Bic = _company.Element("Bic").Value,
+                                TaxNr = _company.Element("TaxNr").Value,
 
                                 DataBaseVersion = Int32.Parse(_company.Element("DatabaseVersion").Value),
                                 TemplateBillPath = _company.Element("BillTemplateFile").Value,
@@ -91,6 +95,10 @@ namespace Balonek.Database.Tables
                             new XElement("Telephone", companyToAdd.Telephone),
                             new XElement("Fax", companyToAdd.Fax),
                             new XElement("Email", companyToAdd.Email),
+                            new XElement("BankName", companyToAdd.BankName),
+                            new XElement("Iban", companyToAdd.Iban),
+                            new XElement("Bic", companyToAdd.Bic),
+                            new XElement("TaxNr", companyToAdd.TaxNr),
 
                             new XElement("DatabaseVersion", companyToAdd.DataBaseVersion),
                             new XElement("BillTemplateFile", companyToAdd.TemplateBillPath)
@@ -122,6 +130,10 @@ namespace Balonek.Database.Tables
                 target.Element("Telephone").Value = companyToUpdate.Telephone;
                 target.Element("Fax").Value = companyToUpdate.Fax;
                 target.Element("Email").Value = companyToUpdate.Email;
+                target.Element("BankName").Value = companyToUpdate.BankName;
+                target.Element("Iban").Value = companyToUpdate.Iban;
+                target.Element("Bic").Value = companyToUpdate.Bic;
+                target.Element("TaxNr").Value = companyToUpdate.TaxNr;
 
                 target.Element("BillTemplateFile").Value = companyToUpdate.TemplateBillPath;
 
