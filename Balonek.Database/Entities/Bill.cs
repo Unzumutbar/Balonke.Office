@@ -26,13 +26,6 @@ namespace Balonek.Database.Entities
         public Dictionary<string, string> StringReplacementDictionary(Company company = null)
         {
             var dictionary = new Dictionary<string, string>();
-            dictionary.Add("%billid%", Id.ToString());
-            dictionary.Add("%billdate%", DateTime.Now.ToBillDate());
-            dictionary.Add("%monthfrom%", DateFrom.ToMonthGerman());
-            dictionary.Add("%monthto%", DateTo.ToMonthGerman());
-            dictionary.Add("%month%", DateTo.ToMonthGerman());
-            dictionary.Add("%year%", DateTo.Year.ToString());
-            dictionary.Add("%totalsum%", Total.ToString("N2"));
 
             if (company == null)
                 company = new Company();
@@ -42,6 +35,15 @@ namespace Balonek.Database.Entities
 
             foreach (var tuple in Client.StringReplacementDictionary())
                 dictionary.Add(tuple.Key, tuple.Value);
+
+            dictionary.Add("%RECHNUNG%", string.Empty);
+            dictionary.Add("%billid%", Id.ToString());
+            dictionary.Add("%billdate%", DateTime.Now.ToBillDate());
+            dictionary.Add("%monthfrom%", DateFrom.ToMonthGerman());
+            dictionary.Add("%monthto%", DateTo.ToMonthGerman());
+            dictionary.Add("%month%", DateTo.ToMonthGerman());
+            dictionary.Add("%year%", DateTo.Year.ToString());
+            dictionary.Add("%totalsum%", Total.ToString("N2"));
 
             int posnr = 1;
             foreach (var position in Positions)

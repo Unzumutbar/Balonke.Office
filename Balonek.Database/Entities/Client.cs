@@ -21,6 +21,7 @@ namespace Balonek.Database.Entities
         public Dictionary<string, string> StringReplacementDictionary()
         {
             var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%KUNDE%", string.Empty);
             dictionary.Add("%clientid%", Id.ToString());
             dictionary.Add("%name%", Name);
             dictionary.Add("%street%", Street);

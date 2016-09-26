@@ -1,6 +1,8 @@
 ﻿using Balonek.Database.Entities;
+using Balonek.Office.Forms;
 using Balonek.Office.Utils;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Balonek.Office.Controls
@@ -8,6 +10,7 @@ namespace Balonek.Office.Controls
     public partial class ControlCompany : UserControl
     {
         private Company _company;
+        private ShowWildCardsForm ShowWildCardsForm;
 
         public ControlCompany()
         {
@@ -91,6 +94,7 @@ namespace Balonek.Office.Controls
             buttonEdit.Enabled = !enabled;
             buttonSave.Enabled = enabled;
             buttonCancel.Enabled = enabled;
+            buttonExport.Enabled = !enabled;
         }
 
         private void buttonFindTemplate_Click(object sender, EventArgs e)
@@ -106,6 +110,18 @@ namespace Balonek.Office.Controls
                 _company.TemplateBillPath = openFileDialog.FileName;
                 this.textBoxTemplateBills.Text = openFileDialog.FileName;
             }
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            if (ShowWildCardsForm == null || (ShowWildCardsForm.IsDisposed))
+            {
+                var parent = this.ParentForm;
+                ShowWildCardsForm = new ShowWildCardsForm() { Owner = parent, Location = new Point(parent.Location.X + parent.Width, parent.Location.Y) };
+            }
+            ShowWildCardsForm.SetParentControl(this);
+            ShowWildCardsForm.CreateWildCards(_company);
+            ShowWildCardsForm.Show();
         }
     }
 }

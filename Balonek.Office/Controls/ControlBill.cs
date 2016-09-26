@@ -303,7 +303,9 @@ namespace Balonek.Office.Controls
                     BalonekMessageBox.Show(Program.Logger, _message);
                 }
 
-                _currentBill.Status = BillStatus.Printed;
+                if(_currentBill.Status == BillStatus.NotPrinted)
+                    _currentBill.Status = BillStatus.Printed;
+
                 UpdateStatusDisplay();
                 Program.Database.Bills.Update(_currentBill);
             }

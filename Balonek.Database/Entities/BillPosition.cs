@@ -65,6 +65,7 @@ namespace Balonek.Database.Entities
         public Dictionary<string, string> StringReplacementDictionary()
         {
             var dictionary = new Dictionary<string, string>();
+            dictionary.Add("%POSITIONpos%", string.Empty);
             dictionary.Add("%posdescription%", Description);
             dictionary.Add("%posdate%", Date.ToString("dd.MM.yyyy"));
             dictionary.Add("%postime%", Time.ToString());

@@ -35,6 +35,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonSave = new System.Windows.Forms.ToolStripButton();
             this.buttonCancel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonExport = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelId = new System.Windows.Forms.Label();
@@ -73,7 +75,9 @@
             this.buttonEdit,
             this.toolStripSeparator1,
             this.buttonSave,
-            this.buttonCancel});
+            this.buttonCancel,
+            this.toolStripSeparator2,
+            this.buttonExport});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(757, 30);
@@ -119,6 +123,21 @@
             this.buttonCancel.Size = new System.Drawing.Size(99, 27);
             this.buttonCancel.Text = "Abbruch";
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExport.Image = ((System.Drawing.Image)(resources.GetObject("buttonExport.Image")));
+            this.buttonExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(189, 27);
+            this.buttonExport.Text = "Platzhalter anzeigen";
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
             // splitContainer1
             // 
@@ -467,5 +486,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxCompany;
+        private System.Windows.Forms.ToolStripButton buttonExport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
