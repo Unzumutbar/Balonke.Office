@@ -1,52 +1,77 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using Unzumutbar.Extensions;
+using Unzumutbar.Utilities;
 
 namespace Balonek.Office.Utils
 {
     public class ImageArchive
     {
-        public static List<Bitmap> GetBackgrounds()
+        public static List<string> GetBackgrounds()
         {
-            var backgroundList = new List<Bitmap>();
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia00);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia01);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia02);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia03);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia04);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia05);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia06);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia07);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia08);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia09);
-            backgroundList.Add(Balonek.Office.Properties.Resources.bg_sosia10);
-
+            var backgroundList = new List<string>();
+            var path = GetImagePath();
+            foreach (var file in Directory.GetFiles(path, "bg_*"))
+            {
+                backgroundList.Add(file);
+            }
             return backgroundList;
         }
 
         public static Bitmap GetRandomBackground()
         {
-            var backgrounds = GetBackgrounds();
-            return backgrounds.Random();
+            try
+            {
+                var background = GetBackgrounds().Random();
+                return LoadImage(background);
+            }
+            catch(Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                return ImageUtilities.DrawEmpyImage(1, 1);
+            }
         }
 
+        private static Bitmap LoadImage(string background)
+        {
+            using (Stream BitmapStream = File.Open(background, FileMode.Open))
+            {
+                Image img = Image.FromStream(BitmapStream);
+
+                return new Bitmap(img);
+            }
+        }
 
         public static Bitmap GetRandomSmallImage()
         {
-            var images = GetSmallImages();
-            return images.Random();
+            try
+            {
+                var image = GetSmallImages().Random();
+                return LoadImage(image);
+            }
+            catch (Exception ex)
+            {
+                Program.Logger.LogError(ex);
+                return ImageUtilities.DrawEmpyImage(1, 1);
+            }
+}
+
+        public static List<string> GetSmallImages()
+        {
+            var imageList = new List<string>();
+            string path = GetImagePath();
+            foreach (var file in Directory.GetFiles(path, "im_*"))
+            {
+                imageList.Add(file);
+            }
+            return imageList;
         }
 
-        public static List<Bitmap> GetSmallImages()
+        private static string GetImagePath()
         {
-            var imageList = new List<Bitmap>();
-            imageList.Add(Balonek.Office.Properties.Resources.im_sosia01);
-            imageList.Add(Balonek.Office.Properties.Resources.im_sosia02);
-            imageList.Add(Balonek.Office.Properties.Resources.im_sosia03);
-            imageList.Add(Balonek.Office.Properties.Resources.im_sosia04);
-            imageList.Add(Balonek.Office.Properties.Resources.im_sosia05);
-
-            return imageList;
+            return Path.Combine(Program.AppDirectory, "Images");
         }
     }
 }
