@@ -60,6 +60,9 @@ namespace Balonek.Database.Entities
 
     public enum BillStatus
     {
+        [Description("Alle")]
+        None = 0,
+
         [Description("ungedruckt")]
         NotPrinted = 1,
 

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlBill));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.buttonAdd = new System.Windows.Forms.ToolStripButton();
             this.buttonEdit = new System.Windows.Forms.ToolStripButton();
@@ -56,14 +56,15 @@
             this.dataGridPositions = new System.Windows.Forms.DataGridView();
             this.pickerDateTo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonStatus = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.comboBoxSelectStatus = new System.Windows.Forms.ComboBox();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingBillPosition = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonStatus = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -183,6 +184,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.comboBoxSelectStatus);
             this.splitContainer1.Panel1.Controls.Add(this.textBoxSearch);
             this.splitContainer1.Panel1.Controls.Add(this.listBoxPositions);
             // 
@@ -213,11 +215,11 @@
             this.listBoxPositions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxPositions.FormattingEnabled = true;
             this.listBoxPositions.ItemHeight = 20;
-            this.listBoxPositions.Location = new System.Drawing.Point(0, 34);
+            this.listBoxPositions.Location = new System.Drawing.Point(0, 74);
             this.listBoxPositions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPositions.Name = "listBoxPositions";
-            this.listBoxPositions.Size = new System.Drawing.Size(213, 424);
-            this.listBoxPositions.TabIndex = 0;
+            this.listBoxPositions.Size = new System.Drawing.Size(213, 384);
+            this.listBoxPositions.TabIndex = 3;
             this.listBoxPositions.SelectedIndexChanged += new System.EventHandler(this.listBoxBills_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
@@ -434,11 +436,36 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "bis";
             // 
+            // buttonStatus
+            // 
+            this.buttonStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStatus.Location = new System.Drawing.Point(377, 23);
+            this.buttonStatus.Name = "buttonStatus";
+            this.buttonStatus.Size = new System.Drawing.Size(128, 25);
+            this.buttonStatus.TabIndex = 20;
+            this.buttonStatus.Text = "Rechnungsstatus";
+            this.buttonStatus.UseVisualStyleBackColor = true;
+            this.buttonStatus.Click += new System.EventHandler(this.buttonStatus_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            // 
+            // comboBoxSelectStatus
+            // 
+            this.comboBoxSelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSelectStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSelectStatus.FormattingEnabled = true;
+            this.comboBoxSelectStatus.Location = new System.Drawing.Point(0, 33);
+            this.comboBoxSelectStatus.Name = "comboBoxSelectStatus";
+            this.comboBoxSelectStatus.Size = new System.Drawing.Size(213, 28);
+            this.comboBoxSelectStatus.TabIndex = 2;
+            this.comboBoxSelectStatus.SelectedValueChanged += new System.EventHandler(this.comboBoxSelectStatus_SelectedValueChanged);
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
@@ -474,8 +501,8 @@
             // totalDataGridViewTextBoxColumn
             // 
             this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.totalDataGridViewTextBoxColumn.HeaderText = "Summe";
             this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
             this.totalDataGridViewTextBoxColumn.ReadOnly = true;
@@ -483,18 +510,6 @@
             // bindingBillPosition
             // 
             this.bindingBillPosition.DataSource = typeof(Balonek.Database.Entities.BillPosition);
-            // 
-            // buttonStatus
-            // 
-            this.buttonStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStatus.Location = new System.Drawing.Point(377, 23);
-            this.buttonStatus.Name = "buttonStatus";
-            this.buttonStatus.Size = new System.Drawing.Size(128, 25);
-            this.buttonStatus.TabIndex = 20;
-            this.buttonStatus.Text = "Rechnungsstatus";
-            this.buttonStatus.UseVisualStyleBackColor = true;
-            this.buttonStatus.Click += new System.EventHandler(this.buttonStatus_Click);
             // 
             // ControlBill
             // 
@@ -556,5 +571,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton buttonExport;
         private System.Windows.Forms.Button buttonStatus;
+        private System.Windows.Forms.ComboBox comboBoxSelectStatus;
     }
 }

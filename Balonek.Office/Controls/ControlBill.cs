@@ -22,6 +22,7 @@ namespace Balonek.Office.Controls
 
         private bool _isAdding;
         private string _searchContent;
+        private BillStatus _searchStatus;
 
         public BindingList<BillPosition> AssociatedBillPositions = new BindingList<BillPosition>();
         private string _message;
@@ -34,11 +35,20 @@ namespace Balonek.Office.Controls
                 UpdateBillList();
                 UpdateClientList();
                 UpdateBillPositionList();
+                UpdateStatusType();
             }
             catch (Exception ex)
             {
                 BalonekMessageBox.ShowError(Program.Logger, ex);
             }
+        }
+
+        private void UpdateStatusType()
+        {
+            foreach (BillStatus value in Enum.GetValues(typeof(BillStatus)))
+                comboBoxSelectStatus.Items.Add(value.GetDescription());
+
+            comboBoxSelectStatus.SelectedItem = BillStatus.None.GetDescription();
         }
 
         private void UpdateBillList(bool useCache = false)
@@ -49,6 +59,9 @@ namespace Balonek.Office.Controls
             _billSearchList = _billList.OrderBy(p => p.Client.Id).ThenByDescending(p => p.DateFrom).ToList();
             if (_searchContent.IsNotNullOrWhitespace())
                 _billSearchList = _billList.Where(p => p.Client.Name.Contains(_searchContent) || p.DateFrom.ToMonthAndYearGerman().Contains(_searchContent)).ToList();
+
+            if (_searchStatus != BillStatus.None)
+                _billSearchList = _billSearchList.Where(p => p.Status == _searchStatus).ToList();
 
             this.listBoxPositions.Items.Clear();
             foreach (var bill in _billSearchList)
@@ -379,6 +392,12 @@ namespace Balonek.Office.Controls
                     buttonStatus.BackColor = System.Drawing.Color.LightGreen;
                     break;
             }
+        }
+
+        private void comboBoxSelectStatus_SelectedValueChanged(object sender, EventArgs e)
+        {
+            _searchStatus = EnumExtensions.GetValueFromDescription<BillStatus>(comboBoxSelectStatus.Text);
+            UpdateBillList(true);
         }
     }
 }
