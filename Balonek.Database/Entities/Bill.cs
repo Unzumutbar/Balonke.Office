@@ -18,6 +18,8 @@ namespace Balonek.Database.Entities
         public Client Client { get; set; }
         public BillStatus Status { get; set; }
         public List<BillPosition> Positions { get; set; }
+        public string BillPurpose { get; set; }
+        public bool MergePositions { get; set; }
         public override string ToString()
         {
             return string.Format("{0} - {1}", Client.Name, DateFrom.ToMonthAndYearGerman());
@@ -43,6 +45,7 @@ namespace Balonek.Database.Entities
             dictionary.Add("%monthto%", DateTo.ToMonthGerman());
             dictionary.Add("%month%", DateTo.ToMonthGerman());
             dictionary.Add("%year%", DateTo.Year.ToString());
+            dictionary.Add("%billpurpose%", BillPurpose);
             dictionary.Add("%totalsum%", Total.ToString("N2"));
 
             int posnr = 1;

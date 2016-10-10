@@ -126,6 +126,7 @@ namespace Balonek.Office.Controls
             textBoxClientName.Text = _currentBill.Client.Name;
 
             LoadAssociatedBillPositions();
+            CreateBillPurpose();
         }
 
 
@@ -135,7 +136,9 @@ namespace Balonek.Office.Controls
             {
                 _isAdding = true;
                 _currentBill = new Bill();
+                _currentBill.Id = Program.Database.Bills.GetNextId();
                 _currentBill.Status = BillStatus.NotPrinted;
+                _currentBill.MergePositions = true;
 
                 LoadCurrentBill();
                 EnableEditMode(true);
@@ -151,7 +154,6 @@ namespace Balonek.Office.Controls
             _isAdding = false;
             if (_currentBill == null)
                 return;
-            _isAdding = false;
             EnableEditMode(true);
         }
 
@@ -222,6 +224,8 @@ namespace Balonek.Office.Controls
             pickerDateFrom.Value = _currentBill.DateFrom;
             pickerDateTo.Value = _currentBill.DateTo;
 
+            checkBoxMergePositions.Checked = _currentBill.MergePositions;
+
             UpdateStatusDisplay();
             LoadAssociatedBillPositions();
         }
@@ -229,6 +233,10 @@ namespace Balonek.Office.Controls
         private void LoadAssociatedBillPositions()
         {
             var results = _positionList.Where(pb => pb.Date >= _currentBill.DateFrom && pb.Date <= _currentBill.DateTo && pb.Client.Id == _currentBill.Client.Id).ToList();
+            if(_currentBill.MergePositions)
+            {
+                results = MergeBillPositions(results);
+            }
             _currentBill.Positions = results;
             AssociatedBillPositions = new BindingList<BillPosition>(results);
             var source = new BindingSource(AssociatedBillPositions, null);
@@ -237,17 +245,44 @@ namespace Balonek.Office.Controls
             CalculateSum();
         }
 
+        private List<BillPosition> MergeBillPositions(List<BillPosition> results)
+        {
+            var mergedPositions = new List<BillPosition>();
+            var distinctPositions = results.Select(bp => new { bp.Description, bp.Rate }).Distinct();
+            int id = 100;
+            foreach (var distinct in distinctPositions)
+            {
+                id++;
+                var mergedPosition = new BillPosition();
+                mergedPosition.Id = id;
+                mergedPosition.Client = _currentBill.Client;
+                mergedPosition.Description = distinct.Description;
+                mergedPosition.Rate = distinct.Rate;
+
+                foreach (var result in results)
+                {
+                    if (distinct.Description.EqualsWithTrim(result.Description) && distinct.Rate == result.Rate)
+                        mergedPosition.Time += result.Time;
+                }
+                mergedPositions.Add(mergedPosition);
+            }
+            results = mergedPositions;
+            return results;
+        }
+
         private void UpdateCurrentClient()
         {
             //_currentPosition.ClientId = textBoxName.Text;
             //_currentPosition.ClientName = textBoxClientName.Text;
             _currentBill.DateFrom = pickerDateFrom.Value;
             _currentBill.DateTo = pickerDateTo.Value;
+            _currentBill.BillPurpose = textBoxPurpose.Text;
         }
 
         private void EnableEditMode(bool enabled)
         {
             //textBoxClientName.ReadOnly = !enabled;
+            textBoxPurpose.Enabled = enabled;
             buttonAdd.Enabled = !enabled;
             buttonEdit.Enabled = !enabled;
             buttonDelete.Enabled = !enabled;
@@ -258,6 +293,7 @@ namespace Balonek.Office.Controls
             pickerDateTo.Enabled = enabled;
             comboBoxClient.Enabled = enabled;
             listBoxPositions.Enabled = !enabled;
+            checkBoxMergePositions.Enabled = enabled;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
@@ -283,6 +319,7 @@ namespace Balonek.Office.Controls
         private void pickerDate_ValueChanged(object sender, EventArgs e)
         {
             LoadAssociatedBillPositions();
+            CreateBillPurpose();
         }
 
         private bool CanSave
@@ -398,6 +435,21 @@ namespace Balonek.Office.Controls
         {
             _searchStatus = EnumExtensions.GetValueFromDescription<BillStatus>(comboBoxSelectStatus.Text);
             UpdateBillList(true);
+        }
+
+        private void checkBoxMergePositions_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentBill.MergePositions = checkBoxMergePositions.Checked;
+            LoadAssociatedBillPositions();
+        }
+
+        public void CreateBillPurpose()
+        {
+            if (!_isAdding)
+                return;
+
+            string purpose = string.Format("{0:D3} {1:D3} {2:yyyy}", _currentBill.Id, _currentBill.Client.Id, pickerDateTo.Value);
+            textBoxPurpose.Text = purpose;
         }
     }
 }

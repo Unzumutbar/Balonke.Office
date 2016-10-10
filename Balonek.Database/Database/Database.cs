@@ -6,7 +6,7 @@ namespace Balonek.Database
 {
     public class Database
     {
-        private const int DATABASEVERSION = 1;
+        private const int DATABASEVERSION = 3;
         public ILogger Logger;
 
         public Clients Clients;
@@ -30,20 +30,14 @@ namespace Balonek.Database
         {
             Company = new Companies(databaseDirectory, this);
             if (Company.Get() == null)
-                Company.CreateDefaultValues(databaseDirectory);
+                Company.CreateDefaultValues(databaseDirectory, DATABASEVERSION);
+
+            DatabaseUpdate.Update(Company, databaseDirectory, DATABASEVERSION);
 
             Clients = new Clients(databaseDirectory, this);
             BillPositions = new BillPositions(databaseDirectory, this);
             Bills = new Bills(databaseDirectory, this);
             Texts = new Texts(databaseDirectory, this);
         }
-
-        //private void AddDefaultBillPositionText()
-        //{
-        //    var newText = new BillPositionText();
-        //    newText.Id = 1;
-        //    newText.Text = "Haushaltshilfe";
-        //    AddBillPositionText(newText);
-        //}
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlBill));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.buttonAdd = new System.Windows.Forms.ToolStripButton();
             this.buttonEdit = new System.Windows.Forms.ToolStripButton();
@@ -41,6 +41,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonExport = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.comboBoxSelectStatus = new System.Windows.Forms.ComboBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.listBoxPositions = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,17 +55,19 @@
             this.labelClient = new System.Windows.Forms.Label();
             this.comboBoxClient = new System.Windows.Forms.ComboBox();
             this.dataGridPositions = new System.Windows.Forms.DataGridView();
-            this.pickerDateTo = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonStatus = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.comboBoxSelectStatus = new System.Windows.Forms.ComboBox();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingBillPosition = new System.Windows.Forms.BindingSource(this.components);
+            this.pickerDateTo = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonStatus = new System.Windows.Forms.Button();
+            this.checkBoxMergePositions = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -195,6 +198,19 @@
             this.splitContainer1.SplitterDistance = 216;
             this.splitContainer1.TabIndex = 1;
             // 
+            // comboBoxSelectStatus
+            // 
+            this.comboBoxSelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSelectStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSelectStatus.FormattingEnabled = true;
+            this.comboBoxSelectStatus.Location = new System.Drawing.Point(0, 33);
+            this.comboBoxSelectStatus.Name = "comboBoxSelectStatus";
+            this.comboBoxSelectStatus.Size = new System.Drawing.Size(213, 28);
+            this.comboBoxSelectStatus.TabIndex = 2;
+            this.comboBoxSelectStatus.SelectedValueChanged += new System.EventHandler(this.comboBoxSelectStatus_SelectedValueChanged);
+            // 
             // textBoxSearch
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -236,20 +252,23 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxId, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxClientName, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.labelZipCity, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxTotal, 4, 12);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 12);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxTotal, 4, 13);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 13);
             this.tableLayoutPanel1.Controls.Add(this.pickerDateFrom, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.labelClient, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxClient, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridPositions, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridPositions, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.pickerDateTo, 4, 6);
             this.tableLayoutPanel1.Controls.Add(this.label1, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.buttonStatus, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxMergePositions, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxPurpose, 2, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 14;
+            this.tableLayoutPanel1.RowCount = 15;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
@@ -260,9 +279,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(537, 498);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -399,15 +421,59 @@
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridPositions, 4);
             this.dataGridPositions.DataSource = this.bindingBillPosition;
             this.dataGridPositions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridPositions.Location = new System.Drawing.Point(23, 207);
+            this.dataGridPositions.Location = new System.Drawing.Point(23, 268);
             this.dataGridPositions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridPositions.Name = "dataGridPositions";
             this.dataGridPositions.ReadOnly = true;
             this.dataGridPositions.RowHeadersVisible = false;
             this.dataGridPositions.RowTemplate.Height = 24;
-            this.dataGridPositions.Size = new System.Drawing.Size(482, 228);
+            this.dataGridPositions.Size = new System.Drawing.Size(482, 167);
             this.dataGridPositions.TabIndex = 17;
             this.dataGridPositions.TabStop = false;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Beschreibung";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeDataGridViewTextBoxColumn
+            // 
+            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
+            this.timeDataGridViewTextBoxColumn.HeaderText = "Stunden";
+            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
+            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.timeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // rateDataGridViewTextBoxColumn
+            // 
+            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
+            this.rateDataGridViewTextBoxColumn.HeaderText = "Satz";
+            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
+            this.rateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.rateDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Summe";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingBillPosition
+            // 
+            this.bindingBillPosition.DataSource = typeof(Balonek.Database.Entities.BillPosition);
             // 
             // pickerDateTo
             // 
@@ -448,68 +514,51 @@
             this.buttonStatus.UseVisualStyleBackColor = true;
             this.buttonStatus.Click += new System.EventHandler(this.buttonStatus_Click);
             // 
+            // checkBoxMergePositions
+            // 
+            this.checkBoxMergePositions.AutoSize = true;
+            this.checkBoxMergePositions.Checked = true;
+            this.checkBoxMergePositions.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tableLayoutPanel1.SetColumnSpan(this.checkBoxMergePositions, 3);
+            this.checkBoxMergePositions.Enabled = false;
+            this.checkBoxMergePositions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxMergePositions.Location = new System.Drawing.Point(23, 239);
+            this.checkBoxMergePositions.Name = "checkBoxMergePositions";
+            this.checkBoxMergePositions.Size = new System.Drawing.Size(246, 24);
+            this.checkBoxMergePositions.TabIndex = 21;
+            this.checkBoxMergePositions.Text = "Positionen zusammenfassen";
+            this.checkBoxMergePositions.UseVisualStyleBackColor = true;
+            this.checkBoxMergePositions.CheckedChanged += new System.EventHandler(this.checkBoxMergePositions_CheckedChanged);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(67, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // comboBoxSelectStatus
+            // label3
             // 
-            this.comboBoxSelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxSelectStatus.FormattingEnabled = true;
-            this.comboBoxSelectStatus.Location = new System.Drawing.Point(0, 33);
-            this.comboBoxSelectStatus.Name = "comboBoxSelectStatus";
-            this.comboBoxSelectStatus.Size = new System.Drawing.Size(213, 28);
-            this.comboBoxSelectStatus.TabIndex = 2;
-            this.comboBoxSelectStatus.SelectedValueChanged += new System.EventHandler(this.comboBoxSelectStatus_SelectedValueChanged);
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 180);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 20);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Ver.Zweck";
             // 
-            // descriptionDataGridViewTextBoxColumn
+            // textBoxPurpose
             // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Beschreibung";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Stunden";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.timeDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // rateDataGridViewTextBoxColumn
-            // 
-            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
-            this.rateDataGridViewTextBoxColumn.HeaderText = "Satz";
-            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
-            this.rateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rateDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.totalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Summe";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingBillPosition
-            // 
-            this.bindingBillPosition.DataSource = typeof(Balonek.Database.Entities.BillPosition);
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxPurpose, 3);
+            this.textBoxPurpose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxPurpose.Enabled = false;
+            this.textBoxPurpose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPurpose.Location = new System.Drawing.Point(143, 177);
+            this.textBoxPurpose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxPurpose.Name = "textBoxPurpose";
+            this.textBoxPurpose.Size = new System.Drawing.Size(362, 27);
+            this.textBoxPurpose.TabIndex = 23;
+            this.textBoxPurpose.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ControlBill
             // 
@@ -572,5 +621,8 @@
         private System.Windows.Forms.ToolStripButton buttonExport;
         private System.Windows.Forms.Button buttonStatus;
         private System.Windows.Forms.ComboBox comboBoxSelectStatus;
+        private System.Windows.Forms.CheckBox checkBoxMergePositions;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxPurpose;
     }
 }

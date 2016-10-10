@@ -20,6 +20,7 @@ namespace Balonek.Database.Tables
         {
             try
             {
+
                 var xdoc = XDocument.Load(_tableFile);
                 return (from _bill in xdoc.Root.Elements(ELEMENTNAME)
                         select new Bill
@@ -30,6 +31,8 @@ namespace Balonek.Database.Tables
                             DateTo = DateTime.ParseExact(_bill.Element("DateTo").Value, DATEFORMAT, System.Globalization.CultureInfo.InvariantCulture),
                             Status = (BillStatus)(Int32.Parse(_bill.Element("Status").Value)),
                             Total = Decimal.Parse(_bill.Element("Total").Value),
+                            BillPurpose = _bill.Element("BillPurpose").Value,
+                            MergePositions = "True".Equals(_bill.Element("MergePositions").Value),
 
                         }).ToList();
             }
@@ -40,11 +43,17 @@ namespace Balonek.Database.Tables
             }
         }
 
+        public int GetNextId()
+        {
+            return this.CreateNewId(Get().Cast<BaseEntity>().ToList());
+        }
+
         public Bill Add(Bill billToAdd)
         {
             try
             {
-                billToAdd.Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
+                if (billToAdd.Id == 0)
+                    billToAdd.Id = GetNextId();
 
                 XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
@@ -54,7 +63,9 @@ namespace Balonek.Database.Tables
                             new XElement("DateFrom", billToAdd.DateFrom.ToString(DATEFORMAT)),
                             new XElement("DateTo", billToAdd.DateTo.ToString(DATEFORMAT)),
                             new XElement("Status", (int)billToAdd.Status),
-                            new XElement("Total", billToAdd.Total)
+                            new XElement("Total", billToAdd.Total),
+                            new XElement("BillPurpose", billToAdd.BillPurpose),
+                            new XElement("MergePositions", billToAdd.MergePositions.ToString())
                             )
                      );
 
@@ -81,6 +92,8 @@ namespace Balonek.Database.Tables
                 target.Element("DateTo").Value = billToUpdate.DateTo.ToString(DATEFORMAT);
                 target.Element("Status").Value = ((int)billToUpdate.Status).ToString();
                 target.Element("Total").Value = billToUpdate.Total.ToString();
+                target.Element("BillPurpose").Value = billToUpdate.BillPurpose;
+                target.Element("MergePositions").Value = billToUpdate.MergePositions.ToString();
 
                 doc.Save(_tableFile);
                 _database.Logger.LogInfo(string.Format("{0}.Update({1})", this.GetType().FullName, billToUpdate));

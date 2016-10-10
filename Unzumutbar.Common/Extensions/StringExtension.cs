@@ -129,5 +129,16 @@ namespace Unzumutbar.Extensions
         {
             return !str.Contains(value);
         }
+
+        public static bool EqualsWithTrim(this string str, string value)
+        {
+            if (str == null || value == null)
+                return false;
+
+            str = str.Trim();
+            value = value.Trim();
+
+            return str.Equals(value);
+        }
     }
 }

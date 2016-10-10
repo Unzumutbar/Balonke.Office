@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Database.cs" />
+    <Compile Include="Database\DatabaseUpdate.cs" />
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\BillPosition.cs" />
     <Compile Include="Entities\Company.cs" />

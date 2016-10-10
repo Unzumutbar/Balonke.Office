@@ -45,7 +45,8 @@ namespace Balonek.Office.Forms
             bill.Client = client;
             bill.Status = BillStatus.Printed;
             bill.DateFrom = _firstDayOfMonth;
-            bill.DateTo = _firstDayOfMonth.AddMonths(1).AddDays(-1); ;
+            bill.DateTo = _firstDayOfMonth.AddMonths(1).AddDays(-1);
+            bill.BillPurpose = "Verwendungszweck";
             bill.Positions = positionList;
             bill.Total = positionList.Sum(pos => pos.Total);
             return bill;
