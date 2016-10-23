@@ -370,13 +370,13 @@ namespace Balonek.Office.Controls
             {
                 _message = string.Empty;
                 if (_currentPosition.Client.Id == 0)
-                    _message += "Es wurde kein Kunde ausgewählt!";
+                    _message += "Es wurde kein Kunde ausgewählt!\n";
                 if (comboBoxDescription.Text.IsNullOrWhitespace())
-                    _message += "Es wurde keine Tatigkeitsbeschreibung eingegeben!";
+                    _message += "Es wurde keine Tatigkeitsbeschreibung eingegeben!\n";
                 if (textBoxTime.Text.IsNullOrWhitespace())
-                    _message += "Es wurde keine Zeit eingegeben!";
+                    _message += "Es wurde keine Zeit eingegeben!\n";
                 if (textBoxRate.Text.IsNullOrWhitespace())
-                    _message += "Es wurde kein Stundensatz eingegeben!";
+                    _message += "Es wurde kein Stundensatz eingegeben!\n";
 
                 return _message.IsNullOrWhitespace();
             }

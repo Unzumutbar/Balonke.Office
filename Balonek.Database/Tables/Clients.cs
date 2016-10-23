@@ -72,11 +72,18 @@ namespace Balonek.Database.Tables
             }
         }
 
+        public int GetNextId()
+        {
+            return this.CreateNewId(Get().Cast<BaseEntity>().ToList());
+        }
+
         public Client Add(Client clientToAdd)
         {
             try
             {
-                clientToAdd.Id = CreateNewId(Get().Cast<BaseEntity>().ToList());
+                if (clientToAdd.Id == 0 || this.Get().Where(cli => cli.Id == clientToAdd.Id).Any())
+                    clientToAdd.Id = GetNextId();
+
                 XDocument doc = XDocument.Load(_tableFile);
                 doc.Root.Add(
                      new XElement(ELEMENTNAME,
@@ -133,7 +140,7 @@ namespace Balonek.Database.Tables
         {
             var clientToDelete = entityToDelete as Client;
             clientToDelete.Deleted = true;
-            Update(clientToDelete); 
+            Update(clientToDelete);
         }
     }
 }

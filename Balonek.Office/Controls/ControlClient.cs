@@ -13,8 +13,10 @@ namespace Balonek.Office.Controls
         private List<Client> _clientList;
         private List<Client> _clientSearchList;
         private Client _currentClient;
+
         private bool _isAdding;
         private string _searchContent;
+        private string _message;
 
         public ControlClient()
         {
@@ -61,6 +63,7 @@ namespace Balonek.Office.Controls
         {
             _isAdding = true;
             _currentClient = new Client();
+            _currentClient.Id = Program.Database.Clients.GetNextId();
             _currentClient.Deleted = false;
 
             LoadCurrentClient();
@@ -94,14 +97,19 @@ namespace Balonek.Office.Controls
         private void buttonSave_Click(object sender, EventArgs e)
         {
             UpdateCurrentClient();
-            if (_isAdding)
-                _currentClient = Program.Database.Clients.Add(_currentClient);
-            else
-                Program.Database.Clients.Update(_currentClient);
+            if (CanSave)
+            {
+                if (_isAdding)
+                    _currentClient = Program.Database.Clients.Add(_currentClient);
+                else
+                    Program.Database.Clients.Update(_currentClient);
 
-            this.textBoxId.Text = _currentClient.Id.ToString();
-            EnableEditMode(false);
-            UpdateClientList();
+                this.textBoxId.Text = _currentClient.Id.ToString();
+                EnableEditMode(false);
+                UpdateClientList();
+            }
+            else
+                MessageBox.Show(_message);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -123,6 +131,9 @@ namespace Balonek.Office.Controls
 
         private void UpdateCurrentClient()
         {
+            if (textBoxId.Enabled && _isAdding)
+                _currentClient.Id = int.Parse(textBoxId.Text);
+
             _currentClient.Name = textBoxName.Text;
             _currentClient.Street = textBoxStreet.Text;
             _currentClient.Zip = textBoxZip.Text;
@@ -134,6 +145,7 @@ namespace Balonek.Office.Controls
 
         private void EnableEditMode(bool enabled)
         {
+            textBoxId.Enabled = enabled && _isAdding;
             textBoxName.ReadOnly = !enabled;
             textBoxStreet.ReadOnly = !enabled;
             textBoxZip.ReadOnly = !enabled;
@@ -154,6 +166,47 @@ namespace Balonek.Office.Controls
         {
             _searchContent = textBoxSearch.Text;
             UpdateClientList(true);
+        }
+
+        private bool CanSave
+        {
+            get
+            {
+                _message = string.Empty;
+                var client = _clientList.Where(cli => cli.Id == _currentClient.Id).FirstOrDefault();
+                if (client != null)
+                    _message += string.Format("KundenNr.{0} existiert bereits für Kunde {1}\n", client.Id, client.Name);
+                if (_currentClient.Name.IsNullOrWhitespace())
+                    _message += "Es wurde kein Kundenname eingegeben!\n";
+
+                return _message.IsNullOrWhitespace();
+            }
+        }
+
+        private string currentText;
+
+        private void textBoxId_TextChanged(object sender, EventArgs e)
+        {
+            if (!textBoxId.Enabled)
+                return;
+
+            var textbox = sender as TextBox;
+            if (textbox.Text.Length > 0)
+            {
+                int result;
+                bool isNumeric = int.TryParse(textbox.Text, out result);
+
+                if (isNumeric)
+                {
+                    currentText = textbox.Text;
+                }
+                else
+                {
+                    textbox.Text = currentText;
+                    textbox.Select(textbox.Text.Length, 0);
+                }
+            }
+            base.OnTextChanged(e);
         }
     }
 }
