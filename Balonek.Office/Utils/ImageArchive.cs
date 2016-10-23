@@ -27,7 +27,7 @@ namespace Balonek.Office.Utils
                 var background = GetBackgrounds().Random();
                 return LoadImage(background);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Program.Logger.LogError(ex);
                 return ImageUtilities.DrawEmpyImage(1, 1);
@@ -54,9 +54,9 @@ namespace Balonek.Office.Utils
             catch (Exception ex)
             {
                 Program.Logger.LogError(ex);
-                return ImageUtilities.DrawEmpyImage(1, 1);
+                return ImageUtilities.DrawEmpyImage(25, 25, Brushes.LightPink);
             }
-}
+        }
 
         public static List<string> GetSmallImages()
         {
